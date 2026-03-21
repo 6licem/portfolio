@@ -4,6 +4,13 @@ import { ArrowLeft, ChevronLeft, ChevronRight, Settings, Workflow, FileText, Zap
 import Footer from '../components/Footer';
 import CalendarModal from '../components/CalendarModal';
 
+// Portfolio Gallery Images
+import port1 from '../assets/portfolioCarousel/73c2f810-a901-4a55-a032-41aca9e720d4.jpg';
+import port2 from '../assets/portfolioCarousel/85a9856c-4ae8-4362-b21a-55aa7843fb5a.jpg';
+import port3 from '../assets/portfolioCarousel/ba8b080f-a0f1-4517-b008-1ec2023376d3.jpg';
+import port4 from '../assets/portfolioCarousel/f2ace7f4-6627-4fe3-a8ba-3e183606eb76.jpg';
+import port5 from '../assets/portfolioCarousel/Screenshot 2025-11-26 090338.png';
+
 const useScrollAnimation = () => {
   const [visibleSections, setVisibleSections] = useState(new Set<string>());
 
@@ -309,14 +316,11 @@ const Portfolio = () => {
                             style={{ transform: `translateX(-${currentGalleryImage * 100}%)` }}
                           >
                             {[
-                              '/85a9856c-4ae8-4362-b21a-55aa7843fb5a.jpg',
-                              '/f2ace7f4-6627-4fe3-a8ba-3e183606eb76.jpg',
-                              '/60ce2404-1923-4102-91ad-fdbf52c00f6a.jpg',
-                              '/24ea97d2-3071-4650-9144-4410e427328c.jpg',
-                              '/fe8c4a83-5e2e-41cf-8aa7-68598b3b676c.jpg',
-                              '/ba8b080f-a0f1-4517-b008-1ec2023376d3.jpg',
-                              '/64b8db37-7136-45e8-80f0-3cf0d5644135.jpg',
-                              '/1b42ba7d-454a-42f3-9bac-403edaefba7b.jpg'
+                              port1,
+                              port2,
+                              port3,
+                              port4,
+                              port5
                             ].map((img, imgIndex) => (
                               <img
                                 key={imgIndex}
@@ -329,20 +333,20 @@ const Portfolio = () => {
                         </div>
 
                         <button
-                          onClick={() => setCurrentGalleryImage(prev => prev === 0 ? 8 : prev - 1)}
+                          onClick={() => setCurrentGalleryImage(prev => prev === 0 ? 4 : prev - 1)}
                           className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-stone-800/80 hover:bg-stone-700/80 text-white p-2 rounded-full transition-all duration-300 hover:scale-110 shadow-xl backdrop-blur-sm"
                         >
                           <ChevronLeft size={20} />
                         </button>
                         <button
-                          onClick={() => setCurrentGalleryImage(prev => prev === 8 ? 0 : prev + 1)}
+                          onClick={() => setCurrentGalleryImage(prev => prev === 4 ? 0 : prev + 1)}
                           className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-stone-800/80 hover:bg-stone-700/80 text-white p-2 rounded-full transition-all duration-300 hover:scale-110 shadow-xl backdrop-blur-sm"
                         >
                           <ChevronRight size={20} />
                         </button>
 
                         <div className="flex justify-center mt-4 gap-2">
-                          {[0, 1, 2, 3, 4, 5, 6, 7, 8].map((dotIndex) => (
+                          {[0, 1, 2, 3, 4].map((dotIndex) => (
                             <button
                               key={dotIndex}
                               onClick={() => setCurrentGalleryImage(dotIndex)}
@@ -474,14 +478,11 @@ const Portfolio = () => {
               >
                 <div className="flex gap-4 sm:gap-6 min-w-max">
                   {[
-                    '/85a9856c-4ae8-4362-b21a-55aa7843fb5a.jpg',
-                    '/f2ace7f4-6627-4fe3-a8ba-3e183606eb76.jpg',
-                    '/60ce2404-1923-4102-91ad-fdbf52c00f6a.jpg',
-                    '/24ea97d2-3071-4650-9144-4410e427328c.jpg',
-                    '/fe8c4a83-5e2e-41cf-8aa7-68598b3b676c.jpg',
-                    '/ba8b080f-a0f1-4517-b008-1ec2023376d3.jpg',
-                    '/64b8db37-7136-45e8-80f0-3cf0d5644135.jpg',
-                    '/1b42ba7d-454a-42f3-9bac-403edaefba7b.jpg'
+                    port1,
+                    port2,
+                    port3,
+                    port4,
+                    port5
                   ].map((image, index) => (
                     <div
                       key={index}

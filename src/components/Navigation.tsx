@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import Logo from '../assets/Logo.png';
 import { Menu, X, Sparkles } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import CalendarModal from './CalendarModal';
@@ -70,8 +71,8 @@ const Navigation = () => {
                   <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/20 to-orange-500/20 rounded-full blur-xl group-hover:blur-2xl transition-all duration-500"></div>
                   <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-yellow-400/40 shadow-lg shadow-yellow-400/30 group-hover:shadow-yellow-400/50 transition-all duration-500">
                     <img
-                      src="/colorful_graffiti_circle_framed_instagram_profile_picture.png"
-                      alt="Rance Coon"
+                      src={Logo}
+                      alt="Rance Logo"
                       className="w-full h-full object-cover"
                     />
                   </div>
@@ -92,7 +93,7 @@ const Navigation = () => {
             <div className="sm:hidden flex items-center gap-2">
               <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-yellow-400/40 shadow-lg shadow-yellow-400/30">
                 <img
-                  src="/colorful_graffiti_circle_framed_instagram_profile_picture.png"
+                  src={Logo}
                   alt="Rance Coon"
                   className="w-full h-full object-cover"
                 />

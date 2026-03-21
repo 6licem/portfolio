@@ -1,5 +1,6 @@
 import { X, ZoomIn, ZoomOut, Maximize2 } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
+import resumeImg from '../assets/Ray Francis Coon - Resume.png';
 
 interface ResumeModalProps {
   isOpen: boolean;
@@ -164,7 +165,7 @@ const ResumeModal = ({ isOpen, onClose }: ResumeModalProps) => {
         style={{ cursor: zoom > 1 ? (isDragging ? 'grabbing' : 'grab') : 'default' }}
       >
         <img
-          src="/ray_francis_coon_-_resume_(1).png"
+          src={resumeImg}
           alt="Ray Francis Coon Resume"
           className="max-w-full max-h-full object-contain select-none"
           draggable={false}

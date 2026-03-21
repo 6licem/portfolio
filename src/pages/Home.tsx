@@ -7,6 +7,29 @@ import TechStackSection from '../components/TechStackSection';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import { useCountUp } from '../hooks/useCountUp';
 
+import Logo from '../assets/Logo.png';
+
+// Carousel Images
+import carousel1 from '../assets/carouselImages/2a538690-d501-402d-8f45-bf5e3548445c.jpg';
+import carousel2 from '../assets/carouselImages/IMG_20251218_194236_662 (1).jpg';
+import carousel3 from '../assets/carouselImages/Screenshot 2025-12-19 221807.png';
+import carousel4 from '../assets/carouselImages/Screenshot 2025-12-19 221917.png';
+import carousel5 from '../assets/carouselImages/Screenshot 2025-12-19 222021.png';
+import carousel6 from '../assets/carouselImages/Screenshot 2026-01-18 170408.png';
+
+// JSM Carousel Images
+import jsm1 from '../assets/jsmCarouselImages/Screenshot 2025-12-17 002003.png';
+import jsm2 from '../assets/jsmCarouselImages/Screenshot 2025-12-19 222405.png';
+import jsm3 from '../assets/jsmCarouselImages/Screenshot 2025-12-19 222412.png';
+import jsm4 from '../assets/jsmCarouselImages/Screenshot 2025-12-19 222821.png';
+
+// Portfolio Gallery Images (used in scrolling gallery)
+import port1 from '../assets/portfolioCarousel/73c2f810-a901-4a55-a032-41aca9e720d4.jpg';
+import port2 from '../assets/portfolioCarousel/85a9856c-4ae8-4362-b21a-55aa7843fb5a.jpg';
+import port3 from '../assets/portfolioCarousel/ba8b080f-a0f1-4517-b008-1ec2023376d3.jpg';
+import port4 from '../assets/portfolioCarousel/f2ace7f4-6627-4fe3-a8ba-3e183606eb76.jpg';
+import port5 from '../assets/portfolioCarousel/Screenshot 2025-11-26 090338.png';
+
 const Home = () => {
   const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
   const [isCalendarModalOpen, setIsCalendarModalOpen] = useState(false);
@@ -15,20 +38,19 @@ const Home = () => {
   const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
 
   const carouselImages = [
-    '/41199857-9670-4f08-9cf9-920b5b0523ee.jpg',
-    '/1aef6f8c-8ab6-4e40-a4a6-d966fc4cb18a.jpg',
-    '/6660e6cf-d30e-4026-becc-fa0fa5b26697.jpg',
-    '/53eae1e7-20a5-4b76-98df-1b4a30d39f8c.jpg',
-    '/image copy copy copy.png'
+    carousel1,
+    carousel2,
+    carousel3,
+    carousel4,
+    carousel5,
+    carousel6
   ];
 
   const jsmCarouselImages = [
-    '/image copy copy.png',
-    '/image copy copy copy copy.png',
-    '/screenshot_2025-12-19_222338.png',
-    '/screenshot_2025-12-19_222353.png',
-    '/screenshot_2025-12-19_222415.png',
-    '/image copy copy copy copy copy.png'
+    jsm1,
+    jsm2,
+    jsm3,
+    jsm4
   ];
 
   const testimonials = [
@@ -179,7 +201,7 @@ const Home = () => {
               <button
                 onClick={() => setIsCalendarModalOpen(true)}
                 className="group relative inline-flex items-center gap-2 sm:gap-3 bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-300 hover:to-orange-400 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-bold text-base sm:text-lg transition-all duration-300 shadow-2xl hover:shadow-yellow-400/50 hover:scale-105 overflow-hidden"
-                style={{textShadow: '0 2px 4px rgba(0,0,0,0.3)'}}
+                style={{ textShadow: '0 2px 4px rgba(0,0,0,0.3)' }}
               >
                 <span className="relative z-10">Book a Call</span>
                 <svg className="relative z-10 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -270,7 +292,7 @@ const Home = () => {
                     <div className="absolute -inset-2 bg-gradient-to-r from-yellow-400/30 to-orange-500/30 rounded-full blur-xl opacity-80 group-hover/photo:opacity-100 transition-all duration-500"></div>
                     <div className="relative w-40 h-40 sm:w-48 sm:h-48 lg:w-56 lg:h-56 rounded-full overflow-hidden border-4 border-yellow-400/40 shadow-2xl group-hover/photo:border-yellow-400/60 group-hover/photo:scale-105 transition-all duration-500">
                       <img
-                        src="/colorful_graffiti_circle_framed_instagram_profile_picture.png"
+                        src={Logo}
                         alt="Rance - Project Management Specialist"
                         className="w-full h-full object-cover"
                       />
@@ -301,7 +323,7 @@ const Home = () => {
                     <button
                       onClick={openResumeModal}
                       className="group/btn relative inline-flex items-center gap-2 sm:gap-3 bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-300 hover:to-orange-400 text-white px-5 sm:px-7 py-2.5 sm:py-3.5 rounded-xl font-bold text-sm sm:text-base transition-all duration-300 shadow-xl hover:shadow-yellow-400/40 hover:scale-105 overflow-hidden"
-                      style={{textShadow: '0 2px 4px rgba(0,0,0,0.3)'}}
+                      style={{ textShadow: '0 2px 4px rgba(0,0,0,0.3)' }}
                     >
                       <FileText size={18} className="relative z-10 sm:w-5 sm:h-5" />
                       <span className="relative z-10">View My Resume</span>
@@ -323,7 +345,7 @@ const Home = () => {
                     <div className="relative group/card">
                       <div className="absolute -inset-1 bg-gradient-to-r from-yellow-400/30 to-orange-500/30 rounded-2xl blur opacity-0 group-hover/card:opacity-100 transition-opacity duration-300"></div>
                       <div className="relative flex items-start gap-3 sm:gap-4 bg-gradient-to-br from-stone-800/80 to-stone-900/80 rounded-xl sm:rounded-2xl p-4 sm:p-6 border-2 border-stone-600/30 group-hover/card:border-yellow-400/50 transition-all duration-300">
-                        <div className="bg-gradient-to-br from-yellow-400 to-orange-500 rounded-lg sm:rounded-xl p-2 sm:p-3 flex-shrink-0 shadow-lg" style={{boxShadow: '0 0 25px rgba(255, 239, 58, 0.4)'}}>
+                        <div className="bg-gradient-to-br from-yellow-400 to-orange-500 rounded-lg sm:rounded-xl p-2 sm:p-3 flex-shrink-0 shadow-lg" style={{ boxShadow: '0 0 25px rgba(255, 239, 58, 0.4)' }}>
                           <Briefcase size={20} className="text-white sm:w-6 sm:h-6" />
                         </div>
                         <div className="flex-1">
@@ -337,7 +359,7 @@ const Home = () => {
                     <div className="relative group/card">
                       <div className="absolute -inset-1 bg-gradient-to-r from-yellow-400/30 to-orange-500/30 rounded-2xl blur opacity-0 group-hover/card:opacity-100 transition-opacity duration-300"></div>
                       <div className="relative flex items-start gap-3 sm:gap-4 bg-gradient-to-br from-stone-800/80 to-stone-900/80 rounded-xl sm:rounded-2xl p-4 sm:p-6 border-2 border-stone-600/30 group-hover/card:border-yellow-400/50 transition-all duration-300">
-                        <div className="bg-gradient-to-br from-yellow-400 to-orange-500 rounded-lg sm:rounded-xl p-2 sm:p-3 flex-shrink-0 shadow-lg" style={{boxShadow: '0 0 25px rgba(255, 239, 58, 0.4)'}}>
+                        <div className="bg-gradient-to-br from-yellow-400 to-orange-500 rounded-lg sm:rounded-xl p-2 sm:p-3 flex-shrink-0 shadow-lg" style={{ boxShadow: '0 0 25px rgba(255, 239, 58, 0.4)' }}>
                           <Award size={20} className="text-white sm:w-6 sm:h-6" />
                         </div>
                         <div className="flex-1">
@@ -351,7 +373,7 @@ const Home = () => {
                     <div className="relative group/card">
                       <div className="absolute -inset-1 bg-gradient-to-r from-yellow-400/30 to-orange-500/30 rounded-2xl blur opacity-0 group-hover/card:opacity-100 transition-opacity duration-300"></div>
                       <div className="relative flex items-start gap-3 sm:gap-4 bg-gradient-to-br from-stone-800/80 to-stone-900/80 rounded-xl sm:rounded-2xl p-4 sm:p-6 border-2 border-stone-600/30 group-hover/card:border-yellow-400/50 transition-all duration-300">
-                        <div className="bg-gradient-to-br from-yellow-400 to-orange-500 rounded-lg sm:rounded-xl p-2 sm:p-3 flex-shrink-0 shadow-lg" style={{boxShadow: '0 0 25px rgba(255, 239, 58, 0.4)'}}>
+                        <div className="bg-gradient-to-br from-yellow-400 to-orange-500 rounded-lg sm:rounded-xl p-2 sm:p-3 flex-shrink-0 shadow-lg" style={{ boxShadow: '0 0 25px rgba(255, 239, 58, 0.4)' }}>
                           <GraduationCap size={20} className="text-white sm:w-6 sm:h-6" />
                         </div>
                         <div className="flex-1">
@@ -414,11 +436,10 @@ const Home = () => {
                           <button
                             key={index}
                             onClick={() => setCurrentTestimonialIndex(index)}
-                            className={`transition-all duration-300 rounded-full ${
-                              index === currentTestimonialIndex
-                                ? 'w-8 h-2 bg-gradient-to-r from-yellow-400 to-orange-500'
-                                : 'w-2 h-2 bg-stone-600 hover:bg-yellow-400/50'
-                            }`}
+                            className={`transition-all duration-300 rounded-full ${index === currentTestimonialIndex
+                              ? 'w-8 h-2 bg-gradient-to-r from-yellow-400 to-orange-500'
+                              : 'w-2 h-2 bg-stone-600 hover:bg-yellow-400/50'
+                              }`}
                             aria-label={`Go to testimonial ${index + 1}`}
                           />
                         ))}
@@ -449,7 +470,7 @@ const Home = () => {
                         <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full blur opacity-50 group-hover/ig:opacity-75 transition-opacity"></div>
                         <div className="relative bg-gradient-to-r from-yellow-400 to-orange-500 p-2.5 rounded-full">
                           <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
                           </svg>
                         </div>
                       </div>
@@ -498,8 +519,8 @@ const Home = () => {
                           <div className="absolute -inset-1 bg-gradient-to-br from-yellow-400/20 to-orange-500/20 rounded-2xl blur opacity-0 group-hover/skill:opacity-100 transition-opacity duration-500"></div>
                           <div className="relative bg-gradient-to-br from-stone-800/60 to-stone-900/60 backdrop-blur-xl rounded-2xl p-8 border-2 border-stone-600/30 hover:border-yellow-400/50 transition-all duration-500 group-hover/skill:shadow-2xl group-hover/skill:shadow-yellow-400/20 group-hover/skill:-translate-y-1">
                             <div className="flex flex-col items-center gap-4">
-                              <div className="bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl p-4 group-hover/skill:scale-110 group-hover/skill:rotate-3 transition-all duration-500 shadow-xl shadow-yellow-400/30" style={{boxShadow: '0 0 30px rgba(255, 239, 58, 0.5), 0 0 60px rgba(255, 145, 0, 0.3)'}}>
-                                <ClipboardList size={32} className="text-white drop-shadow-2xl" style={{filter: 'drop-shadow(0 0 12px rgba(255, 239, 58, 0.8))'}} />
+                              <div className="bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl p-4 group-hover/skill:scale-110 group-hover/skill:rotate-3 transition-all duration-500 shadow-xl shadow-yellow-400/30" style={{ boxShadow: '0 0 30px rgba(255, 239, 58, 0.5), 0 0 60px rgba(255, 145, 0, 0.3)' }}>
+                                <ClipboardList size={32} className="text-white drop-shadow-2xl" style={{ filter: 'drop-shadow(0 0 12px rgba(255, 239, 58, 0.8))' }} />
                               </div>
                               <span className="text-white font-bold text-xl text-center group-hover/skill:text-yellow-400 transition-colors duration-300">Project Management</span>
                             </div>
@@ -509,8 +530,8 @@ const Home = () => {
                           <div className="absolute -inset-1 bg-gradient-to-br from-yellow-400/20 to-orange-500/20 rounded-2xl blur opacity-0 group-hover/skill:opacity-100 transition-opacity duration-500"></div>
                           <div className="relative bg-gradient-to-br from-stone-800/60 to-stone-900/60 backdrop-blur-xl rounded-2xl p-8 border-2 border-stone-600/30 hover:border-yellow-400/50 transition-all duration-500 group-hover/skill:shadow-2xl group-hover/skill:shadow-yellow-400/20 group-hover/skill:-translate-y-1">
                             <div className="flex flex-col items-center gap-4">
-                              <div className="bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl p-4 group-hover/skill:scale-110 group-hover/skill:rotate-3 transition-all duration-500 shadow-xl shadow-yellow-400/30" style={{boxShadow: '0 0 30px rgba(255, 239, 58, 0.5), 0 0 60px rgba(255, 145, 0, 0.3)'}}>
-                                <Settings size={32} className="text-white drop-shadow-2xl" style={{filter: 'drop-shadow(0 0 12px rgba(255, 239, 58, 0.8))'}} />
+                              <div className="bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl p-4 group-hover/skill:scale-110 group-hover/skill:rotate-3 transition-all duration-500 shadow-xl shadow-yellow-400/30" style={{ boxShadow: '0 0 30px rgba(255, 239, 58, 0.5), 0 0 60px rgba(255, 145, 0, 0.3)' }}>
+                                <Settings size={32} className="text-white drop-shadow-2xl" style={{ filter: 'drop-shadow(0 0 12px rgba(255, 239, 58, 0.8))' }} />
                               </div>
                               <span className="text-white font-bold text-xl text-center group-hover/skill:text-yellow-400 transition-colors duration-300">Operations Management</span>
                             </div>
@@ -520,8 +541,8 @@ const Home = () => {
                           <div className="absolute -inset-1 bg-gradient-to-br from-yellow-400/20 to-orange-500/20 rounded-2xl blur opacity-0 group-hover/skill:opacity-100 transition-opacity duration-500"></div>
                           <div className="relative bg-gradient-to-br from-stone-800/60 to-stone-900/60 backdrop-blur-xl rounded-2xl p-8 border-2 border-stone-600/30 hover:border-yellow-400/50 transition-all duration-500 group-hover/skill:shadow-2xl group-hover/skill:shadow-yellow-400/20 group-hover/skill:-translate-y-1">
                             <div className="flex flex-col items-center gap-4">
-                              <div className="bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl p-4 group-hover/skill:scale-110 group-hover/skill:rotate-3 transition-all duration-500 shadow-xl shadow-yellow-400/30" style={{boxShadow: '0 0 30px rgba(255, 239, 58, 0.5), 0 0 60px rgba(255, 145, 0, 0.3)'}}>
-                                <Bot size={32} className="text-white drop-shadow-2xl" style={{filter: 'drop-shadow(0 0 12px rgba(255, 239, 58, 0.8))'}} />
+                              <div className="bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl p-4 group-hover/skill:scale-110 group-hover/skill:rotate-3 transition-all duration-500 shadow-xl shadow-yellow-400/30" style={{ boxShadow: '0 0 30px rgba(255, 239, 58, 0.5), 0 0 60px rgba(255, 145, 0, 0.3)' }}>
+                                <Bot size={32} className="text-white drop-shadow-2xl" style={{ filter: 'drop-shadow(0 0 12px rgba(255, 239, 58, 0.8))' }} />
                               </div>
                               <span className="text-white font-bold text-xl text-center group-hover/skill:text-yellow-400 transition-colors duration-300">System Automation</span>
                             </div>
@@ -531,8 +552,8 @@ const Home = () => {
                           <div className="absolute -inset-1 bg-gradient-to-br from-yellow-400/20 to-orange-500/20 rounded-2xl blur opacity-0 group-hover/skill:opacity-100 transition-opacity duration-500"></div>
                           <div className="relative bg-gradient-to-br from-stone-800/60 to-stone-900/60 backdrop-blur-xl rounded-2xl p-8 border-2 border-stone-600/30 hover:border-yellow-400/50 transition-all duration-500 group-hover/skill:shadow-2xl group-hover/skill:shadow-yellow-400/20 group-hover/skill:-translate-y-1">
                             <div className="flex flex-col items-center gap-4 min-h-[120px] justify-center">
-                              <div className="bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl p-4 group-hover/skill:scale-110 group-hover/skill:rotate-3 transition-all duration-500 shadow-xl shadow-yellow-400/30" style={{boxShadow: '0 0 30px rgba(255, 239, 58, 0.5), 0 0 60px rgba(255, 145, 0, 0.3)'}}>
-                                <Wrench size={32} className="text-white drop-shadow-2xl" style={{filter: 'drop-shadow(0 0 12px rgba(255, 239, 58, 0.8))'}} />
+                              <div className="bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl p-4 group-hover/skill:scale-110 group-hover/skill:rotate-3 transition-all duration-500 shadow-xl shadow-yellow-400/30" style={{ boxShadow: '0 0 30px rgba(255, 239, 58, 0.5), 0 0 60px rgba(255, 145, 0, 0.3)' }}>
+                                <Wrench size={32} className="text-white drop-shadow-2xl" style={{ filter: 'drop-shadow(0 0 12px rgba(255, 239, 58, 0.8))' }} />
                               </div>
                               <span className="text-white font-bold text-xl text-center group-hover/skill:text-yellow-400 transition-colors duration-300">System Creation</span>
                             </div>
@@ -569,11 +590,11 @@ const Home = () => {
                   <div className="flex justify-center">
                     <div className="relative w-64 h-64 sm:w-80 sm:h-80">
                       <svg viewBox="0 0 100 100" className="transform -rotate-90 w-full h-full">
-                        <circle cx="50" cy="50" r="40" fill="none" stroke="#1C1917" strokeWidth="20"/>
-                        <circle cx="50" cy="50" r="40" fill="none" stroke="#DC2626" strokeWidth="20" strokeDasharray="117.81 251.33" strokeDashoffset="0" className="transition-all duration-1000"/>
-                        <circle cx="50" cy="50" r="40" fill="none" stroke="#FBBF24" strokeWidth="20" strokeDasharray="42.67 251.33" strokeDashoffset="-117.81" className="transition-all duration-1000"/>
-                        <circle cx="50" cy="50" r="40" fill="none" stroke="#10B981" strokeWidth="20" strokeDasharray="65.19 251.33" strokeDashoffset="-160.48" className="transition-all duration-1000"/>
-                        <circle cx="50" cy="50" r="40" fill="none" stroke="#3B82F6" strokeWidth="20" strokeDasharray="25.13 251.33" strokeDashoffset="-225.67" className="transition-all duration-1000"/>
+                        <circle cx="50" cy="50" r="40" fill="none" stroke="#1C1917" strokeWidth="20" />
+                        <circle cx="50" cy="50" r="40" fill="none" stroke="#DC2626" strokeWidth="20" strokeDasharray="117.81 251.33" strokeDashoffset="0" className="transition-all duration-1000" />
+                        <circle cx="50" cy="50" r="40" fill="none" stroke="#FBBF24" strokeWidth="20" strokeDasharray="42.67 251.33" strokeDashoffset="-117.81" className="transition-all duration-1000" />
+                        <circle cx="50" cy="50" r="40" fill="none" stroke="#10B981" strokeWidth="20" strokeDasharray="65.19 251.33" strokeDashoffset="-160.48" className="transition-all duration-1000" />
+                        <circle cx="50" cy="50" r="40" fill="none" stroke="#3B82F6" strokeWidth="20" strokeDasharray="25.13 251.33" strokeDashoffset="-225.67" className="transition-all duration-1000" />
                       </svg>
                       <div className="absolute inset-0 flex items-center justify-center">
                         <div className="text-center">
@@ -658,7 +679,7 @@ const Home = () => {
                         <div className="text-center">
                           <div className="text-yellow-400 font-bold text-lg mb-2">Extraverted</div>
                           <div className="relative w-full h-3 bg-stone-700/50 rounded-full overflow-hidden mb-2">
-                            <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full shadow-lg shadow-yellow-400/50 transition-all duration-1000" style={{width: '57%'}}></div>
+                            <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full shadow-lg shadow-yellow-400/50 transition-all duration-1000" style={{ width: '57%' }}></div>
                           </div>
                           <div className="text-white font-bold text-2xl">57%</div>
                         </div>
@@ -671,7 +692,7 @@ const Home = () => {
                         <div className="text-center">
                           <div className="text-yellow-400 font-bold text-lg mb-2">Intuitive</div>
                           <div className="relative w-full h-3 bg-stone-700/50 rounded-full overflow-hidden mb-2">
-                            <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full shadow-lg shadow-yellow-400/50 transition-all duration-1000" style={{width: '89%'}}></div>
+                            <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full shadow-lg shadow-yellow-400/50 transition-all duration-1000" style={{ width: '89%' }}></div>
                           </div>
                           <div className="text-white font-bold text-2xl">89%</div>
                         </div>
@@ -684,7 +705,7 @@ const Home = () => {
                         <div className="text-center">
                           <div className="text-yellow-400 font-bold text-lg mb-2">Feeling</div>
                           <div className="relative w-full h-3 bg-stone-700/50 rounded-full overflow-hidden mb-2">
-                            <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full shadow-lg shadow-yellow-400/50 transition-all duration-1000" style={{width: '53%'}}></div>
+                            <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full shadow-lg shadow-yellow-400/50 transition-all duration-1000" style={{ width: '53%' }}></div>
                           </div>
                           <div className="text-white font-bold text-2xl">53%</div>
                         </div>
@@ -697,7 +718,7 @@ const Home = () => {
                         <div className="text-center">
                           <div className="text-yellow-400 font-bold text-lg mb-2">Judging</div>
                           <div className="relative w-full h-3 bg-stone-700/50 rounded-full overflow-hidden mb-2">
-                            <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full shadow-lg shadow-yellow-400/50 transition-all duration-1000" style={{width: '60%'}}></div>
+                            <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full shadow-lg shadow-yellow-400/50 transition-all duration-1000" style={{ width: '60%' }}></div>
                           </div>
                           <div className="text-white font-bold text-2xl">60%</div>
                         </div>
@@ -710,7 +731,7 @@ const Home = () => {
                         <div className="text-center">
                           <div className="text-yellow-400 font-bold text-lg mb-2">Assertive</div>
                           <div className="relative w-full h-3 bg-stone-700/50 rounded-full overflow-hidden mb-2">
-                            <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full shadow-lg shadow-yellow-400/50 transition-all duration-1000" style={{width: '57%'}}></div>
+                            <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full shadow-lg shadow-yellow-400/50 transition-all duration-1000" style={{ width: '57%' }}></div>
                           </div>
                           <div className="text-white font-bold text-2xl">57%</div>
                         </div>
@@ -721,7 +742,7 @@ const Home = () => {
               </div>
             </div>
           </div>
-      </div>
+        </div>
       </section>
 
       <section id="results" className="py-16 sm:py-24 px-4 sm:px-6 bg-stone-950/50">
@@ -767,9 +788,8 @@ const Home = () => {
                             key={index}
                             src={image}
                             alt={`Creative Vision ${index + 1}`}
-                            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${
-                              index === currentImageIndex ? 'opacity-100' : 'opacity-0'
-                            }`}
+                            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+                              }`}
                           />
                         ))}
 
@@ -794,11 +814,10 @@ const Home = () => {
                             <button
                               key={index}
                               onClick={() => setCurrentImageIndex(index)}
-                              className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                                index === currentImageIndex
-                                  ? 'bg-yellow-400 w-8'
-                                  : 'bg-white/50 hover:bg-white/80'
-                              }`}
+                              className={`w-2 h-2 rounded-full transition-all duration-300 ${index === currentImageIndex
+                                ? 'bg-yellow-400 w-8'
+                                : 'bg-white/50 hover:bg-white/80'
+                                }`}
                               aria-label={`Go to image ${index + 1}`}
                             />
                           ))}
@@ -881,7 +900,7 @@ const Home = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group/btn relative bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-300 hover:to-orange-400 text-white px-10 py-4 rounded-xl font-bold text-lg transition-all duration-300 shadow-2xl hover:shadow-yellow-400/40 hover:scale-105 w-full block text-center overflow-hidden"
-                    style={{textShadow: '0 2px 4px rgba(0,0,0,0.3)'}}
+                    style={{ textShadow: '0 2px 4px rgba(0,0,0,0.3)' }}
                   >
                     <span className="relative z-10">CONTACT THEM</span>
                     <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-200%] group-hover/btn:translate-x-[200%] transition-transform duration-1000"></div>
@@ -892,7 +911,8 @@ const Home = () => {
 
             <div ref={gallery.ref} className={`mt-16 fade-up ${gallery.isVisible ? 'visible' : ''}`}>
               <div className="relative overflow-hidden">
-                <style dangerouslySetInnerHTML={{__html: `
+                <style dangerouslySetInnerHTML={{
+                  __html: `
                   @keyframes scrollGallery {
                     0% {
                       transform: translateX(0);
@@ -909,11 +929,11 @@ const Home = () => {
                   {[...Array(2)].map((_, setIndex) => (
                     <div key={setIndex} className="flex gap-4 sm:gap-6 pr-4 sm:pr-6 flex-shrink-0">
                       {[
-                        '/60ce2404-1923-4102-91ad-fdbf52c00f6a.jpg',
-                        '/f2ace7f4-6627-4fe3-a8ba-3e183606eb76.jpg',
-                        '/ba8b080f-a0f1-4517-b008-1ec2023376d3.jpg',
-                        '/64b8db37-7136-45e8-80f0-3cf0d5644135.jpg',
-                        '/1b42ba7d-454a-42f3-9bac-403edaefba7b.jpg'
+                        port1,
+                        port2,
+                        port3,
+                        port4,
+                        port5
                       ].map((image, index) => (
                         <div
                           key={index}
@@ -958,9 +978,8 @@ const Home = () => {
                             key={index}
                             src={image}
                             alt={`JustSimplyMarketing ${index + 1}`}
-                            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${
-                              index === currentJsmImageIndex ? 'opacity-100' : 'opacity-0'
-                            }`}
+                            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${index === currentJsmImageIndex ? 'opacity-100' : 'opacity-0'
+                              }`}
                           />
                         ))}
 
@@ -985,11 +1004,10 @@ const Home = () => {
                             <button
                               key={index}
                               onClick={() => setCurrentJsmImageIndex(index)}
-                              className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                                index === currentJsmImageIndex
-                                  ? 'bg-yellow-400 w-8'
-                                  : 'bg-white/50 hover:bg-white/80'
-                              }`}
+                              className={`w-2 h-2 rounded-full transition-all duration-300 ${index === currentJsmImageIndex
+                                ? 'bg-yellow-400 w-8'
+                                : 'bg-white/50 hover:bg-white/80'
+                                }`}
                               aria-label={`Go to image ${index + 1}`}
                             />
                           ))}
@@ -1072,7 +1090,7 @@ const Home = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group/btn relative bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-300 hover:to-orange-400 text-white px-10 py-4 rounded-xl font-bold text-lg transition-all duration-300 shadow-2xl hover:shadow-yellow-400/40 hover:scale-105 w-full block text-center overflow-hidden"
-                    style={{textShadow: '0 2px 4px rgba(0,0,0,0.3)'}}
+                    style={{ textShadow: '0 2px 4px rgba(0,0,0,0.3)' }}
                   >
                     <span className="relative z-10">CONTACT THEM</span>
                     <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-200%] group-hover/btn:translate-x-[200%] transition-transform duration-1000"></div>
@@ -1081,104 +1099,104 @@ const Home = () => {
               </div>
             </div>
 
-          <div className="mt-20 text-center">
-            <div className="relative group">
-              <div className="absolute -inset-2 bg-gradient-to-r from-yellow-400/30 via-orange-500/30 to-yellow-400/30 rounded-3xl blur-2xl opacity-50 group-hover:opacity-75 transition-opacity duration-500"></div>
-              <div className="relative bg-gradient-to-br from-stone-800/90 via-stone-800/70 to-stone-900/90 backdrop-blur-2xl rounded-3xl overflow-hidden border-2 border-yellow-400/30 shadow-2xl p-12 sm:p-16">
-                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-yellow-400 to-transparent"></div>
+            <div className="mt-20 text-center">
+              <div className="relative group">
+                <div className="absolute -inset-2 bg-gradient-to-r from-yellow-400/30 via-orange-500/30 to-yellow-400/30 rounded-3xl blur-2xl opacity-50 group-hover:opacity-75 transition-opacity duration-500"></div>
+                <div className="relative bg-gradient-to-br from-stone-800/90 via-stone-800/70 to-stone-900/90 backdrop-blur-2xl rounded-3xl overflow-hidden border-2 border-yellow-400/30 shadow-2xl p-12 sm:p-16">
+                  <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-yellow-400 to-transparent"></div>
 
-                <div className="max-w-4xl mx-auto">
-                  <div className="inline-block px-6 py-2 bg-gradient-to-r from-yellow-400/20 to-orange-500/20 rounded-full border border-yellow-400/30 mb-6">
-                    <span className="text-yellow-400 font-semibold text-sm tracking-wider uppercase">Your Turn</span>
-                  </div>
+                  <div className="max-w-4xl mx-auto">
+                    <div className="inline-block px-6 py-2 bg-gradient-to-r from-yellow-400/20 to-orange-500/20 rounded-full border border-yellow-400/30 mb-6">
+                      <span className="text-yellow-400 font-semibold text-sm tracking-wider uppercase">Your Turn</span>
+                    </div>
 
-                  <h3 className="text-3xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
-                    Ready to Become the <span className="bg-gradient-to-r from-yellow-300 via-yellow-400 to-orange-500 bg-clip-text text-transparent">Next Success Story?</span>
-                  </h3>
+                    <h3 className="text-3xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
+                      Ready to Become the <span className="bg-gradient-to-r from-yellow-300 via-yellow-400 to-orange-500 bg-clip-text text-transparent">Next Success Story?</span>
+                    </h3>
 
-                  <div className="w-32 h-1.5 bg-gradient-to-r from-yellow-400 to-orange-500 mx-auto rounded-full shadow-lg shadow-yellow-400/50 mb-8"></div>
+                    <div className="w-32 h-1.5 bg-gradient-to-r from-yellow-400 to-orange-500 mx-auto rounded-full shadow-lg shadow-yellow-400/50 mb-8"></div>
 
-                  <div className="space-y-6 mb-12">
-                    <p className="text-stone-200 text-lg sm:text-xl leading-relaxed">
-                      These transformations weren't built overnight—they were the result of strategic systems, streamlined operations, and relentless execution.
-                    </p>
+                    <div className="space-y-6 mb-12">
+                      <p className="text-stone-200 text-lg sm:text-xl leading-relaxed">
+                        These transformations weren't built overnight—they were the result of strategic systems, streamlined operations, and relentless execution.
+                      </p>
 
-                    <p className="text-stone-300 text-base sm:text-lg leading-relaxed">
-                      Whether you're drowning in repetitive tasks, struggling with team coordination, or watching opportunities slip through the cracks—there's a better way.
-                    </p>
+                      <p className="text-stone-300 text-base sm:text-lg leading-relaxed">
+                        Whether you're drowning in repetitive tasks, struggling with team coordination, or watching opportunities slip through the cracks—there's a better way.
+                      </p>
 
-                    <p className="text-stone-300 text-base sm:text-lg leading-relaxed">
-                      The question isn't if automation will transform your business—it's when you'll decide to make the leap. Every day you wait is another day of lost productivity, missed opportunities, and unnecessary stress.
-                    </p>
-                  </div>
+                      <p className="text-stone-300 text-base sm:text-lg leading-relaxed">
+                        The question isn't if automation will transform your business—it's when you'll decide to make the leap. Every day you wait is another day of lost productivity, missed opportunities, and unnecessary stress.
+                      </p>
+                    </div>
 
-                  <div className="bg-gradient-to-br from-yellow-400/10 via-orange-500/5 to-transparent rounded-2xl p-8 mb-10 border border-yellow-400/20">
-                    <h4 className="text-white font-bold text-xl sm:text-2xl mb-6 text-center">What You'll Get from Our 30-Minute Call</h4>
-                    <div className="grid sm:grid-cols-2 gap-4">
-                      <div className="flex items-start gap-3">
-                        <div className="w-2 h-2 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full mt-2 flex-shrink-0 shadow-lg shadow-yellow-400/50"></div>
-                        <div>
-                          <p className="text-white font-semibold mb-1">Deep Dive Analysis</p>
-                          <p className="text-stone-400 text-sm">We'll analyze your current workflows and identify bottlenecks costing you time and money</p>
+                    <div className="bg-gradient-to-br from-yellow-400/10 via-orange-500/5 to-transparent rounded-2xl p-8 mb-10 border border-yellow-400/20">
+                      <h4 className="text-white font-bold text-xl sm:text-2xl mb-6 text-center">What You'll Get from Our 30-Minute Call</h4>
+                      <div className="grid sm:grid-cols-2 gap-4">
+                        <div className="flex items-start gap-3">
+                          <div className="w-2 h-2 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full mt-2 flex-shrink-0 shadow-lg shadow-yellow-400/50"></div>
+                          <div>
+                            <p className="text-white font-semibold mb-1">Deep Dive Analysis</p>
+                            <p className="text-stone-400 text-sm">We'll analyze your current workflows and identify bottlenecks costing you time and money</p>
+                          </div>
                         </div>
-                      </div>
-                      <div className="flex items-start gap-3">
-                        <div className="w-2 h-2 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full mt-2 flex-shrink-0 shadow-lg shadow-yellow-400/50"></div>
-                        <div>
-                          <p className="text-white font-semibold mb-1">Custom Strategy</p>
-                          <p className="text-stone-400 text-sm">Get a tailored automation roadmap designed specifically for your business needs</p>
+                        <div className="flex items-start gap-3">
+                          <div className="w-2 h-2 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full mt-2 flex-shrink-0 shadow-lg shadow-yellow-400/50"></div>
+                          <div>
+                            <p className="text-white font-semibold mb-1">Custom Strategy</p>
+                            <p className="text-stone-400 text-sm">Get a tailored automation roadmap designed specifically for your business needs</p>
+                          </div>
                         </div>
-                      </div>
-                      <div className="flex items-start gap-3">
-                        <div className="w-2 h-2 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full mt-2 flex-shrink-0 shadow-lg shadow-yellow-400/50"></div>
-                        <div>
-                          <p className="text-white font-semibold mb-1">Implementation Plan</p>
-                          <p className="text-stone-400 text-sm">Walk away with clear next steps and a timeline for transformation</p>
+                        <div className="flex items-start gap-3">
+                          <div className="w-2 h-2 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full mt-2 flex-shrink-0 shadow-lg shadow-yellow-400/50"></div>
+                          <div>
+                            <p className="text-white font-semibold mb-1">Implementation Plan</p>
+                            <p className="text-stone-400 text-sm">Walk away with clear next steps and a timeline for transformation</p>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
 
-                  <div className="flex flex-col items-center gap-6 mb-10">
-                    <button
-                      onClick={() => setIsCalendarModalOpen(true)}
-                      className="group/btn relative bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-300 hover:to-orange-400 text-white px-12 py-6 rounded-xl font-bold text-xl transition-all duration-300 shadow-2xl hover:shadow-yellow-400/50 hover:scale-105 overflow-hidden"
-                      style={{textShadow: '0 2px 4px rgba(0,0,0,0.3)'}}
-                    >
-                      <span className="relative z-10 flex items-center gap-3">
-                        BOOK A CALL
-                        <svg className="w-6 h-6 group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                        </svg>
-                      </span>
-                      <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-200%] group-hover/btn:translate-x-[200%] transition-transform duration-1000"></div>
-                    </button>
+                    <div className="flex flex-col items-center gap-6 mb-10">
+                      <button
+                        onClick={() => setIsCalendarModalOpen(true)}
+                        className="group/btn relative bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-300 hover:to-orange-400 text-white px-12 py-6 rounded-xl font-bold text-xl transition-all duration-300 shadow-2xl hover:shadow-yellow-400/50 hover:scale-105 overflow-hidden"
+                        style={{ textShadow: '0 2px 4px rgba(0,0,0,0.3)' }}
+                      >
+                        <span className="relative z-10 flex items-center gap-3">
+                          BOOK A CALL
+                          <svg className="w-6 h-6 group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                          </svg>
+                        </span>
+                        <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-200%] group-hover/btn:translate-x-[200%] transition-transform duration-1000"></div>
+                      </button>
 
-                    <p className="text-stone-400 text-sm">
-                      No pushy sales tactics. Just honest advice and clear solutions.
-                    </p>
-                  </div>
-
-                  <div className="flex flex-wrap justify-center gap-8 sm:gap-12 text-center">
-                    <div>
-                      <div className="text-yellow-400 font-bold text-3xl sm:text-4xl mb-2">1,800+</div>
-                      <div className="text-stone-400 text-sm">Hours Saved</div>
+                      <p className="text-stone-400 text-sm">
+                        No pushy sales tactics. Just honest advice and clear solutions.
+                      </p>
                     </div>
-                    <div className="hidden sm:block w-px h-16 bg-stone-600"></div>
-                    <div>
-                      <div className="text-yellow-400 font-bold text-3xl sm:text-4xl mb-2">80%</div>
-                      <div className="text-stone-400 text-sm">Productivity Boost</div>
-                    </div>
-                    <div className="hidden sm:block w-px h-16 bg-stone-600"></div>
-                    <div>
-                      <div className="text-yellow-400 font-bold text-3xl sm:text-4xl mb-2">$1M+</div>
-                      <div className="text-stone-400 text-sm">Client Revenue</div>
+
+                    <div className="flex flex-wrap justify-center gap-8 sm:gap-12 text-center">
+                      <div>
+                        <div className="text-yellow-400 font-bold text-3xl sm:text-4xl mb-2">1,800+</div>
+                        <div className="text-stone-400 text-sm">Hours Saved</div>
+                      </div>
+                      <div className="hidden sm:block w-px h-16 bg-stone-600"></div>
+                      <div>
+                        <div className="text-yellow-400 font-bold text-3xl sm:text-4xl mb-2">80%</div>
+                        <div className="text-stone-400 text-sm">Productivity Boost</div>
+                      </div>
+                      <div className="hidden sm:block w-px h-16 bg-stone-600"></div>
+                      <div>
+                        <div className="text-yellow-400 font-bold text-3xl sm:text-4xl mb-2">$1M+</div>
+                        <div className="text-stone-400 text-sm">Client Revenue</div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
           </div>
         </div>
       </section>
@@ -1517,7 +1535,7 @@ const Home = () => {
             <button
               onClick={() => setIsCalendarModalOpen(true)}
               className="group/cta relative inline-flex items-center gap-2 sm:gap-3 bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-300 hover:to-orange-400 text-white px-8 sm:px-12 py-4 sm:py-5 rounded-xl font-bold text-lg sm:text-xl transition-all duration-300 shadow-2xl hover:shadow-yellow-400/50 hover:scale-105 overflow-hidden"
-              style={{textShadow: '0 2px 4px rgba(0,0,0,0.3)'}}
+              style={{ textShadow: '0 2px 4px rgba(0,0,0,0.3)' }}
             >
               <span className="relative z-10">Book a Call</span>
               <svg className="relative z-10 w-6 h-6 group-hover/cta:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
