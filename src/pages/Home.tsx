@@ -194,7 +194,7 @@ const Home = () => {
             </h1>
 
             <p className="text-base sm:text-2xl text-stone-300 max-w-5xl mx-auto leading-relaxed mb-6 sm:mb-8 px-4">
-              <span className="text-yellow-400 font-bold">Project Management a</span> Made So <span className="text-yellow-400 font-bold">Creatives</span> Can <span className="text-yellow-400 font-bold">Focus on Creating</span>
+              <span className="text-yellow-400 font-bold">Project Management</span> Made So <span className="text-yellow-400 font-bold">Creatives</span> Can <span className="text-yellow-400 font-bold">Focus on Creating</span>
             </p>
 
             <div className="flex flex-wrap justify-center gap-3 sm:gap-4 mb-8 sm:mb-12 px-4">
