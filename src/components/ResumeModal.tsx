@@ -1,6 +1,6 @@
 import { X, ZoomIn, ZoomOut, Maximize2 } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
-import resumeImg from '../assets/Ray Francis Coon - Resume.png';
+import resumeImg from '../assets/Ray Francis Coon - Resume copy.png';
 
 interface ResumeModalProps {
   isOpen: boolean;

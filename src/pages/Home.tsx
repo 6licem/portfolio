@@ -194,7 +194,7 @@ const Home = () => {
             </h1>
 
             <p className="text-base sm:text-2xl text-stone-300 max-w-5xl mx-auto leading-relaxed mb-6 sm:mb-8 px-4">
-              <span className="text-yellow-400 font-bold">Project Management</span> Made So <span className="text-yellow-400 font-bold">Creatives</span> Can <span className="text-yellow-400 font-bold">Focus on Creating</span>
+              I Build the <span className="text-yellow-400 font-bold">Systems</span> That Let Your <span className="text-yellow-400 font-bold">Creatives Actually Create.</span>
             </p>
 
             <div className="flex flex-wrap justify-center gap-3 sm:gap-4 mb-8 sm:mb-12 px-4">
@@ -308,7 +308,7 @@ const Home = () => {
                   <div className="relative bg-gradient-to-br from-yellow-400/5 to-orange-500/5 rounded-2xl p-4 sm:p-6 border border-yellow-400/20">
                     <div className="absolute top-0 left-4 sm:left-6 w-10 sm:w-12 h-1 bg-gradient-to-r from-yellow-400 to-orange-500 -mt-px"></div>
                     <p className="text-stone-200 text-sm sm:text-lg leading-relaxed">
-                      I'm Rance, a <span className="text-yellow-400 font-semibold">Project Management Specialist</span> who helps creative agencies escape project chaos by building project management systems that scale. With a background in workflow automation and creative operations, I've worked behind the scenes of <span className="text-yellow-400 font-semibold">7-figure creative agencies</span> and production houses.
+                      Most creative agencies hit a ceiling where <span className="text-yellow-400 font-semibold">"more work"</span> just means <span className="text-yellow-400 font-semibold">"more mess."</span> I’ve spent <span className="text-yellow-400 font-semibold">4+ years</span> behind the scenes of <span className="text-yellow-400 font-semibold">7-figure production houses</span>, turning that mess into a machine. Whether it’s <span className="text-yellow-400 font-semibold">Monday.com architecture</span> or <span className="text-yellow-400 font-semibold">workflow automation</span>, I build the infrastructure your agency needs to <span className="text-yellow-400 font-semibold">scale without breaking.</span>
                     </p>
                   </div>
 
