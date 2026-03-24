@@ -206,7 +206,7 @@ const Home = () => {
               <div className="absolute top-[80%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200vw] sm:w-[1400px] h-[600px] sm:h-[800px] bg-yellow-500/20 blur-[100px] sm:blur-[180px] rounded-[100%] pointer-events-none -z-10"></div>
               <div className="absolute top-[80%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150vw] sm:w-[1000px] h-[400px] sm:h-[600px] bg-orange-500/20 blur-[80px] sm:blur-[120px] rounded-[100%] pointer-events-none -z-10 animate-pulse" style={{ animationDuration: '4s' }}></div>
 
-              <span className="block mb-1 sm:mb-2 text-2xl sm:text-6xl lg:text-7xl drop-shadow-lg relative z-10">I'm Rance, Your</span>
+              <span className="block mb-1 sm:mb-2 text-2xl sm:text-6xl lg:text-7xl drop-shadow-lg relative z-10">I'm Rance, Your Certified</span>
               <span className="block relative">
                 <span className="relative inline-block">
                   <span className="relative bg-gradient-to-r from-yellow-300 via-yellow-400 to-orange-500 bg-clip-text text-transparent text-3xl sm:text-7xl lg:text-8xl font-extrabold">
@@ -794,7 +794,7 @@ const Home = () => {
                   <div className="text-center mb-10">
                     <p className="text-stone-500 text-xs tracking-[0.2em] uppercase font-bold mb-4">Myers-Briggs Type Indicator</p>
                     <div className="inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-10 py-4 sm:py-5 bg-gradient-to-r from-yellow-400/10 via-orange-500/10 to-yellow-400/10 rounded-2xl border border-yellow-400/30 shadow-2xl shadow-yellow-400/10 mb-4">
-                      {(['E','N','F','J'] as const).map((char, i) => (
+                      {(['E', 'N', 'F', 'J'] as const).map((char, i) => (
                         <span key={i} className="font-black text-3xl sm:text-5xl bg-gradient-to-b from-yellow-300 via-yellow-400 to-orange-500 bg-clip-text text-transparent" style={{ filter: 'drop-shadow(0 0 10px rgba(251,191,36,0.5))' }}>{char}</span>
                       ))}
                       <span className="text-stone-600 font-black text-2xl sm:text-3xl mx-1">-</span>
@@ -965,19 +965,19 @@ const Home = () => {
                           <div className="absolute inset-0 bg-yellow-400/5 rounded-xl blur opacity-0 group-hover/metric:opacity-100 transition-opacity"></div>
                           <div className="flex flex-col sm:flex-row sm:justify-between items-start sm:items-center p-5 bg-gradient-to-r from-stone-800/80 to-stone-900/80 rounded-xl border border-yellow-400/30 shadow-lg relative glass-rim">
                             <div className="flex items-center gap-3 mb-2 sm:mb-0">
-                               <Clock className="w-5 h-5 text-yellow-400" />
-                               <span className="text-stone-300 font-semibold tracking-wide uppercase text-sm">Hours Saved</span>
+                              <Clock className="w-5 h-5 text-yellow-400" />
+                              <span className="text-stone-300 font-semibold tracking-wide uppercase text-sm">Hours Saved</span>
                             </div>
                             <span className="text-yellow-400 font-black text-3xl tracking-tight drop-shadow-md">{hoursSavedCV}+</span>
                           </div>
                         </div>
-                        
+
                         <div className="group/metric hover:scale-105 transition-transform duration-300 relative">
                           <div className="absolute inset-0 bg-yellow-400/5 rounded-xl blur opacity-0 group-hover/metric:opacity-100 transition-opacity"></div>
                           <div className="flex flex-col sm:flex-row sm:justify-between items-start sm:items-center p-5 bg-gradient-to-r from-stone-800/80 to-stone-900/80 rounded-xl border border-yellow-400/30 shadow-lg relative glass-rim">
                             <div className="flex items-center gap-3 mb-2 sm:mb-0">
-                               <TrendingUp className="w-5 h-5 text-yellow-400" />
-                               <span className="text-stone-300 font-semibold tracking-wide uppercase text-sm">Productivity Boost</span>
+                              <TrendingUp className="w-5 h-5 text-yellow-400" />
+                              <span className="text-stone-300 font-semibold tracking-wide uppercase text-sm">Productivity Boost</span>
                             </div>
                             <span className="text-yellow-400 font-black text-3xl tracking-tight drop-shadow-md">{efficiencyBoostCV}</span>
                           </div>
@@ -987,8 +987,8 @@ const Home = () => {
                           <div className="absolute inset-0 bg-yellow-400/5 rounded-xl blur opacity-0 group-hover/metric:opacity-100 transition-opacity"></div>
                           <div className="flex flex-col sm:flex-row sm:justify-between items-start sm:items-center p-5 bg-gradient-to-r from-stone-800/80 to-stone-900/80 rounded-xl border border-yellow-400/30 shadow-lg relative glass-rim">
                             <div className="flex items-center gap-3 mb-2 sm:mb-0">
-                               <Users className="w-5 h-5 text-yellow-400" />
-                               <span className="text-stone-300 font-semibold tracking-wide uppercase text-sm">Team Growth</span>
+                              <Users className="w-5 h-5 text-yellow-400" />
+                              <span className="text-stone-300 font-semibold tracking-wide uppercase text-sm">Team Growth</span>
                             </div>
                             <span className="text-yellow-400 font-black text-3xl tracking-tight drop-shadow-md">Strategic</span>
                           </div>
@@ -1227,9 +1227,9 @@ const Home = () => {
 
                     <div className="w-32 h-1.5 bg-gradient-to-r from-yellow-400 to-orange-500 mx-auto rounded-full shadow-lg shadow-yellow-400/50 mb-8"></div>
 
-                      <p className="text-stone-200 text-lg sm:text-xl leading-relaxed mb-12">
-                        These results didn't happen by accident. They happened because we stopped guessing and started building. Right now, you’re losing money every single day. If you’re still doing tasks by hand that a system can do for pennies, you’re effectively paying yourself $2 an hour to stay busy. Every day you delay automation, you are choosing to leave profit on the table. You can keep manually fixing every problem, or you can build the system that handles it for you.
-                      </p>
+                    <p className="text-stone-200 text-lg sm:text-xl leading-relaxed mb-12">
+                      These results didn't happen by accident. They happened because we stopped guessing and started building. Right now, you’re losing money every single day. If you’re still doing tasks by hand that a system can do for pennies, you’re effectively paying yourself $2 an hour to stay busy. Every day you delay automation, you are choosing to leave profit on the table. You can keep manually fixing every problem, or you can build the system that handles it for you.
+                    </p>
 
                     <div className="bg-gradient-to-br from-yellow-400/10 via-orange-500/5 to-transparent rounded-2xl p-8 mb-10 border border-yellow-400/20">
                       <h4 className="text-white font-bold text-xl sm:text-2xl mb-6 text-center">What You'll Get from Our 30-Minute Call</h4>
@@ -1341,8 +1341,8 @@ const Home = () => {
                     <div className="absolute top-0 left-6 w-8 h-1 bg-gradient-to-r from-yellow-400 to-orange-500 -mt-px opacity-0 group-hover/step:opacity-100 transition-opacity"></div>
                     <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-start relative z-10">
                       <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-stone-950 border-2 border-stone-700/50 flex items-center justify-center text-stone-400 font-bold group-hover/step:text-yellow-400 transition-colors group-hover/step:border-yellow-400/50 shadow-inner overflow-hidden relative">
-                         <div className="absolute inset-0 bg-yellow-400/5 opacity-0 group-hover/step:opacity-100 transition-opacity"></div>
-                         01
+                        <div className="absolute inset-0 bg-yellow-400/5 opacity-0 group-hover/step:opacity-100 transition-opacity"></div>
+                        01
                       </div>
                       <div>
                         <h4 className="text-white font-bold text-lg sm:text-xl mb-2">The First Call (Investigation)</h4>
@@ -1356,8 +1356,8 @@ const Home = () => {
                     <div className="absolute top-0 left-6 w-8 h-1 bg-gradient-to-r from-yellow-400 to-orange-500 -mt-px opacity-0 group-hover/step:opacity-100 transition-opacity"></div>
                     <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-start relative z-10">
                       <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-stone-950 border-2 border-stone-700/50 flex items-center justify-center text-stone-400 font-bold group-hover/step:text-yellow-400 transition-colors group-hover/step:border-yellow-400/50 shadow-inner overflow-hidden relative">
-                         <div className="absolute inset-0 bg-yellow-400/5 opacity-0 group-hover/step:opacity-100 transition-opacity"></div>
-                         02
+                        <div className="absolute inset-0 bg-yellow-400/5 opacity-0 group-hover/step:opacity-100 transition-opacity"></div>
+                        02
                       </div>
                       <div>
                         <h4 className="text-white font-bold text-lg sm:text-xl mb-2">The Custom Plan</h4>
@@ -1371,8 +1371,8 @@ const Home = () => {
                     <div className="absolute top-0 left-6 w-8 h-1 bg-gradient-to-r from-yellow-400 to-orange-500 -mt-px opacity-0 group-hover/step:opacity-100 transition-opacity"></div>
                     <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-start relative z-10">
                       <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-stone-950 border-2 border-stone-700/50 flex items-center justify-center text-stone-400 font-bold group-hover/step:text-yellow-400 transition-colors group-hover/step:border-yellow-400/50 shadow-inner overflow-hidden relative">
-                         <div className="absolute inset-0 bg-yellow-400/5 opacity-0 group-hover/step:opacity-100 transition-opacity"></div>
-                         03
+                        <div className="absolute inset-0 bg-yellow-400/5 opacity-0 group-hover/step:opacity-100 transition-opacity"></div>
+                        03
                       </div>
                       <div>
                         <h4 className="text-white font-bold text-lg sm:text-xl mb-2">The Second Call (Review &amp; Scope)</h4>
@@ -1386,8 +1386,8 @@ const Home = () => {
                     <div className="absolute top-0 left-6 w-8 h-1 bg-gradient-to-r from-yellow-400 to-orange-500 -mt-px opacity-0 group-hover/step:opacity-100 transition-opacity"></div>
                     <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-start relative z-10">
                       <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-stone-950 border-2 border-stone-700/50 flex items-center justify-center text-stone-400 font-bold group-hover/step:text-yellow-400 transition-colors group-hover/step:border-yellow-400/50 shadow-inner overflow-hidden relative">
-                         <div className="absolute inset-0 bg-yellow-400/5 opacity-0 group-hover/step:opacity-100 transition-opacity"></div>
-                         04
+                        <div className="absolute inset-0 bg-yellow-400/5 opacity-0 group-hover/step:opacity-100 transition-opacity"></div>
+                        04
                       </div>
                       <div>
                         <h4 className="text-white font-bold text-lg sm:text-xl mb-2">The Kick-off Call</h4>
@@ -1426,8 +1426,8 @@ const Home = () => {
                     <div className="absolute top-0 left-6 w-8 h-1 bg-gradient-to-r from-yellow-400 to-orange-500 -mt-px opacity-0 group-hover/step:opacity-100 transition-opacity"></div>
                     <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-start relative z-10">
                       <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-stone-950 border-2 border-stone-700/50 flex items-center justify-center text-stone-400 font-bold group-hover/step:text-yellow-400 transition-colors group-hover/step:border-yellow-400/50 shadow-inner overflow-hidden relative">
-                         <div className="absolute inset-0 bg-yellow-400/5 opacity-0 group-hover/step:opacity-100 transition-opacity"></div>
-                         01
+                        <div className="absolute inset-0 bg-yellow-400/5 opacity-0 group-hover/step:opacity-100 transition-opacity"></div>
+                        01
                       </div>
                       <div>
                         <h4 className="text-white font-bold text-lg sm:text-xl mb-2">Build &amp; Automate</h4>
@@ -1441,8 +1441,8 @@ const Home = () => {
                     <div className="absolute top-0 left-6 w-8 h-1 bg-gradient-to-r from-yellow-400 to-orange-500 -mt-px opacity-0 group-hover/step:opacity-100 transition-opacity"></div>
                     <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-start relative z-10">
                       <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-stone-950 border-2 border-stone-700/50 flex items-center justify-center text-stone-400 font-bold group-hover/step:text-yellow-400 transition-colors group-hover/step:border-yellow-400/50 shadow-inner overflow-hidden relative">
-                         <div className="absolute inset-0 bg-yellow-400/5 opacity-0 group-hover/step:opacity-100 transition-opacity"></div>
-                         02
+                        <div className="absolute inset-0 bg-yellow-400/5 opacity-0 group-hover/step:opacity-100 transition-opacity"></div>
+                        02
                       </div>
                       <div>
                         <h4 className="text-white font-bold text-lg sm:text-xl mb-2">Team Onboarding</h4>
@@ -1456,8 +1456,8 @@ const Home = () => {
                     <div className="absolute top-0 left-6 w-8 h-1 bg-gradient-to-r from-yellow-400 to-orange-500 -mt-px opacity-0 group-hover/step:opacity-100 transition-opacity"></div>
                     <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-start relative z-10">
                       <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-stone-950 border-2 border-stone-700/50 flex items-center justify-center text-stone-400 font-bold group-hover/step:text-yellow-400 transition-colors group-hover/step:border-yellow-400/50 shadow-inner overflow-hidden relative">
-                         <div className="absolute inset-0 bg-yellow-400/5 opacity-0 group-hover/step:opacity-100 transition-opacity"></div>
-                         03
+                        <div className="absolute inset-0 bg-yellow-400/5 opacity-0 group-hover/step:opacity-100 transition-opacity"></div>
+                        03
                       </div>
                       <div>
                         <h4 className="text-white font-bold text-lg sm:text-xl mb-2">SOP Creation</h4>
@@ -1496,8 +1496,8 @@ const Home = () => {
                     <div className="absolute top-0 left-6 w-8 h-1 bg-gradient-to-r from-yellow-400 to-orange-500 -mt-px opacity-0 group-hover/step:opacity-100 transition-opacity"></div>
                     <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-start relative z-10">
                       <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-stone-950 border-2 border-stone-700/50 flex items-center justify-center text-stone-400 font-bold group-hover/step:text-yellow-400 transition-colors group-hover/step:border-yellow-400/50 shadow-inner overflow-hidden relative">
-                         <div className="absolute inset-0 bg-yellow-400/5 opacity-0 group-hover/step:opacity-100 transition-opacity"></div>
-                         01
+                        <div className="absolute inset-0 bg-yellow-400/5 opacity-0 group-hover/step:opacity-100 transition-opacity"></div>
+                        01
                       </div>
                       <div>
                         <h4 className="text-white font-bold text-lg sm:text-xl mb-2">Team Training</h4>
@@ -1511,8 +1511,8 @@ const Home = () => {
                     <div className="absolute top-0 left-6 w-8 h-1 bg-gradient-to-r from-yellow-400 to-orange-500 -mt-px opacity-0 group-hover/step:opacity-100 transition-opacity"></div>
                     <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-start relative z-10">
                       <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-stone-950 border-2 border-stone-700/50 flex items-center justify-center text-stone-400 font-bold group-hover/step:text-yellow-400 transition-colors group-hover/step:border-yellow-400/50 shadow-inner overflow-hidden relative">
-                         <div className="absolute inset-0 bg-yellow-400/5 opacity-0 group-hover/step:opacity-100 transition-opacity"></div>
-                         02
+                        <div className="absolute inset-0 bg-yellow-400/5 opacity-0 group-hover/step:opacity-100 transition-opacity"></div>
+                        02
                       </div>
                       <div>
                         <h4 className="text-white font-bold text-lg sm:text-xl mb-2">Early Support</h4>
@@ -1526,8 +1526,8 @@ const Home = () => {
                     <div className="absolute top-0 left-6 w-8 h-1 bg-gradient-to-r from-yellow-400 to-orange-500 -mt-px opacity-0 group-hover/step:opacity-100 transition-opacity"></div>
                     <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-start relative z-10">
                       <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-stone-950 border-2 border-stone-700/50 flex items-center justify-center text-stone-400 font-bold group-hover/step:text-yellow-400 transition-colors group-hover/step:border-yellow-400/50 shadow-inner overflow-hidden relative">
-                         <div className="absolute inset-0 bg-yellow-400/5 opacity-0 group-hover/step:opacity-100 transition-opacity"></div>
-                         03
+                        <div className="absolute inset-0 bg-yellow-400/5 opacity-0 group-hover/step:opacity-100 transition-opacity"></div>
+                        03
                       </div>
                       <div>
                         <h4 className="text-white font-bold text-lg sm:text-xl mb-2">Bi-Weekly Check-ins</h4>
@@ -1541,8 +1541,8 @@ const Home = () => {
                     <div className="absolute top-0 left-6 w-8 h-1 bg-gradient-to-r from-yellow-400 to-orange-500 -mt-px opacity-0 group-hover/step:opacity-100 transition-opacity"></div>
                     <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-start relative z-10">
                       <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-stone-950 border-2 border-stone-700/50 flex items-center justify-center text-stone-400 font-bold group-hover/step:text-yellow-400 transition-colors group-hover/step:border-yellow-400/50 shadow-inner overflow-hidden relative">
-                         <div className="absolute inset-0 bg-yellow-400/5 opacity-0 group-hover/step:opacity-100 transition-opacity"></div>
-                         04
+                        <div className="absolute inset-0 bg-yellow-400/5 opacity-0 group-hover/step:opacity-100 transition-opacity"></div>
+                        04
                       </div>
                       <div>
                         <h4 className="text-white font-bold text-lg sm:text-xl mb-2">Ongoing Updates</h4>

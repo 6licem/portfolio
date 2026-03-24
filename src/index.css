@@ -58,7 +58,6 @@
     pointer-events: none;
   }
 
-
   .custom-scrollbar::-webkit-scrollbar {
     width: 4px;
   }
@@ -89,48 +88,5 @@
   .tech-track-mask {
     -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
     mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
-  }
-}
-
-/* Scroll animation classes — kept outside @layer to avoid Tailwind purging */
-.fade-up {
-  opacity: 0;
-  filter: blur(8px);
-  transform: translateY(30px) scale(0.98);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out, filter 0.8s ease-out;
-}
-
-.fade-up.visible {
-  opacity: 1;
-  filter: blur(0);
-  transform: translateY(0) scale(1);
-}
-
-.fade-up-delay-100 {
-  transition-delay: 0.1s;
-}
-
-.fade-up-delay-200 {
-  transition-delay: 0.2s;
-}
-
-.fade-up-delay-300 {
-  transition-delay: 0.3s;
-}
-
-.fade-up-delay-400 {
-  transition-delay: 0.4s;
-}
-
-@keyframes statsFadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(24px);
-    filter: blur(6px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-    filter: blur(0);
   }
 }
