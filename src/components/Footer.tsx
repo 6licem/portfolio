@@ -1,7 +1,9 @@
 const Footer = () => {
   const legalLinks = [
     { name: 'Instagram', href: 'https://www.instagram.com/rance.coon/' },
-    { name: 'Contact me', href: 'mailto:rancecoonbusiness@gmail.com' }
+    { name: 'LinkedIn', href: 'https://www.linkedin.com/in/rance-coon/' },
+    { name: 'WhatsApp', href: 'https://wa.me/1234567890' },
+    { name: 'Gmail', href: 'mailto:rancecoonbusiness@gmail.com' }
   ];
 
   return (

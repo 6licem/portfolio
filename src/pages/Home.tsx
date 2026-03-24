@@ -394,13 +394,17 @@ const Home = () => {
                       <span>Gmail</span>
                     </a>
 
-                    <button
-                      onClick={() => setIsCalendarModalOpen(true)}
-                      className="group/social inline-flex items-center justify-center gap-2 min-w-[9rem] bg-gradient-to-r from-yellow-400/20 to-orange-500/20 hover:from-yellow-400/30 hover:to-orange-500/30 border-2 border-yellow-400/40 hover:border-yellow-400/70 text-white px-5 py-3 rounded-xl font-bold text-sm transition-all duration-300 backdrop-blur-sm hover:scale-105"
+                    <a
+                      href="https://www.tiktok.com/@rancecoon_"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group/social inline-flex items-center justify-center gap-2 min-w-[9rem] bg-stone-800/60 hover:bg-stone-800 border-2 border-[#FE2C55]/30 hover:border-[#FE2C55]/60 text-white px-5 py-3 rounded-xl font-bold text-sm transition-all duration-300 backdrop-blur-sm hover:scale-105"
                     >
-                      <CalendarDays size={20} className="w-5 h-5 text-yellow-400 group-hover/social:text-yellow-300 transition-colors" />
-                      <span>Book a Call</span>
-                    </button>
+                      <svg className="w-4 h-4 text-[#FE2C55] group-hover/social:text-white transition-colors flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.86-.6-4.12-1.31a8.841 8.841 0 0 1-1.87-1.42v7.71a8.318 8.318 0 0 1-3.6 6.84c-1.54 1.05-3.41 1.59-5.27 1.57A8.354 8.354 0 0 1 2.01 15.1c-.96-1.57-1.42-3.42-1.32-5.25.1-1.87.89-3.69 2.27-4.99 1.43-1.33 3.42-2.01 5.37-1.87v4.08c-1.46-.1-2.95.48-3.87 1.62-.86 1.05-1.12 2.47-.73 3.78.34 1.13 1.25 2.08 2.38 2.45 1.15.39 2.48.2 3.46-.5.98-.7 1.49-1.87 1.49-3.04V.02Z"/>
+                      </svg>
+                      <span>TikTok</span>
+                    </a>
                   </div>
 
                   <div className="mt-12 sm:mt-16 lg:mt-20">
@@ -1314,7 +1318,7 @@ const Home = () => {
         </div>
       </section>
 
-      <section id="process" className="py-24 sm:py-32 px-4 sm:px-6 bg-gradient-to-b from-stone-950 via-stone-900 to-stone-950 relative overflow-hidden">
+      <section id="our-process" className="py-24 sm:py-32 px-4 sm:px-6 bg-gradient-to-b from-stone-950 via-stone-900 to-stone-950 relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-gradient-to-r from-yellow-400/5 to-orange-500/5 rounded-full blur-3xl"></div>
           <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-gradient-to-r from-orange-500/5 to-yellow-400/5 rounded-full blur-3xl"></div>

@@ -19,8 +19,9 @@ const Navigation = () => {
   }, []);
 
   const navLinks = [
-    { name: 'About', path: '/#about-me', sectionId: 'about-me' },
+    { name: 'About Me', path: '/#about-me', sectionId: 'about-me' },
     { name: 'DISC', path: '/#disc', sectionId: 'disc' },
+    { name: 'My Process', path: '/#our-process', sectionId: 'our-process' },
     { name: 'Results', path: '/#results', sectionId: 'results' },
   ];
 
@@ -64,7 +65,16 @@ const Navigation = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="flex items-center justify-between h-20 sm:h-24">
-          <Link to="/" className="group relative hover:scale-105 transition-all duration-500">
+          <Link
+            to="/"
+            className="group relative hover:scale-105 transition-all duration-500"
+            onClick={(e) => {
+              if (location.pathname === '/') {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }
+            }}
+          >
             <div className="hidden sm:block">
               <div className="flex items-center gap-3">
                 <div className="relative">
