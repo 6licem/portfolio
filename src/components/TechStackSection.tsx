@@ -76,11 +76,7 @@ export default function TechStackSection() {
           </div>
         </div>
         
-        <div className="mt-12 flex justify-center gap-8 text-stone-500 font-bold text-[10px] tracking-[0.3em] uppercase">
-          <span className="flex items-center gap-2"><div className="w-1 h-1 bg-yellow-400 rounded-full"></div> Operational</span>
-          <span className="flex items-center gap-2"><div className="w-1 h-1 bg-yellow-400 rounded-full"></div> Creative</span>
-          <span className="flex items-center gap-2"><div className="w-1 h-1 bg-yellow-400 rounded-full"></div> Marketing</span>
-        </div>
+
       </div>
     </div>
   );

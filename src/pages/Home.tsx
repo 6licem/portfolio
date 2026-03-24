@@ -343,7 +343,7 @@ const Home = () => {
                     </p>
                   </div>
 
-                  <div className="flex flex-wrap gap-4 sm:gap-6 pt-4">
+                  <div className="flex flex-wrap justify-center sm:justify-start gap-4 sm:gap-6 pt-4">
                     <button
                       onClick={openResumeModal}
                       className="group/btn relative inline-flex items-center justify-center gap-2 min-w-[9rem] bg-stone-800/60 hover:bg-stone-800 border-2 border-yellow-400/30 hover:border-yellow-400/60 text-white px-5 py-3 rounded-xl font-bold text-sm transition-all duration-300 backdrop-blur-sm hover:scale-105"
