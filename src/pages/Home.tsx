@@ -206,11 +206,11 @@ const Home = () => {
               <div className="absolute top-[80%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200vw] sm:w-[1400px] h-[600px] sm:h-[800px] bg-yellow-500/20 blur-[100px] sm:blur-[180px] rounded-[100%] pointer-events-none -z-10"></div>
               <div className="absolute top-[80%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150vw] sm:w-[1000px] h-[400px] sm:h-[600px] bg-orange-500/20 blur-[80px] sm:blur-[120px] rounded-[100%] pointer-events-none -z-10 animate-pulse" style={{ animationDuration: '4s' }}></div>
 
-              <span className="block mb-1 sm:mb-2 text-2xl sm:text-6xl lg:text-7xl drop-shadow-lg relative z-10">I'm Rance, Your Certified</span>
+              <span className="block mb-1 sm:mb-2 text-2xl sm:text-6xl lg:text-7xl drop-shadow-lg relative z-10">I'm Rance! Your Certified</span>
               <span className="block relative">
                 <span className="relative inline-block">
                   <span className="relative bg-gradient-to-r from-yellow-300 via-yellow-400 to-orange-500 bg-clip-text text-transparent text-3xl sm:text-7xl lg:text-8xl font-extrabold">
-                    Project Management Specialist
+                    Creative Operations Consultant
                   </span>
                 </span>
               </span>
@@ -306,7 +306,7 @@ const Home = () => {
                   <span className="text-yellow-400 font-semibold text-sm tracking-wider uppercase">About</span>
                 </div>
                 <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
-                  Meet Your <span className="bg-gradient-to-r from-yellow-300 via-yellow-400 to-orange-500 bg-clip-text text-transparent">Project Management Specialist</span>
+                  Meet Your <span className="bg-gradient-to-r from-yellow-300 via-yellow-400 to-orange-500 bg-clip-text text-transparent">Creative Operations Consultant</span>
                 </h2>
                 <div className="flare-divider w-1/2 max-w-sm mx-auto mb-10"></div>
 
@@ -317,7 +317,7 @@ const Home = () => {
                     <div className="relative w-40 h-40 sm:w-48 sm:h-48 lg:w-56 lg:h-56 rounded-full overflow-hidden border-4 border-yellow-400/40 shadow-2xl group-hover/photo:border-yellow-400/60 group-hover/photo:scale-105 transition-all duration-500">
                       <img
                         src={Logo}
-                        alt="Rance - Project Management Specialist"
+                        alt="Rance - Creative Operations Consultant"
                         className="w-full h-full object-cover"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-stone-900/20 via-transparent to-yellow-400/5"></div>
@@ -332,14 +332,14 @@ const Home = () => {
                   <div className="relative bg-gradient-to-br from-yellow-400/5 to-orange-500/5 rounded-2xl p-4 sm:p-6 border border-yellow-400/20">
                     <div className="absolute top-0 left-4 sm:left-6 w-10 sm:w-12 h-1 bg-gradient-to-r from-yellow-400 to-orange-500 -mt-px"></div>
                     <p className="text-stone-200 text-sm sm:text-lg leading-relaxed">
-                      Most creative agencies hit a ceiling where <span className="text-yellow-400 font-semibold">"more work"</span> just means <span className="text-yellow-400 font-semibold">"more mess."</span> I’ve spent <span className="text-yellow-400 font-semibold">4+ years</span> behind the scenes of <span className="text-yellow-400 font-semibold">7-figure production houses</span>, turning that mess into a machine. Whether it’s <span className="text-yellow-400 font-semibold">Monday.com architecture</span> or <span className="text-yellow-400 font-semibold">workflow automation</span>, I build the infrastructure your agency needs to <span className="text-yellow-400 font-semibold">scale without breaking.</span>
+                      Most creative agencies hit a ceiling where <span className="text-yellow-400 font-semibold">more work</span> just means <span className="text-yellow-400 font-semibold">more mess.</span> I've spent <span className="text-yellow-400 font-semibold">4+ years</span> inside <span className="text-yellow-400 font-semibold">6 and 7-figure production houses</span> as a COO and Marketing Director — so I understand your world before you even explain it.
                     </p>
                   </div>
 
                   <div className="relative pl-4 sm:pl-6">
                     <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-yellow-400 to-orange-500 rounded-full"></div>
                     <p className="text-stone-300 text-sm sm:text-lg leading-relaxed">
-                      My approach is simple: identify bottlenecks in creative workflows, implement automated project management solutions, and empower creative teams to focus on what matters most—<span className="text-yellow-400 font-semibold">creating</span>. I've saved agencies thousands of hours by streamlining their project operations.
+                      I've been inside the operations of video production, social media, and content creation. I know where the bottlenecks are, why they happen, and exactly how to fix them. Whether it's <span className="text-yellow-400 font-semibold">Monday.com architecture</span>, <span className="text-yellow-400 font-semibold">workflow automation</span>, or building <span className="text-yellow-400 font-semibold">SOPs your team will actually follow</span> — I build the infrastructure your agency needs to <span className="text-yellow-400 font-semibold">grow without breaking.</span>
                     </p>
                   </div>
 
@@ -381,7 +381,7 @@ const Home = () => {
                       className="group/social inline-flex items-center justify-center gap-2 min-w-[9rem] bg-stone-800/60 hover:bg-stone-800 border-2 border-[#25D366]/30 hover:border-[#25D366]/60 text-white px-5 py-3 rounded-xl font-bold text-sm transition-all duration-300 backdrop-blur-sm hover:scale-105"
                     >
                       <svg className="w-5 h-5 text-[#25D366] group-hover/social:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
                       </svg>
                       <span>WhatsApp</span>
                     </a>
@@ -401,7 +401,7 @@ const Home = () => {
                       className="group/social inline-flex items-center justify-center gap-2 min-w-[9rem] bg-stone-800/60 hover:bg-stone-800 border-2 border-[#FE2C55]/30 hover:border-[#FE2C55]/60 text-white px-5 py-3 rounded-xl font-bold text-sm transition-all duration-300 backdrop-blur-sm hover:scale-105"
                     >
                       <svg className="w-4 h-4 text-[#FE2C55] group-hover/social:text-white transition-colors flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.86-.6-4.12-1.31a8.841 8.841 0 0 1-1.87-1.42v7.71a8.318 8.318 0 0 1-3.6 6.84c-1.54 1.05-3.41 1.59-5.27 1.57A8.354 8.354 0 0 1 2.01 15.1c-.96-1.57-1.42-3.42-1.32-5.25.1-1.87.89-3.69 2.27-4.99 1.43-1.33 3.42-2.01 5.37-1.87v4.08c-1.46-.1-2.95.48-3.87 1.62-.86 1.05-1.12 2.47-.73 3.78.34 1.13 1.25 2.08 2.38 2.45 1.15.39 2.48.2 3.46-.5.98-.7 1.49-1.87 1.49-3.04V.02Z"/>
+                        <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.86-.6-4.12-1.31a8.841 8.841 0 0 1-1.87-1.42v7.71a8.318 8.318 0 0 1-3.6 6.84c-1.54 1.05-3.41 1.59-5.27 1.57A8.354 8.354 0 0 1 2.01 15.1c-.96-1.57-1.42-3.42-1.32-5.25.1-1.87.89-3.69 2.27-4.99 1.43-1.33 3.42-2.01 5.37-1.87v4.08c-1.46-.1-2.95.48-3.87 1.62-.86 1.05-1.12 2.47-.73 3.78.34 1.13 1.25 2.08 2.38 2.45 1.15.39 2.48.2 3.46-.5.98-.7 1.49-1.87 1.49-3.04V.02Z" />
                       </svg>
                       <span>TikTok</span>
                     </a>
@@ -1246,30 +1246,31 @@ const Home = () => {
                     </div>
 
                     <h3 className="text-3xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
-                      Ready to Become the <br />
-                      <span className="bg-gradient-to-r from-yellow-300 via-yellow-400 to-orange-500 bg-clip-text text-transparent">Next Success Story?</span>
+                      Ready to Build Something <br />
+                      <span className="bg-gradient-to-r from-yellow-300 via-yellow-400 to-orange-500 bg-clip-text text-transparent">That Actually Works?</span>
                     </h3>
 
                     <div className="w-32 h-1.5 bg-gradient-to-r from-yellow-400 to-orange-500 mx-auto rounded-full shadow-lg shadow-yellow-400/50 mb-8"></div>
 
                     <p className="text-stone-200 text-sm sm:text-lg leading-relaxed mb-8 sm:mb-12">
-                      These results didn't happen by accident. They happened because we stopped guessing and started building. Right now, you’re losing money every single day. If you’re still doing tasks by hand that a system can do for pennies, you’re effectively paying yourself $2 an hour to stay busy. Every day you delay automation, you are choosing to leave profit on the table. You can keep manually fixing every problem, or you can build the system that handles it for you.
+                      Most agencies I talk to aren't failing — they're just running on systems that were never built to scale. The good news is that's fixable, and faster than you'd think. If you're still managing projects through Slack threads, chasing updates manually, or rebuilding the same workflows every time someone new joins the team — there's a better way to operate.
                     </p>
 
                     <div className="bg-gradient-to-br from-yellow-400/10 via-orange-500/5 to-transparent rounded-2xl p-8 mb-10 border border-yellow-400/20">
-                      <h4 className="text-white font-bold text-xl sm:text-2xl mb-6 text-center">What You'll Get from Our 30-Minute Call</h4>
+                      <h4 className="text-white font-bold text-xl sm:text-2xl mb-6 text-center">What happens on our 30-minute call:</h4>
                       <div className="grid sm:grid-cols-2 gap-4">
                         <div className="flex flex-col items-center text-center p-4">
-                          <p className="text-white font-semibold mb-2">Deep Dive Analysis</p>
-                          <p className="text-stone-400 text-sm">We'll analyze your current workflows and identify bottlenecks costing you time and money</p>
+                          <p className="text-white font-semibold mb-2">Workflow Review</p>
+                          <p className="text-stone-400 text-sm">We look at how your agency runs right now and pinpoint exactly where time and money are slipping through the cracks.</p>
                         </div>
                         <div className="flex flex-col items-center text-center p-4">
-                          <p className="text-white font-semibold mb-2">Custom Strategy</p>
-                          <p className="text-stone-400 text-sm">Get a tailored automation roadmap designed specifically for your business needs</p>
+                          <p className="text-white font-semibold mb-2">Clear Action Plan</p>
+                          <p className="text-stone-400 text-sm">You'll leave with a straightforward picture of what needs to change and how to get there, no vague advice.</p>
                         </div>
                         <div className="flex flex-col items-center text-center p-4 sm:col-span-2">
-                          <p className="text-white font-semibold mb-2">Implementation Plan</p>
-                          <p className="text-stone-400 text-sm max-w-sm">Walk away with clear next steps and a timeline for transformation</p>
+                          <p className="text-white font-semibold mb-2">Next Steps</p>
+                          <p className="text-stone-400 text-sm max-w-sm">If it makes sense to work together, I'll walk you through exactly what that looks like. No pressure either way.</p>
+                          <p className="text-stone-300 text-xs mt-4">No pitch. No fluff. Just an honest look at your operations.</p>
                         </div>
                       </div>
                     </div>
