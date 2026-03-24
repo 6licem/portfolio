@@ -671,13 +671,6 @@ const Home = () => {
                           <div className="text-stone-500 text-xs sm:text-sm font-medium tracking-wider">Assessment</div>
                         </div>
                       </div>
-                      {/* Legend */}
-                      <div className="absolute -bottom-10 left-0 right-0 flex justify-center gap-4 text-xs font-bold">
-                        <span className="flex items-center gap-1.5 text-red-400"><span className="w-2.5 h-2.5 rounded-full bg-red-500 shadow-sm shadow-red-500/80 inline-block"></span>D 47%</span>
-                        <span className="flex items-center gap-1.5 text-yellow-400"><span className="w-2.5 h-2.5 rounded-full bg-yellow-500 shadow-sm shadow-yellow-500/80 inline-block"></span>I 17%</span>
-                        <span className="flex items-center gap-1.5 text-green-400"><span className="w-2.5 h-2.5 rounded-full bg-green-500 shadow-sm shadow-green-500/80 inline-block"></span>S 26%</span>
-                        <span className="flex items-center gap-1.5 text-blue-400"><span className="w-2.5 h-2.5 rounded-full bg-blue-500 shadow-sm shadow-blue-500/80 inline-block"></span>C 10%</span>
-                      </div>
                     </div>
                   </div>
 
