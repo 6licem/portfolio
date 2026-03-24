@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Check, Briefcase, GraduationCap, Award, Star, Calendar, Zap, TrendingUp, MessageSquare, Filter, ClipboardList, Settings, Bot, Wrench, FileText, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Briefcase, GraduationCap, Award, Star, MessageSquare, ClipboardList, Settings, Bot, Wrench, FileText, ChevronLeft, ChevronRight, Linkedin } from 'lucide-react';
 import Footer from '../components/Footer';
 import ResumeModal from '../components/ResumeModal';
 import CalendarModal from '../components/CalendarModal';
@@ -29,6 +29,9 @@ import port2 from '../assets/portfolioCarousel/85a9856c-4ae8-4362-b21a-55aa7843f
 import port3 from '../assets/portfolioCarousel/ba8b080f-a0f1-4517-b008-1ec2023376d3.jpg';
 import port4 from '../assets/portfolioCarousel/f2ace7f4-6627-4fe3-a8ba-3e183606eb76.jpg';
 import port5 from '../assets/portfolioCarousel/Screenshot 2025-11-26 090338.png';
+
+// Certification Images
+import mondayCert1 from '../assets/certificationImages/monday cert 1.jpg';
 
 const Home = () => {
   const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
@@ -194,7 +197,7 @@ const Home = () => {
             </h1>
 
             <p className="text-base sm:text-2xl text-stone-300 max-w-5xl mx-auto leading-relaxed mb-6 sm:mb-8 px-4">
-              I Build the <span className="text-yellow-400 font-bold">Systems</span> That Let Your <span className="text-yellow-400 font-bold">Creatives Actually Create.</span>
+              <span className="text-yellow-400 font-bold">I Build the Systems That Let Your Creatives Actually Create</span>
             </p>
 
             <div className="flex flex-wrap justify-center gap-3 sm:gap-4 mb-8 sm:mb-12 px-4">
@@ -219,6 +222,7 @@ const Home = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
               </a>
+
             </div>
           </div>
 
@@ -303,8 +307,8 @@ const Home = () => {
                 </div>
               </div>
 
-              <div className="grid lg:grid-cols-2 gap-12 items-start">
-                <div className="space-y-8">
+              <div className="grid lg:grid-cols-2 gap-12 items-stretch">
+                <div className="flex flex-col space-y-8">
                   <div className="relative bg-gradient-to-br from-yellow-400/5 to-orange-500/5 rounded-2xl p-4 sm:p-6 border border-yellow-400/20">
                     <div className="absolute top-0 left-4 sm:left-6 w-10 sm:w-12 h-1 bg-gradient-to-r from-yellow-400 to-orange-500 -mt-px"></div>
                     <p className="text-stone-200 text-sm sm:text-lg leading-relaxed">
@@ -319,20 +323,113 @@ const Home = () => {
                     </p>
                   </div>
 
-                  <div className="pt-4">
+                  <div className="flex flex-wrap gap-4 sm:gap-6 pt-4">
                     <button
                       onClick={openResumeModal}
-                      className="group/btn relative inline-flex items-center gap-2 sm:gap-3 bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-300 hover:to-orange-400 text-white px-5 sm:px-7 py-2.5 sm:py-3.5 rounded-xl font-bold text-sm sm:text-base transition-all duration-300 shadow-xl hover:shadow-yellow-400/40 hover:scale-105 overflow-hidden"
-                      style={{ textShadow: '0 2px 4px rgba(0,0,0,0.3)' }}
+                      className="group/btn relative inline-flex items-center gap-2 sm:gap-3 bg-stone-800/60 hover:bg-stone-800 border-2 border-yellow-400/30 hover:border-yellow-400/60 text-white px-5 sm:px-7 py-2.5 sm:py-3.5 rounded-xl font-bold text-sm sm:text-base transition-all duration-300 backdrop-blur-sm hover:scale-105"
                     >
-                      <FileText size={18} className="relative z-10 sm:w-5 sm:h-5" />
-                      <span className="relative z-10">View My Resume</span>
-                      <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-200%] group-hover/btn:translate-x-[200%] transition-transform duration-1000"></div>
+                      <FileText size={18} className="text-yellow-400 group-hover/btn:text-yellow-300 transition-colors sm:w-5 sm:h-5" />
+                      <span>Resume</span>
                     </button>
+
+                    <a
+                      href="https://www.instagram.com/rance.coon/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group/social inline-flex items-center gap-2 sm:gap-3 bg-stone-800/60 hover:bg-stone-800 border-2 border-yellow-400/30 hover:border-yellow-400/60 text-white px-5 sm:px-7 py-2.5 sm:py-3.5 rounded-xl font-bold text-sm sm:text-base transition-all duration-300 backdrop-blur-sm hover:scale-105"
+                    >
+                      <svg className="w-4.5 h-4.5 sm:w-5 sm:h-5 text-yellow-400 group-hover/social:text-yellow-300 transition-colors" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                      </svg>
+                      <span>Instagram</span>
+                    </a>
+
+                    <a
+                      href="https://www.linkedin.com/in/rancecoon/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group/social inline-flex items-center gap-2 sm:gap-3 bg-stone-800/60 hover:bg-stone-800 border-2 border-[#0077b5]/30 hover:border-[#0077b5]/60 text-white px-5 sm:px-7 py-2.5 sm:py-3.5 rounded-xl font-bold text-sm sm:text-base transition-all duration-300 backdrop-blur-sm hover:scale-105"
+                    >
+                      <Linkedin size={18} className="text-[#0077b5] group-hover/social:text-white transition-colors sm:w-5 sm:h-5" />
+                      <span>LinkedIn</span>
+                    </a>
+                  </div>
+
+                  <div className="mt-12 sm:mt-16 lg:mt-20">
+                    <div className="flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8">
+                      <div className="w-1 h-6 sm:h-8 bg-gradient-to-b from-yellow-400 to-orange-500 rounded-full"></div>
+                      <h3 className="text-xl sm:text-2xl font-bold text-white flex items-center gap-2 sm:gap-3">
+                        <MessageSquare className="text-yellow-400" size={22} />
+                        What Clients Say
+                      </h3>
+                    </div>
+
+                    <div className="relative">
+                      <div className="absolute -inset-1 bg-gradient-to-r from-yellow-400/20 via-orange-500/20 to-yellow-400/20 rounded-3xl blur-xl"></div>
+                      <div className="relative bg-gradient-to-br from-stone-800/60 to-stone-900/60 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-5 sm:p-8 border border-yellow-400/20 min-h-[500px] sm:min-h-[480px] lg:min-h-[450px] flex-1 flex flex-col justify-between">
+                        <div className="flex-1 flex items-center relative">
+                          <div className="w-full">
+                            <div className="text-yellow-400/20 text-5xl sm:text-6xl font-serif mb-4">"</div>
+                            <div className="max-h-[300px] overflow-y-auto pr-2 custom-scrollbar">
+                              <p className="text-stone-200 text-base sm:text-lg leading-relaxed mb-6 sm:mb-8 transition-all duration-500">
+                                {testimonials[currentTestimonialIndex].content}
+                              </p>
+                            </div>
+                            {testimonials[currentTestimonialIndex].author && (
+                              <div className="flex items-center justify-center sm:justify-start gap-3">
+                                <div className="w-12 h-0.5 bg-gradient-to-r from-transparent to-yellow-400/50 hidden sm:block"></div>
+                                <div>
+                                  <p className="text-white font-bold text-sm sm:text-base">
+                                    {testimonials[currentTestimonialIndex].author}
+                                  </p>
+                                  {testimonials[currentTestimonialIndex].role && (
+                                    <p className="text-yellow-400 text-xs sm:text-sm">
+                                      {testimonials[currentTestimonialIndex].role}
+                                    </p>
+                                  )}
+                                </div>
+                              </div>
+                            )}
+                          </div>
+                        </div>
+
+                        <div className="flex items-center justify-between mt-6">
+                          <button
+                            onClick={prevTestimonial}
+                            className="group/arrow bg-gradient-to-r from-yellow-400/10 to-orange-500/10 hover:from-yellow-400/20 hover:to-orange-500/20 p-3 rounded-full border border-yellow-400/30 hover:border-yellow-400/60 transition-all duration-300 hover:scale-110"
+                            aria-label="Previous testimonial"
+                          >
+                            <ChevronLeft className="text-yellow-400 group-hover/arrow:text-yellow-300" size={20} />
+                          </button>
+
+                          <div className="flex gap-2">
+                            {testimonials.map((_, index) => (
+                              <button
+                                key={index}
+                                onClick={() => setCurrentTestimonialIndex(index)}
+                                className={`transition-all duration-300 rounded-full ${index === currentTestimonialIndex
+                                  ? 'w-8 h-2 bg-gradient-to-r from-yellow-400 to-orange-500'
+                                  : 'w-2 h-2 bg-stone-600 hover:bg-yellow-400/50'
+                                  }`}
+                                aria-label={`Go to testimonial ${index + 1}`}
+                              />
+                            ))}
+                          </div>
+
+                          <button
+                            onClick={nextTestimonial}
+                            className="group/arrow bg-gradient-to-r from-yellow-400/10 to-orange-500/10 hover:from-yellow-400/20 hover:to-orange-500/20 p-3 rounded-full border border-yellow-400/30 hover:border-yellow-400/60 transition-all duration-300 hover:scale-110"
+                            aria-label="Next testimonial"
+                          >
+                            <ChevronRight className="text-yellow-400 group-hover/arrow:text-yellow-300" size={20} />
+                          </button>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
-                <div className="space-y-6">
+                <div className="flex flex-col space-y-6">
                   <div className="flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8">
                     <div className="w-1 h-6 sm:h-8 bg-gradient-to-b from-yellow-400 to-orange-500 rounded-full"></div>
                     <h3 className="text-xl sm:text-2xl font-bold text-white flex items-center gap-2 sm:gap-3">
@@ -383,108 +480,33 @@ const Home = () => {
                       </div>
                     </div>
                   </div>
-                </div>
-              </div>
 
-              <div className="mt-12 sm:mt-16 lg:mt-20">
-                <div className="flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8">
-                  <div className="w-1 h-6 sm:h-8 bg-gradient-to-b from-yellow-400 to-orange-500 rounded-full"></div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-white flex items-center gap-2 sm:gap-3">
-                    <MessageSquare className="text-yellow-400" size={22} />
-                    What Clients Say
-                  </h3>
-                </div>
+                  <div className="flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8 pt-8">
+                    <div className="w-1 h-6 sm:h-8 bg-gradient-to-b from-yellow-400 to-orange-500 rounded-full"></div>
+                    <h3 className="text-xl sm:text-2xl font-bold text-white flex items-center gap-2 sm:gap-3">
+                      <Award className="text-yellow-400" size={22} />
+                      Certifications
+                    </h3>
+                  </div>
 
-                <div className="relative">
-                  <div className="absolute -inset-1 bg-gradient-to-r from-yellow-400/20 via-orange-500/20 to-yellow-400/20 rounded-3xl blur-xl"></div>
-                  <div className="relative bg-gradient-to-br from-stone-800/60 to-stone-900/60 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-6 sm:p-10 border border-yellow-400/20">
-                    <div className="relative min-h-[300px] sm:min-h-[250px] flex items-center">
-                      <div className="w-full">
-                        <div className="text-yellow-400/20 text-5xl sm:text-6xl font-serif mb-4">"</div>
-                        <p className="text-stone-200 text-base sm:text-lg leading-relaxed mb-6 sm:mb-8 transition-all duration-500">
-                          {testimonials[currentTestimonialIndex].content}
-                        </p>
-                        {testimonials[currentTestimonialIndex].author && (
-                          <div className="flex items-center justify-center sm:justify-start gap-3">
-                            <div className="w-12 h-0.5 bg-gradient-to-r from-transparent to-yellow-400/50 hidden sm:block"></div>
-                            <div>
-                              <p className="text-white font-bold text-sm sm:text-base">
-                                {testimonials[currentTestimonialIndex].author}
-                              </p>
-                              {testimonials[currentTestimonialIndex].role && (
-                                <p className="text-yellow-400 text-xs sm:text-sm">
-                                  {testimonials[currentTestimonialIndex].role}
-                                </p>
-                              )}
-                            </div>
-                          </div>
-                        )}
+                  <div className="space-y-4 flex-1 flex flex-col justify-end">
+                    <div className="relative group/cert overflow-hidden rounded-2xl border-2 border-yellow-400/20 hover:border-yellow-400/50 transition-all duration-500 bg-stone-900/50">
+                      <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/5 to-orange-500/5 opacity-0 group-hover/cert:opacity-100 transition-opacity"></div>
+                      <img
+                        src={mondayCert1}
+                        alt="Monday.com Certification"
+                        className="w-full h-auto object-contain hover:scale-105 transition-transform duration-700"
+                      />
+                      <div className="p-4 bg-stone-800/90 border-t border-yellow-400/20">
+                        <h4 className="text-white font-bold text-sm sm:text-base">Monday.com Core Certification</h4>
+                        <p className="text-yellow-400 text-xs font-semibold">Workflow & Automation Specialist</p>
                       </div>
-                    </div>
-
-                    <div className="flex items-center justify-between mt-6">
-                      <button
-                        onClick={prevTestimonial}
-                        className="group/arrow bg-gradient-to-r from-yellow-400/10 to-orange-500/10 hover:from-yellow-400/20 hover:to-orange-500/20 p-3 rounded-full border border-yellow-400/30 hover:border-yellow-400/60 transition-all duration-300 hover:scale-110"
-                        aria-label="Previous testimonial"
-                      >
-                        <ChevronLeft className="text-yellow-400 group-hover/arrow:text-yellow-300" size={20} />
-                      </button>
-
-                      <div className="flex gap-2">
-                        {testimonials.map((_, index) => (
-                          <button
-                            key={index}
-                            onClick={() => setCurrentTestimonialIndex(index)}
-                            className={`transition-all duration-300 rounded-full ${index === currentTestimonialIndex
-                              ? 'w-8 h-2 bg-gradient-to-r from-yellow-400 to-orange-500'
-                              : 'w-2 h-2 bg-stone-600 hover:bg-yellow-400/50'
-                              }`}
-                            aria-label={`Go to testimonial ${index + 1}`}
-                          />
-                        ))}
-                      </div>
-
-                      <button
-                        onClick={nextTestimonial}
-                        className="group/arrow bg-gradient-to-r from-yellow-400/10 to-orange-500/10 hover:from-yellow-400/20 hover:to-orange-500/20 p-3 rounded-full border border-yellow-400/30 hover:border-yellow-400/60 transition-all duration-300 hover:scale-110"
-                        aria-label="Next testimonial"
-                      >
-                        <ChevronRight className="text-yellow-400 group-hover/arrow:text-yellow-300" size={20} />
-                      </button>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div className="mt-12 text-center">
-                <div className="inline-block">
-                  <a
-                    href="https://www.instagram.com/rance.coon/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group/ig inline-flex items-center gap-3 px-6 py-4 bg-gradient-to-br from-stone-800/60 to-stone-900/60 hover:from-stone-800 hover:to-stone-900 backdrop-blur-xl rounded-2xl border-2 border-yellow-400/30 hover:border-yellow-400/60 transition-all duration-300 hover:scale-105"
-                  >
-                    <div className="flex items-center gap-3">
-                      <div className="relative">
-                        <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full blur opacity-50 group-hover/ig:opacity-75 transition-opacity"></div>
-                        <div className="relative bg-gradient-to-r from-yellow-400 to-orange-500 p-2.5 rounded-full">
-                          <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                          </svg>
-                        </div>
-                      </div>
-                      <div className="text-left">
-                        <p className="text-white font-semibold text-base group-hover/ig:text-yellow-400 transition-colors">Follow me on Instagram</p>
-                        <p className="text-stone-400 text-sm">Learn more about my work and journey</p>
-                      </div>
-                    </div>
-                    <svg className="w-5 h-5 text-yellow-400 group-hover/ig:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                    </svg>
-                  </a>
-                </div>
-              </div>
+
             </div>
           </div>
 
@@ -555,7 +577,9 @@ const Home = () => {
                               <div className="bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl p-4 group-hover/skill:scale-110 group-hover/skill:rotate-3 transition-all duration-500 shadow-xl shadow-yellow-400/30" style={{ boxShadow: '0 0 30px rgba(255, 239, 58, 0.5), 0 0 60px rgba(255, 145, 0, 0.3)' }}>
                                 <Wrench size={32} className="text-white drop-shadow-2xl" style={{ filter: 'drop-shadow(0 0 12px rgba(255, 239, 58, 0.8))' }} />
                               </div>
-                              <span className="text-white font-bold text-xl text-center group-hover/skill:text-yellow-400 transition-colors duration-300">System Creation</span>
+                              <span className="text-white font-bold text-xl text-center group-hover/skill:text-yellow-400 transition-colors duration-300">
+                                System<br />Creation
+                              </span>
                             </div>
                           </div>
                         </div>
@@ -1022,7 +1046,7 @@ const Home = () => {
                     <div className="relative p-6 bg-gradient-to-br from-yellow-400/5 to-orange-500/5 rounded-2xl border border-yellow-400/20">
                       <div className="absolute top-0 left-6 w-12 h-1 bg-gradient-to-r from-yellow-400 to-orange-500 -mt-px"></div>
                       <p className="text-stone-200 text-lg leading-relaxed">
-                        As an early team member at JustSimplyMarketing, I helped build the company from the ground up by tackling critical inefficiencies—streamlining video editing workflows, optimizing team collaboration, and restructuring their communication systems. These changes drove a <span className="text-yellow-400 font-bold">50% increase in productivity</span>, faster project delivery, and a scalable operational foundation that fueled rapid growth. Today, the company generates over <span className="text-yellow-400 font-bold">$1M annually</span> and has been featured in The Business LA Mag for its success.
+                        As an early team member at JustSimplyMarketing, I helped build the company from the ground up by tackling critical inefficiencies automating video editing workflows, optimizing team collaboration, and restructuring their communication systems. These changes drove an increase in productivity, faster project delivery, and a scalable operational foundation that fueled rapid growth. Today, the company generates over <span className="text-yellow-400 font-bold">$1M annually</span> and has been featured in The Business LA Mag for its success.
                       </p>
                     </div>
                   </div>
@@ -1068,7 +1092,7 @@ const Home = () => {
                         <div className="group/metric hover:scale-105 transition-transform duration-300">
                           <div className="flex justify-between items-center p-4 bg-gradient-to-r from-stone-800/60 to-stone-900/60 rounded-xl border border-yellow-400/20">
                             <span className="text-stone-300 font-medium">Productivity Increase</span>
-                            <span className="text-yellow-400 font-bold text-2xl tracking-tight">50%</span>
+                            <span className="text-yellow-400 font-bold text-2xl tracking-tight">Increase</span>
                           </div>
                         </div>
                         <div className="group/metric hover:scale-105 transition-transform duration-300">
@@ -1111,48 +1135,30 @@ const Home = () => {
                     </div>
 
                     <h3 className="text-3xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
-                      Ready to Become the <span className="bg-gradient-to-r from-yellow-300 via-yellow-400 to-orange-500 bg-clip-text text-transparent">Next Success Story?</span>
+                      Ready to Become the <br />
+                      <span className="bg-gradient-to-r from-yellow-300 via-yellow-400 to-orange-500 bg-clip-text text-transparent">Next Success Story?</span>
                     </h3>
 
                     <div className="w-32 h-1.5 bg-gradient-to-r from-yellow-400 to-orange-500 mx-auto rounded-full shadow-lg shadow-yellow-400/50 mb-8"></div>
 
-                    <div className="space-y-6 mb-12">
-                      <p className="text-stone-200 text-lg sm:text-xl leading-relaxed">
-                        These transformations weren't built overnight—they were the result of strategic systems, streamlined operations, and relentless execution.
+                      <p className="text-stone-200 text-lg sm:text-xl leading-relaxed mb-12">
+                        These results didn't happen by accident. They happened because we stopped guessing and started building. Right now, you’re losing money every single day. If you’re still doing tasks by hand that a system can do for pennies, you’re effectively paying yourself $2 an hour to stay busy. Every day you delay automation, you are choosing to leave profit on the table. You can keep manually fixing every problem, or you can build the system that handles it for you.
                       </p>
-
-                      <p className="text-stone-300 text-base sm:text-lg leading-relaxed">
-                        Whether you're drowning in repetitive tasks, struggling with team coordination, or watching opportunities slip through the cracks—there's a better way.
-                      </p>
-
-                      <p className="text-stone-300 text-base sm:text-lg leading-relaxed">
-                        The question isn't if automation will transform your business—it's when you'll decide to make the leap. Every day you wait is another day of lost productivity, missed opportunities, and unnecessary stress.
-                      </p>
-                    </div>
 
                     <div className="bg-gradient-to-br from-yellow-400/10 via-orange-500/5 to-transparent rounded-2xl p-8 mb-10 border border-yellow-400/20">
                       <h4 className="text-white font-bold text-xl sm:text-2xl mb-6 text-center">What You'll Get from Our 30-Minute Call</h4>
                       <div className="grid sm:grid-cols-2 gap-4">
-                        <div className="flex items-start gap-3">
-                          <div className="w-2 h-2 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full mt-2 flex-shrink-0 shadow-lg shadow-yellow-400/50"></div>
-                          <div>
-                            <p className="text-white font-semibold mb-1">Deep Dive Analysis</p>
-                            <p className="text-stone-400 text-sm">We'll analyze your current workflows and identify bottlenecks costing you time and money</p>
-                          </div>
+                        <div className="flex flex-col items-center text-center p-4">
+                          <p className="text-white font-semibold mb-2">Deep Dive Analysis</p>
+                          <p className="text-stone-400 text-sm">We'll analyze your current workflows and identify bottlenecks costing you time and money</p>
                         </div>
-                        <div className="flex items-start gap-3">
-                          <div className="w-2 h-2 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full mt-2 flex-shrink-0 shadow-lg shadow-yellow-400/50"></div>
-                          <div>
-                            <p className="text-white font-semibold mb-1">Custom Strategy</p>
-                            <p className="text-stone-400 text-sm">Get a tailored automation roadmap designed specifically for your business needs</p>
-                          </div>
+                        <div className="flex flex-col items-center text-center p-4">
+                          <p className="text-white font-semibold mb-2">Custom Strategy</p>
+                          <p className="text-stone-400 text-sm">Get a tailored automation roadmap designed specifically for your business needs</p>
                         </div>
-                        <div className="flex items-start gap-3">
-                          <div className="w-2 h-2 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full mt-2 flex-shrink-0 shadow-lg shadow-yellow-400/50"></div>
-                          <div>
-                            <p className="text-white font-semibold mb-1">Implementation Plan</p>
-                            <p className="text-stone-400 text-sm">Walk away with clear next steps and a timeline for transformation</p>
-                          </div>
+                        <div className="flex flex-col items-center text-center p-4 sm:col-span-2">
+                          <p className="text-white font-semibold mb-2">Implementation Plan</p>
+                          <p className="text-stone-400 text-sm max-w-sm">Walk away with clear next steps and a timeline for transformation</p>
                         </div>
                       </div>
                     </div>
@@ -1222,6 +1228,7 @@ const Home = () => {
           </div>
 
           <div className="space-y-8">
+            {/* Phase 1: Planning and Pricing */}
             <div className="group relative">
               <div className="absolute -inset-1 bg-gradient-to-r from-yellow-400/20 to-orange-500/20 rounded-3xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-500"></div>
               <div className="relative bg-gradient-to-br from-stone-800/90 via-stone-800/70 to-stone-900/90 backdrop-blur-xl rounded-3xl p-8 sm:p-10 border-2 border-yellow-400/30 shadow-2xl">
@@ -1232,54 +1239,55 @@ const Home = () => {
                     <span className="text-white font-black text-xl sm:text-2xl">1</span>
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2">Phase 1: Foundation Setup</h3>
-                    <p className="text-yellow-400 font-semibold text-sm sm:text-base">Days 1–2</p>
+                    <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2">Phase 1: Planning and Pricing</h3>
                   </div>
                 </div>
 
                 <div className="mb-6">
                   <div className="inline-block px-4 py-2 bg-gradient-to-r from-yellow-400/20 to-orange-500/20 rounded-full border border-yellow-400/30 mb-4">
-                    <span className="text-yellow-400 font-semibold text-sm">Objective: Establish your account and gather key inputs</span>
+                    <span className="text-yellow-400 font-semibold text-sm">Goal: Figure out exactly what needs fixing and what it will cost.</span>
                   </div>
-                  <p className="text-stone-200 text-base sm:text-lg leading-relaxed mb-6">
-                    We set up the core of your system and collect the information needed to tailor it to your operations.
-                  </p>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="bg-gradient-to-br from-stone-800/50 to-stone-900/50 rounded-2xl p-6 border border-stone-600/30">
-                    <h4 className="text-white font-bold text-lg mb-4 flex items-center gap-3">
-                      <div className="w-1 h-6 bg-gradient-to-b from-yellow-400 to-orange-500 rounded-full"></div>
-                      Our Responsibilities
-                    </h4>
-                    <ul className="space-y-3">
-                      <li className="flex items-start gap-3 text-stone-300 text-sm">
-                        <span className="w-2 h-2 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full mt-2 flex-shrink-0 shadow-lg shadow-yellow-400/50"></span>
-                        <span>Create and configure your account</span>
-                      </li>
-                      <li className="flex items-start gap-3 text-stone-300 text-sm">
-                        <span className="w-2 h-2 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full mt-2 flex-shrink-0 shadow-lg shadow-yellow-400/50"></span>
-                        <span>Send a welcome package with system access credentials, training materials, and quick-start guide</span>
-                      </li>
-                    </ul>
-                  </div>
-
-                  <div className="bg-gradient-to-br from-yellow-400/10 via-orange-500/5 to-stone-900/50 rounded-2xl p-6 border border-yellow-400/30">
-                    <h4 className="text-white font-bold text-lg mb-4 flex items-center gap-3">
-                      <div className="w-1 h-6 bg-gradient-to-b from-yellow-400 to-orange-500 rounded-full"></div>
-                      Your Responsibilities
-                    </h4>
-                    <ul className="space-y-3">
-                      <li className="flex items-start gap-3 text-stone-300 text-sm">
-                        <span className="w-2 h-2 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full mt-2 flex-shrink-0 shadow-lg shadow-yellow-400/50"></span>
-                        <span>List of team members with roles and email addresses</span>
-                      </li>
-                    </ul>
+                <div className="bg-gradient-to-br from-stone-800/50 to-stone-900/50 rounded-2xl overflow-hidden border border-stone-600/30 shadow-inner">
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-left text-sm whitespace-nowrap sm:whitespace-normal">
+                      <thead className="text-white font-bold bg-stone-800/80 border-b border-stone-600/30">
+                        <tr>
+                          <th className="px-6 py-4 w-16 text-yellow-400">Step</th>
+                          <th className="px-6 py-4 min-w-[200px]">Phase</th>
+                          <th className="px-6 py-4">Details</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-stone-600/20">
+                        <tr className="hover:bg-stone-800/40 transition-colors">
+                          <td className="px-6 py-4 font-bold text-stone-400">01</td>
+                          <td className="px-6 py-4 text-stone-300 font-semibold">The First Call (Investigation)</td>
+                          <td className="px-6 py-4 text-yellow-400/90 font-medium whitespace-normal">We hop on a call to look at how you handle your work right now. I'll ask questions to find the specific spots where you're losing time or where things are falling through the cracks.</td>
+                        </tr>
+                        <tr className="hover:bg-stone-800/40 transition-colors bg-stone-800/20">
+                          <td className="px-6 py-4 font-bold text-stone-400">02</td>
+                          <td className="px-6 py-4 text-stone-300 font-semibold">The Custom Plan</td>
+                          <td className="px-6 py-4 text-yellow-400/90 font-medium whitespace-normal">After our call, I'll send you a simple document. It will show you exactly what I plan to automate and how it's going to make your day-to-day easier.</td>
+                        </tr>
+                        <tr className="hover:bg-stone-800/40 transition-colors">
+                          <td className="px-6 py-4 font-bold text-stone-400">03</td>
+                          <td className="px-6 py-4 text-stone-300 font-semibold">The Second Call (Review &amp; Scope)</td>
+                          <td className="px-6 py-4 text-yellow-400/90 font-medium whitespace-normal">We meet again to go over the plan. This is where you tell me if I missed anything or if you want to add a specific feature. We'll look at your actual data and files so I know exactly what I'm working with.</td>
+                        </tr>
+                        <tr className="hover:bg-stone-800/40 transition-colors bg-stone-800/20">
+                          <td className="px-6 py-4 font-bold text-stone-400">04</td>
+                          <td className="px-6 py-4 text-stone-300 font-semibold">The Kick-off Call</td>
+                          <td className="px-6 py-4 text-yellow-400/90 font-medium whitespace-normal">Once we both agree on the plan, we finalize the price. We'll handle the paperwork and the first payment on this call so I can get to work on your systems immediately.</td>
+                        </tr>
+                      </tbody>
+                    </table>
                   </div>
                 </div>
               </div>
             </div>
 
+            {/* Phase 2: Setting up the Systems */}
             <div className="group relative">
               <div className="absolute -inset-1 bg-gradient-to-r from-yellow-400/20 to-orange-500/20 rounded-3xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-500"></div>
               <div className="relative bg-gradient-to-br from-stone-800/90 via-stone-800/70 to-stone-900/90 backdrop-blur-xl rounded-3xl p-8 sm:p-10 border-2 border-yellow-400/30 shadow-2xl">
@@ -1290,62 +1298,50 @@ const Home = () => {
                     <span className="text-white font-black text-xl sm:text-2xl">2</span>
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2">Phase 2: System Testing</h3>
-                    <p className="text-yellow-400 font-semibold text-sm sm:text-base">Days 3–5</p>
+                    <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2">Phase 2: Setting up the Systems</h3>
                   </div>
                 </div>
 
                 <div className="mb-6">
                   <div className="inline-block px-4 py-2 bg-gradient-to-r from-yellow-400/20 to-orange-500/20 rounded-full border border-yellow-400/30 mb-4">
-                    <span className="text-yellow-400 font-semibold text-sm">Objective: Personalize the system using real projects</span>
+                    <span className="text-yellow-400 font-semibold text-sm">Goal: Build the tools and get your team using them.</span>
                   </div>
-                  <p className="text-stone-200 text-base sm:text-lg leading-relaxed mb-6">
-                    We build your system around actual work so it reflects how your team operates day to day.
-                  </p>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="bg-gradient-to-br from-stone-800/50 to-stone-900/50 rounded-2xl p-6 border border-stone-600/30">
-                    <h4 className="text-white font-bold text-lg mb-4 flex items-center gap-3">
-                      <div className="w-1 h-6 bg-gradient-to-b from-yellow-400 to-orange-500 rounded-full"></div>
-                      Our Process
-                    </h4>
-                    <ul className="space-y-3">
-                      <li className="flex items-start gap-3 text-stone-300 text-sm">
-                        <span className="w-2 h-2 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full mt-2 flex-shrink-0 shadow-lg shadow-yellow-400/50"></span>
-                        <span>Import test projects with deadlines and milestones</span>
-                      </li>
-                      <li className="flex items-start gap-3 text-stone-300 text-sm">
-                        <span className="w-2 h-2 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full mt-2 flex-shrink-0 shadow-lg shadow-yellow-400/50"></span>
-                        <span>Configure automated notifications and feedback tracking</span>
-                      </li>
-                    </ul>
-                  </div>
-
-                  <div className="bg-gradient-to-br from-yellow-400/10 via-orange-500/5 to-stone-900/50 rounded-2xl p-6 border border-yellow-400/30">
-                    <h4 className="text-white font-bold text-lg mb-4 flex items-center gap-3">
-                      <div className="w-1 h-6 bg-gradient-to-b from-yellow-400 to-orange-500 rounded-full"></div>
-                      Your Next Steps
-                    </h4>
-                    <ul className="space-y-3">
-                      <li className="flex items-start gap-3 text-stone-300 text-sm">
-                        <span className="w-2 h-2 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full mt-2 flex-shrink-0 shadow-lg shadow-yellow-400/50"></span>
-                        <span>Test task assignments</span>
-                      </li>
-                      <li className="flex items-start gap-3 text-stone-300 text-sm">
-                        <span className="w-2 h-2 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full mt-2 flex-shrink-0 shadow-lg shadow-yellow-400/50"></span>
-                        <span>Invite at least one team member</span>
-                      </li>
-                      <li className="flex items-start gap-3 text-stone-300 text-sm">
-                        <span className="w-2 h-2 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full mt-2 flex-shrink-0 shadow-lg shadow-yellow-400/50"></span>
-                        <span>Review the imported project setup</span>
-                      </li>
-                    </ul>
+                <div className="bg-gradient-to-br from-stone-800/50 to-stone-900/50 rounded-2xl overflow-hidden border border-stone-600/30 shadow-inner">
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-left text-sm whitespace-nowrap sm:whitespace-normal">
+                      <thead className="text-white font-bold bg-stone-800/80 border-b border-stone-600/30">
+                        <tr>
+                          <th className="px-6 py-4 w-16 text-yellow-400">Step</th>
+                          <th className="px-6 py-4">What I'm Doing</th>
+                          <th className="px-6 py-4">What You Get</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-stone-600/20">
+                        <tr className="hover:bg-stone-800/40 transition-colors">
+                          <td className="px-6 py-4 font-bold text-stone-400">01</td>
+                          <td className="px-6 py-4 text-stone-300">Build &amp; Automate</td>
+                          <td className="px-6 py-4 text-yellow-400/90 font-medium">I set up your accounts, build your workflows, and connect your tools so they talk to each other.</td>
+                        </tr>
+                        <tr className="hover:bg-stone-800/40 transition-colors bg-stone-800/20">
+                          <td className="px-6 py-4 font-bold text-stone-400">02</td>
+                          <td className="px-6 py-4 text-stone-300">Team Onboarding</td>
+                          <td className="px-6 py-4 text-yellow-400/90 font-medium">I invite your team into the system and we run live tests together to make sure everything works correctly.</td>
+                        </tr>
+                        <tr className="hover:bg-stone-800/40 transition-colors">
+                          <td className="px-6 py-4 font-bold text-stone-400">03</td>
+                          <td className="px-6 py-4 text-stone-300">SOP Creation</td>
+                          <td className="px-6 py-4 text-yellow-400/90 font-medium">I create clear, step-by-step instructions so your team knows exactly how to use the new system every day.</td>
+                        </tr>
+                      </tbody>
+                    </table>
                   </div>
                 </div>
               </div>
             </div>
 
+            {/* Phase 3: Making it Stick */}
             <div className="group relative">
               <div className="absolute -inset-1 bg-gradient-to-r from-yellow-400/20 to-orange-500/20 rounded-3xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-500"></div>
               <div className="relative bg-gradient-to-br from-stone-800/90 via-stone-800/70 to-stone-900/90 backdrop-blur-xl rounded-3xl p-8 sm:p-10 border-2 border-yellow-400/30 shadow-2xl">
@@ -1356,171 +1352,49 @@ const Home = () => {
                     <span className="text-white font-black text-xl sm:text-2xl">3</span>
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2">Phase 3: Initial Review</h3>
-                    <p className="text-yellow-400 font-semibold text-sm sm:text-base">Days 6–7</p>
+                    <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2">Phase 3: Making it Stick</h3>
                   </div>
                 </div>
 
                 <div className="mb-6">
                   <div className="inline-block px-4 py-2 bg-gradient-to-r from-yellow-400/20 to-orange-500/20 rounded-full border border-yellow-400/30 mb-4">
-                    <span className="text-yellow-400 font-semibold text-sm">Objective: Ensure smooth adoption</span>
-                  </div>
-                  <p className="text-stone-200 text-base sm:text-lg leading-relaxed mb-6">
-                    This phase focuses on removing confusion and reinforcing best practices early.
-                  </p>
-                </div>
-
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="bg-gradient-to-br from-stone-800/50 to-stone-900/50 rounded-2xl p-6 border border-stone-600/30">
-                    <h4 className="text-white font-bold text-lg mb-4 flex items-center gap-3">
-                      <div className="w-1 h-6 bg-gradient-to-b from-yellow-400 to-orange-500 rounded-full"></div>
-                      Support Provided
-                    </h4>
-                    <ul className="space-y-3">
-                      <li className="flex items-start gap-3 text-stone-300 text-sm">
-                        <span className="w-2 h-2 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full mt-2 flex-shrink-0 shadow-lg shadow-yellow-400/50"></span>
-                        <span>Progress follow-ups</span>
-                      </li>
-                      <li className="flex items-start gap-3 text-stone-300 text-sm">
-                        <span className="w-2 h-2 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full mt-2 flex-shrink-0 shadow-lg shadow-yellow-400/50"></span>
-                        <span>Fast resolution of any issues</span>
-                      </li>
-                      <li className="flex items-start gap-3 text-stone-300 text-sm">
-                        <span className="w-2 h-2 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full mt-2 flex-shrink-0 shadow-lg shadow-yellow-400/50"></span>
-                        <span>Practical guidance on task delegation and client communication</span>
-                      </li>
-                    </ul>
-                  </div>
-
-                  <div className="bg-gradient-to-br from-yellow-400/10 via-orange-500/5 to-stone-900/50 rounded-2xl p-6 border border-yellow-400/30">
-                    <h4 className="text-white font-bold text-lg mb-4 flex items-center gap-3">
-                      <div className="w-1 h-6 bg-gradient-to-b from-yellow-400 to-orange-500 rounded-full"></div>
-                      Your Actions
-                    </h4>
-                    <ul className="space-y-3">
-                      <li className="flex items-start gap-3 text-stone-300 text-sm">
-                        <span className="w-2 h-2 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full mt-2 flex-shrink-0 shadow-lg shadow-yellow-400/50"></span>
-                        <span>Confirm system navigation</span>
-                      </li>
-                      <li className="flex items-start gap-3 text-stone-300 text-sm">
-                        <span className="w-2 h-2 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full mt-2 flex-shrink-0 shadow-lg shadow-yellow-400/50"></span>
-                        <span>Share initial feedback</span>
-                      </li>
-                      <li className="flex items-start gap-3 text-stone-300 text-sm">
-                        <span className="w-2 h-2 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full mt-2 flex-shrink-0 shadow-lg shadow-yellow-400/50"></span>
-                        <span>Begin regular system use</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="group relative">
-              <div className="absolute -inset-1 bg-gradient-to-r from-yellow-400/20 to-orange-500/20 rounded-3xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-500"></div>
-              <div className="relative bg-gradient-to-br from-stone-800/90 via-stone-800/70 to-stone-900/90 backdrop-blur-xl rounded-3xl p-8 sm:p-10 border-2 border-yellow-400/30 shadow-2xl">
-                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-yellow-400 to-transparent"></div>
-
-                <div className="flex items-start gap-4 mb-4">
-                  <div className="flex-shrink-0 w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center shadow-xl shadow-yellow-400/40">
-                    <span className="text-white font-black text-xl sm:text-2xl">4</span>
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2">Phase 4: Optimization and Training</h3>
-                    <p className="text-yellow-400 font-semibold text-sm sm:text-base">Days 8–14</p>
+                    <span className="text-yellow-400 font-semibold text-sm">Goal: Make sure everyone uses the system so it stays organized.</span>
                   </div>
                 </div>
 
-                <div className="mb-6">
-                  <div className="inline-block px-4 py-2 bg-gradient-to-r from-yellow-400/20 to-orange-500/20 rounded-full border border-yellow-400/30 mb-4">
-                    <span className="text-yellow-400 font-semibold text-sm">Objective: Maximize system performance</span>
-                  </div>
-                  <p className="text-stone-200 text-base sm:text-lg leading-relaxed mb-6">
-                    Once the basics are solid, we introduce advanced features to improve efficiency and visibility.
-                  </p>
-                </div>
-
-                <div className="bg-gradient-to-br from-stone-800/50 to-stone-900/50 rounded-2xl p-6 border border-stone-600/30">
-                  <h4 className="text-white font-bold text-lg mb-4 flex items-center gap-3">
-                    <div className="w-1 h-6 bg-gradient-to-b from-yellow-400 to-orange-500 rounded-full"></div>
-                    Training Schedule
-                  </h4>
-                  <div className="grid sm:grid-cols-2 gap-4">
-                    <div className="flex items-center gap-3 p-4 bg-gradient-to-r from-stone-800/60 to-stone-900/60 rounded-xl border border-yellow-400/20">
-                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center shadow-lg shadow-yellow-400/30 flex-shrink-0">
-                        <span className="text-white font-bold text-sm">D8</span>
-                      </div>
-                      <span className="text-stone-200 font-medium text-sm">Automation features</span>
-                    </div>
-                    <div className="flex items-center gap-3 p-4 bg-gradient-to-r from-stone-800/60 to-stone-900/60 rounded-xl border border-yellow-400/20">
-                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center shadow-lg shadow-yellow-400/30 flex-shrink-0">
-                        <span className="text-white font-bold text-sm">D10</span>
-                      </div>
-                      <span className="text-stone-200 font-medium text-sm">Template usage</span>
-                    </div>
-                    <div className="flex items-center gap-3 p-4 bg-gradient-to-r from-stone-800/60 to-stone-900/60 rounded-xl border border-yellow-400/20">
-                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center shadow-lg shadow-yellow-400/30 flex-shrink-0">
-                        <span className="text-white font-bold text-sm">D12</span>
-                      </div>
-                      <span className="text-stone-200 font-medium text-sm">Reporting tools</span>
-                    </div>
-                    <div className="flex items-center gap-3 p-4 bg-gradient-to-r from-stone-800/60 to-stone-900/60 rounded-xl border border-yellow-400/20">
-                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center shadow-lg shadow-yellow-400/30 flex-shrink-0">
-                        <span className="text-white font-bold text-sm">D14</span>
-                      </div>
-                      <span className="text-stone-200 font-medium text-sm">Advanced workflows</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="group relative">
-              <div className="absolute -inset-1 bg-gradient-to-r from-yellow-400/20 to-orange-500/20 rounded-3xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-500"></div>
-              <div className="relative bg-gradient-to-br from-stone-800/90 via-stone-800/70 to-stone-900/90 backdrop-blur-xl rounded-3xl p-8 sm:p-10 border-2 border-yellow-400/30 shadow-2xl">
-                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-yellow-400 to-transparent"></div>
-
-                <div className="flex items-start gap-4 mb-4">
-                  <div className="flex-shrink-0 w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center shadow-xl shadow-yellow-400/40">
-                    <span className="text-white font-black text-xl sm:text-2xl">5</span>
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2">Phase 5: Ongoing Success</h3>
-                    <p className="text-yellow-400 font-semibold text-sm sm:text-base">Day 15+</p>
-                  </div>
-                </div>
-
-                <div className="mb-6">
-                  <div className="inline-block px-4 py-2 bg-gradient-to-r from-yellow-400/20 to-orange-500/20 rounded-full border border-yellow-400/30 mb-4">
-                    <span className="text-yellow-400 font-semibold text-sm">Objective: Long-term value and continuous improvement</span>
-                  </div>
-                  <p className="text-stone-200 text-base sm:text-lg leading-relaxed mb-6">
-                    We continue supporting your system as your team and workload evolve.
-                  </p>
-                </div>
-
-                <div className="bg-gradient-to-br from-yellow-400/10 via-orange-500/5 to-stone-900/50 rounded-2xl p-6 border border-yellow-400/30">
-                  <h4 className="text-white font-bold text-lg mb-4 flex items-center gap-3">
-                    <div className="w-1 h-6 bg-gradient-to-b from-yellow-400 to-orange-500 rounded-full"></div>
-                    What's Included
-                  </h4>
-                  <div className="grid sm:grid-cols-2 gap-3">
-                    <div className="flex items-start gap-3 text-stone-200 text-sm">
-                      <span className="w-2 h-2 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full mt-2 flex-shrink-0 shadow-lg shadow-yellow-400/50"></span>
-                      <span>Monthly check-ins</span>
-                    </div>
-                    <div className="flex items-start gap-3 text-stone-200 text-sm">
-                      <span className="w-2 h-2 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full mt-2 flex-shrink-0 shadow-lg shadow-yellow-400/50"></span>
-                      <span>System performance reviews</span>
-                    </div>
-                    <div className="flex items-start gap-3 text-stone-200 text-sm">
-                      <span className="w-2 h-2 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full mt-2 flex-shrink-0 shadow-lg shadow-yellow-400/50"></span>
-                      <span>New feature updates</span>
-                    </div>
-                    <div className="flex items-start gap-3 text-stone-200 text-sm">
-                      <span className="w-2 h-2 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full mt-2 flex-shrink-0 shadow-lg shadow-yellow-400/50"></span>
-                      <span>Optional additional training</span>
-                    </div>
+                <div className="bg-gradient-to-br from-stone-800/50 to-stone-900/50 rounded-2xl overflow-hidden border border-stone-600/30 shadow-inner">
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-left text-sm whitespace-nowrap sm:whitespace-normal">
+                      <thead className="text-white font-bold bg-stone-800/80 border-b border-stone-600/30">
+                        <tr>
+                          <th className="px-6 py-4 w-16 text-yellow-400">Step</th>
+                          <th className="px-6 py-4 min-w-[200px]">Phase</th>
+                          <th className="px-6 py-4">Details</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-stone-600/20">
+                        <tr className="hover:bg-stone-800/40 transition-colors">
+                          <td className="px-6 py-4 font-bold text-stone-400">01</td>
+                          <td className="px-6 py-4 text-stone-300 font-semibold">Team Training</td>
+                          <td className="px-6 py-4 text-yellow-400/90 font-medium whitespace-normal">I'll sit down with your staff to show them how to use the new setup so they don't go back to their old ways of doing things.</td>
+                        </tr>
+                        <tr className="hover:bg-stone-800/40 transition-colors bg-stone-800/20">
+                          <td className="px-6 py-4 font-bold text-stone-400">02</td>
+                          <td className="px-6 py-4 text-stone-300 font-semibold">Early Support</td>
+                          <td className="px-6 py-4 text-yellow-400/90 font-medium whitespace-normal">For the first week, I'll keep a close eye on everything to answer questions and fix any small "bugs" right away.</td>
+                        </tr>
+                        <tr className="hover:bg-stone-800/40 transition-colors">
+                          <td className="px-6 py-4 font-bold text-stone-400">03</td>
+                          <td className="px-6 py-4 text-stone-300 font-semibold">Bi-Weekly Check-ins</td>
+                          <td className="px-6 py-4 text-yellow-400/90 font-medium whitespace-normal">We'll have a quick chat twice a month to make sure the system is still keeping up as you get busier.</td>
+                        </tr>
+                        <tr className="hover:bg-stone-800/40 transition-colors bg-stone-800/20">
+                          <td className="px-6 py-4 font-bold text-stone-400">04</td>
+                          <td className="px-6 py-4 text-stone-300 font-semibold">Ongoing Updates</td>
+                          <td className="px-6 py-4 text-yellow-400/90 font-medium whitespace-normal">As your business grows or the software changes, I'll update your automations to keep them fast.</td>
+                        </tr>
+                      </tbody>
+                    </table>
                   </div>
                 </div>
               </div>

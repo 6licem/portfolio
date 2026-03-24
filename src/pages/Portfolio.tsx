@@ -128,7 +128,7 @@ const Portfolio = () => {
           role: 'JustSimplyMarketing',
           company: '',
           image: '/screenshot_2025-12-16_210120.png',
-          description: 'As an early team member at JustSimplyMarketing, I helped build the company from the ground up by tackling critical inefficiencies—streamlining video editing workflows, optimizing team collaboration, and restructuring their communication systems. These changes drove a 50% increase in productivity, faster project delivery, and a scalable operational foundation that fueled rapid growth. Today, the company generates over $1M annually and has been featured in The Business LA Mag for its success.',
+          description: 'As an early team member at JustSimplyMarketing, I helped build the company from the ground up by tackling critical inefficiencies automating video editing workflows, optimizing team collaboration, and restructuring their communication systems. These changes drove an increase in productivity, faster project delivery, and a scalable operational foundation that fueled rapid growth. Today, the company generates over $1M annually and has been featured in The Business LA Mag for its success.',
           achievements: [
             'Marketing Director: Supervised and led marketing projects, including Lead Magnets, Webinars, Sales Funnels, and Offer Creation.',
             'Created and managed automated funnels, email sequences, and customer journeys using GoHighLevel and Clickfunnels.',
@@ -137,7 +137,7 @@ const Portfolio = () => {
           ],
           metrics: {
             'Annual Revenue': '$1M+',
-            'Productivity Increase': '50%',
+            'Productivity Increase': 'Increase',
             'Media Feature': '<a href="https://losangelesmag.com/rowell-ramos-simply-creates-massive-online-success-with-justsimply-marketing/" target="_blank" rel="noopener noreferrer" class="text-yellow-400 hover:text-yellow-300 underline">Business LA Mag</a>'
           }
         }

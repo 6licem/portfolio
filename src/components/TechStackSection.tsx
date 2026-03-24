@@ -50,11 +50,7 @@ export default function TechStackSection() {
         <div className="flex flex-wrap justify-center items-center gap-6 sm:gap-10 max-w-5xl mx-auto px-4">
           {staticTechStack.map((tech) => (
             <div key={tech.id} className="group/tech relative">
-              <div className="absolute -inset-3 bg-gradient-to-br from-yellow-400/30 to-orange-500/30 rounded-2xl blur-xl opacity-0 group-hover/tech:opacity-100 transition-all duration-500 scale-90 group-hover/tech:scale-110"></div>
-              
-              <div className="relative bg-white/90 backdrop-blur-xl rounded-2xl p-4 sm:p-6 border-2 border-white/60 hover:border-yellow-400/60 transition-all duration-500 hover:scale-110 hover:-rotate-1 shadow-xl hover:shadow-yellow-400/20 overflow-hidden group/card">
-                <div className="absolute inset-0 bg-gradient-to-br from-white via-stone-50/50 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity"></div>
-                
+              <div className="relative bg-white/90 rounded-2xl p-4 sm:p-6 border-2 border-white/60 hover:border-yellow-400/60 transition-all duration-500 hover:scale-110 hover:-rotate-1 shadow-xl hover:shadow-yellow-400/20 overflow-hidden group/card">
                 <img
                   src={tech.logo_url}
                   alt={tech.name}
