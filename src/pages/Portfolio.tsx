@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, ChevronLeft, ChevronRight, Settings, Workflow, FileText, Zap, BarChart3, UserCheck, MessageSquare } from 'lucide-react';
 import Footer from '../components/Footer';
@@ -99,10 +99,10 @@ const Portfolio = () => {
   const portfolioData = {
     'rance-coon': {
       name: 'Rance',
-      title: 'Project Management Specialist',
-      company: 'Project Management',
+      title: 'Certified Creative Operations Consultant',
+      company: 'Certified Creative Operations Consulting',
       image: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop',
-      bio: 'Rance helps founders escape operational chaos by building backend systems that scale through project management solutions. With a background in workflow automation and process optimization, he\'s worked behind the scenes of 7-figure launches and high-volume agencies.',
+      bio: 'Rance Coon is a Certified Creative Operations Consultant specializing in Monday.com architecture and n8n automation for 6 and 7-figure creative agencies. By implementing scalable operational infrastructures, Rance has demonstrated a proven track record of saving over 1,800 manual hours annually and driving an 80% efficiency boost in video production and social media workflows.',
       approach: '',
       experience: [
         {
@@ -143,11 +143,11 @@ const Portfolio = () => {
         }
       ],
       skills: [
-        { name: 'Monday.com Automation', icon: Settings },
-        { name: 'Workflow Optimization', icon: Workflow },
-        { name: 'Process Documentation', icon: FileText },
+        { name: 'Monday.com Architecture', icon: Settings },
+        { name: 'n8n Automation', icon: Workflow },
+        { name: 'Workflow Optimization', icon: FileText },
         { name: 'System Integration', icon: Zap },
-        { name: 'Project Management', icon: BarChart3 },
+        { name: 'Creative Operations', icon: BarChart3 },
         { name: 'Team Coordination', icon: UserCheck },
         { name: 'Discord', icon: MessageSquare }
       ],

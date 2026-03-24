@@ -166,7 +166,7 @@ const ResumeModal = ({ isOpen, onClose }: ResumeModalProps) => {
       >
         <img
           src={resumeImg}
-          alt="Ray Francis Coon Resume"
+          alt="Rance Coon Certified Creative Operations Consultant Resume"
           className="max-w-full max-h-full object-contain select-none"
           draggable={false}
           style={{

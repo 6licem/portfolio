@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Briefcase, GraduationCap, Award, Star, MessageSquare, ClipboardList, Settings, Bot, Wrench, FileText, ChevronLeft, ChevronRight, Linkedin, Clock, TrendingUp, Users, Mail, CalendarDays } from 'lucide-react';
+import { Briefcase, GraduationCap, Award, Star, MessageSquare, ClipboardList, Settings, Bot, Wrench, FileText, ChevronLeft, ChevronRight, Linkedin, Clock, TrendingUp, Users, Mail } from 'lucide-react';
 import Footer from '../components/Footer';
 import ResumeModal from '../components/ResumeModal';
 import CalendarModal from '../components/CalendarModal';
@@ -257,7 +257,7 @@ const Home = () => {
                     allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
                     referrerPolicy="strict-origin-when-cross-origin"
                     style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
-                    title="Rance Coon - Project Management Specialist"
+                    title="Rance Coon - Certified Creative Operations Consultant"
                     allowFullScreen
                   ></iframe>
                 </div>
