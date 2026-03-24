@@ -327,7 +327,7 @@ const Home = () => {
                 </div>
               </div>
 
-              <div className="grid lg:grid-cols-2 gap-12 items-stretch">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-stretch">
                 <div className="flex flex-col space-y-8">
                   <div className="relative bg-gradient-to-br from-yellow-400/5 to-orange-500/5 rounded-2xl p-4 sm:p-6 border border-yellow-400/20">
                     <div className="absolute top-0 left-4 sm:left-6 w-10 sm:w-12 h-1 bg-gradient-to-r from-yellow-400 to-orange-500 -mt-px"></div>
@@ -386,7 +386,7 @@ const Home = () => {
 
                     <div className="relative">
                       <div className="absolute -inset-1 bg-gradient-to-r from-yellow-400/20 via-orange-500/20 to-yellow-400/20 rounded-3xl blur-xl"></div>
-                      <div className="relative bg-gradient-to-br from-stone-800/60 to-stone-900/60 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-5 sm:p-8 border border-yellow-400/20 min-h-[500px] sm:min-h-[480px] lg:min-h-[450px] flex-1 flex flex-col justify-between">
+                      <div className="relative bg-gradient-to-br from-stone-800/60 to-stone-900/60 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-5 sm:p-8 border border-yellow-400/20 min-h-[400px] sm:min-h-[440px] lg:min-h-[420px] flex-1 flex flex-col justify-between">
                         <div className="flex-1 flex items-center relative">
                           <div className="w-full">
                             <div className="text-yellow-400/20 text-5xl sm:text-6xl font-serif mb-4">"</div>
@@ -556,48 +556,48 @@ const Home = () => {
                     <div className="absolute -inset-4 bg-gradient-to-r from-yellow-400/5 to-orange-500/5 rounded-3xl blur-2xl"></div>
                     <div className="relative">
                       <h3 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-white to-stone-200 bg-clip-text text-transparent mb-8 text-center">Core Skills</h3>
-                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+                      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
                         <div className="relative group/skill">
                           <div className="absolute -inset-1 bg-gradient-to-br from-yellow-400/20 to-orange-500/20 rounded-2xl blur opacity-0 group-hover/skill:opacity-100 transition-opacity duration-500"></div>
-                          <div className="relative bg-gradient-to-br from-stone-800/60 to-stone-900/60 backdrop-blur-xl rounded-2xl p-8 border-2 border-stone-600/30 hover:border-yellow-400/50 transition-all duration-500 group-hover/skill:shadow-2xl group-hover/skill:shadow-yellow-400/20 group-hover/skill:-translate-y-1">
-                            <div className="flex flex-col items-center gap-4">
-                              <div className="bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl p-4 group-hover/skill:scale-110 group-hover/skill:rotate-3 transition-all duration-500 shadow-xl shadow-yellow-400/30" style={{ boxShadow: '0 0 30px rgba(255, 239, 58, 0.5), 0 0 60px rgba(255, 145, 0, 0.3)' }}>
-                                <ClipboardList size={32} className="text-white drop-shadow-2xl" style={{ filter: 'drop-shadow(0 0 12px rgba(255, 239, 58, 0.8))' }} />
+                          <div className="relative bg-gradient-to-br from-stone-800/60 to-stone-900/60 backdrop-blur-xl rounded-2xl p-4 sm:p-8 border-2 border-stone-600/30 hover:border-yellow-400/50 transition-all duration-500 group-hover/skill:shadow-2xl group-hover/skill:shadow-yellow-400/20 group-hover/skill:-translate-y-1">
+                            <div className="flex flex-col items-center gap-2 sm:gap-4">
+                              <div className="bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl p-2 sm:p-4 group-hover/skill:scale-110 group-hover/skill:rotate-3 transition-all duration-500 shadow-xl shadow-yellow-400/30" style={{ boxShadow: '0 0 30px rgba(255, 239, 58, 0.5), 0 0 60px rgba(255, 145, 0, 0.3)' }}>
+                                <ClipboardList size={24} className="sm:w-8 sm:h-8 text-white drop-shadow-2xl" style={{ filter: 'drop-shadow(0 0 12px rgba(255, 239, 58, 0.8))' }} />
                               </div>
-                              <span className="text-white font-bold text-xl text-center group-hover/skill:text-yellow-400 transition-colors duration-300">Project Management</span>
+                              <span className="text-white font-bold text-sm sm:text-xl text-center group-hover/skill:text-yellow-400 transition-colors duration-300">Project Management</span>
                             </div>
                           </div>
                         </div>
                         <div className="relative group/skill">
                           <div className="absolute -inset-1 bg-gradient-to-br from-yellow-400/20 to-orange-500/20 rounded-2xl blur opacity-0 group-hover/skill:opacity-100 transition-opacity duration-500"></div>
-                          <div className="relative bg-gradient-to-br from-stone-800/60 to-stone-900/60 backdrop-blur-xl rounded-2xl p-8 border-2 border-stone-600/30 hover:border-yellow-400/50 transition-all duration-500 group-hover/skill:shadow-2xl group-hover/skill:shadow-yellow-400/20 group-hover/skill:-translate-y-1">
-                            <div className="flex flex-col items-center gap-4">
-                              <div className="bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl p-4 group-hover/skill:scale-110 group-hover/skill:rotate-3 transition-all duration-500 shadow-xl shadow-yellow-400/30" style={{ boxShadow: '0 0 30px rgba(255, 239, 58, 0.5), 0 0 60px rgba(255, 145, 0, 0.3)' }}>
-                                <Settings size={32} className="text-white drop-shadow-2xl" style={{ filter: 'drop-shadow(0 0 12px rgba(255, 239, 58, 0.8))' }} />
+                          <div className="relative bg-gradient-to-br from-stone-800/60 to-stone-900/60 backdrop-blur-xl rounded-2xl p-4 sm:p-8 border-2 border-stone-600/30 hover:border-yellow-400/50 transition-all duration-500 group-hover/skill:shadow-2xl group-hover/skill:shadow-yellow-400/20 group-hover/skill:-translate-y-1">
+                            <div className="flex flex-col items-center gap-2 sm:gap-4">
+                              <div className="bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl p-2 sm:p-4 group-hover/skill:scale-110 group-hover/skill:rotate-3 transition-all duration-500 shadow-xl shadow-yellow-400/30" style={{ boxShadow: '0 0 30px rgba(255, 239, 58, 0.5), 0 0 60px rgba(255, 145, 0, 0.3)' }}>
+                                <Settings size={24} className="sm:w-8 sm:h-8 text-white drop-shadow-2xl" style={{ filter: 'drop-shadow(0 0 12px rgba(255, 239, 58, 0.8))' }} />
                               </div>
-                              <span className="text-white font-bold text-xl text-center group-hover/skill:text-yellow-400 transition-colors duration-300">Operations Management</span>
+                              <span className="text-white font-bold text-sm sm:text-xl text-center group-hover/skill:text-yellow-400 transition-colors duration-300">Operations Management</span>
                             </div>
                           </div>
                         </div>
                         <div className="relative group/skill">
                           <div className="absolute -inset-1 bg-gradient-to-br from-yellow-400/20 to-orange-500/20 rounded-2xl blur opacity-0 group-hover/skill:opacity-100 transition-opacity duration-500"></div>
-                          <div className="relative bg-gradient-to-br from-stone-800/60 to-stone-900/60 backdrop-blur-xl rounded-2xl p-8 border-2 border-stone-600/30 hover:border-yellow-400/50 transition-all duration-500 group-hover/skill:shadow-2xl group-hover/skill:shadow-yellow-400/20 group-hover/skill:-translate-y-1">
-                            <div className="flex flex-col items-center gap-4">
-                              <div className="bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl p-4 group-hover/skill:scale-110 group-hover/skill:rotate-3 transition-all duration-500 shadow-xl shadow-yellow-400/30" style={{ boxShadow: '0 0 30px rgba(255, 239, 58, 0.5), 0 0 60px rgba(255, 145, 0, 0.3)' }}>
-                                <Bot size={32} className="text-white drop-shadow-2xl" style={{ filter: 'drop-shadow(0 0 12px rgba(255, 239, 58, 0.8))' }} />
+                          <div className="relative bg-gradient-to-br from-stone-800/60 to-stone-900/60 backdrop-blur-xl rounded-2xl p-4 sm:p-8 border-2 border-stone-600/30 hover:border-yellow-400/50 transition-all duration-500 group-hover/skill:shadow-2xl group-hover/skill:shadow-yellow-400/20 group-hover/skill:-translate-y-1">
+                            <div className="flex flex-col items-center gap-2 sm:gap-4">
+                              <div className="bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl p-2 sm:p-4 group-hover/skill:scale-110 group-hover/skill:rotate-3 transition-all duration-500 shadow-xl shadow-yellow-400/30" style={{ boxShadow: '0 0 30px rgba(255, 239, 58, 0.5), 0 0 60px rgba(255, 145, 0, 0.3)' }}>
+                                <Bot size={24} className="sm:w-8 sm:h-8 text-white drop-shadow-2xl" style={{ filter: 'drop-shadow(0 0 12px rgba(255, 239, 58, 0.8))' }} />
                               </div>
-                              <span className="text-white font-bold text-xl text-center group-hover/skill:text-yellow-400 transition-colors duration-300">System Automation</span>
+                              <span className="text-white font-bold text-sm sm:text-xl text-center group-hover/skill:text-yellow-400 transition-colors duration-300">System Automation</span>
                             </div>
                           </div>
                         </div>
                         <div className="relative group/skill">
                           <div className="absolute -inset-1 bg-gradient-to-br from-yellow-400/20 to-orange-500/20 rounded-2xl blur opacity-0 group-hover/skill:opacity-100 transition-opacity duration-500"></div>
-                          <div className="relative bg-gradient-to-br from-stone-800/60 to-stone-900/60 backdrop-blur-xl rounded-2xl p-8 border-2 border-stone-600/30 hover:border-yellow-400/50 transition-all duration-500 group-hover/skill:shadow-2xl group-hover/skill:shadow-yellow-400/20 group-hover/skill:-translate-y-1">
-                            <div className="flex flex-col items-center gap-4 min-h-[120px] justify-center">
-                              <div className="bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl p-4 group-hover/skill:scale-110 group-hover/skill:rotate-3 transition-all duration-500 shadow-xl shadow-yellow-400/30" style={{ boxShadow: '0 0 30px rgba(255, 239, 58, 0.5), 0 0 60px rgba(255, 145, 0, 0.3)' }}>
-                                <Wrench size={32} className="text-white drop-shadow-2xl" style={{ filter: 'drop-shadow(0 0 12px rgba(255, 239, 58, 0.8))' }} />
+                          <div className="relative bg-gradient-to-br from-stone-800/60 to-stone-900/60 backdrop-blur-xl rounded-2xl p-4 sm:p-8 border-2 border-stone-600/30 hover:border-yellow-400/50 transition-all duration-500 group-hover/skill:shadow-2xl group-hover/skill:shadow-yellow-400/20 group-hover/skill:-translate-y-1">
+                            <div className="flex flex-col items-center gap-2 sm:gap-4 min-h-[90px] sm:min-h-[120px] justify-center">
+                              <div className="bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl p-2 sm:p-4 group-hover/skill:scale-110 group-hover/skill:rotate-3 transition-all duration-500 shadow-xl shadow-yellow-400/30" style={{ boxShadow: '0 0 30px rgba(255, 239, 58, 0.5), 0 0 60px rgba(255, 145, 0, 0.3)' }}>
+                                <Wrench size={24} className="sm:w-8 sm:h-8 text-white drop-shadow-2xl" style={{ filter: 'drop-shadow(0 0 12px rgba(255, 239, 58, 0.8))' }} />
                               </div>
-                              <span className="text-white font-bold text-xl text-center group-hover/skill:text-yellow-400 transition-colors duration-300">
+                              <span className="text-white font-bold text-sm sm:text-xl text-center group-hover/skill:text-yellow-400 transition-colors duration-300">
                                 System<br />Creation
                               </span>
                             </div>
@@ -633,7 +633,7 @@ const Home = () => {
                 <div className="grid lg:grid-cols-2 gap-8 sm:gap-16 items-center">
                   {/* Premium Donut Chart */}
                   <div className="flex justify-center">
-                    <div className="relative w-64 h-64 sm:w-80 sm:h-80">
+                    <div className="relative w-56 h-56 sm:w-80 sm:h-80 mb-16 sm:mb-12">
                       {/* Ambient glows per quadrant */}
                       <div className="absolute inset-0 bg-red-600/10 rounded-full blur-3xl scale-75 translate-x-[-20%] translate-y-[-20%]"></div>
                       <div className="absolute inset-0 bg-yellow-500/10 rounded-full blur-3xl scale-75 translate-x-[20%] translate-y-[-20%]"></div>
@@ -859,7 +859,7 @@ const Home = () => {
               <div className="relative bg-gradient-to-br from-stone-800/90 via-stone-800/70 to-stone-900/90 backdrop-blur-2xl rounded-3xl overflow-hidden border-2 border-yellow-400/30 shadow-2xl">
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-yellow-400 to-transparent"></div>
 
-                <div className="px-8 sm:px-12 pt-12 pb-6">
+                <div className="px-4 sm:px-8 lg:px-12 pt-8 sm:pt-12 pb-6">
                   <div className="text-center mb-4">
                     <div className="inline-block px-6 py-2 bg-gradient-to-r from-yellow-400/20 to-orange-500/20 rounded-full border border-yellow-400/30 mb-4">
                       <span className="text-yellow-400 font-semibold text-sm tracking-wider uppercase">Featured Project</span>
@@ -919,7 +919,7 @@ const Home = () => {
                   </div>
                 </div>
 
-                <div className="px-8 sm:px-12 pb-12">
+                <div className="px-4 sm:px-8 lg:px-12 pb-8 sm:pb-12">
                   <div className="mb-8">
                     <div className="relative p-6 bg-gradient-to-br from-yellow-400/5 to-orange-500/5 rounded-2xl border border-yellow-400/20">
                       <div className="absolute top-0 left-6 w-12 h-1 bg-gradient-to-r from-yellow-400 to-orange-500 -mt-px"></div>
@@ -1065,7 +1065,7 @@ const Home = () => {
               <div className="relative bg-gradient-to-br from-stone-800/90 via-stone-800/70 to-stone-900/90 backdrop-blur-2xl rounded-3xl overflow-hidden border-2 border-yellow-400/30 shadow-2xl">
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-yellow-400 to-transparent"></div>
 
-                <div className="px-8 sm:px-12 pt-12 pb-6">
+                <div className="px-4 sm:px-8 lg:px-12 pt-8 sm:pt-12 pb-6">
                   <div className="text-center mb-4">
                     <div className="inline-block px-6 py-2 bg-gradient-to-r from-yellow-400/20 to-orange-500/20 rounded-full border border-yellow-400/30 mb-4">
                       <span className="text-yellow-400 font-semibold text-sm tracking-wider uppercase">Success Story</span>
@@ -1125,7 +1125,7 @@ const Home = () => {
                   </div>
                 </div>
 
-                <div className="px-8 sm:px-12 pb-12">
+                <div className="px-4 sm:px-8 lg:px-12 pb-8 sm:pb-12">
                   <div className="mb-8">
                     <div className="relative p-6 bg-gradient-to-br from-yellow-400/5 to-orange-500/5 rounded-2xl border border-yellow-400/20">
                       <div className="absolute top-0 left-6 w-12 h-1 bg-gradient-to-r from-yellow-400 to-orange-500 -mt-px"></div>
@@ -1212,7 +1212,7 @@ const Home = () => {
             <div className="mt-20 text-center">
               <div className="relative group">
                 <div className="absolute -inset-2 bg-gradient-to-r from-yellow-400/30 via-orange-500/30 to-yellow-400/30 rounded-3xl blur-2xl opacity-50 group-hover:opacity-75 transition-opacity duration-500"></div>
-                <div className="relative bg-gradient-to-br from-stone-800/90 via-stone-800/70 to-stone-900/90 backdrop-blur-2xl rounded-3xl overflow-hidden border-2 border-yellow-400/30 shadow-2xl p-12 sm:p-16">
+                <div className="relative bg-gradient-to-br from-stone-800/90 via-stone-800/70 to-stone-900/90 backdrop-blur-2xl rounded-3xl overflow-hidden border-2 border-yellow-400/30 shadow-2xl p-6 sm:p-12 lg:p-16">
                   <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-yellow-400 to-transparent"></div>
 
                   <div className="max-w-4xl mx-auto">
@@ -1227,7 +1227,7 @@ const Home = () => {
 
                     <div className="w-32 h-1.5 bg-gradient-to-r from-yellow-400 to-orange-500 mx-auto rounded-full shadow-lg shadow-yellow-400/50 mb-8"></div>
 
-                    <p className="text-stone-200 text-lg sm:text-xl leading-relaxed mb-12">
+                    <p className="text-stone-200 text-sm sm:text-lg leading-relaxed mb-8 sm:mb-12">
                       These results didn't happen by accident. They happened because we stopped guessing and started building. Right now, you’re losing money every single day. If you’re still doing tasks by hand that a system can do for pennies, you’re effectively paying yourself $2 an hour to stay busy. Every day you delay automation, you are choosing to leave profit on the table. You can keep manually fixing every problem, or you can build the system that handles it for you.
                     </p>
 
@@ -1252,7 +1252,7 @@ const Home = () => {
                     <div className="flex flex-col items-center gap-6 mb-10">
                       <button
                         onClick={() => setIsCalendarModalOpen(true)}
-                        className="group/btn relative bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-300 hover:to-orange-400 text-white px-12 py-6 rounded-xl font-bold text-xl transition-all duration-300 shadow-2xl hover:shadow-yellow-400/50 hover:scale-105 overflow-hidden"
+                        className="group/btn relative bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-300 hover:to-orange-400 text-white px-8 sm:px-12 py-4 sm:py-6 rounded-xl font-bold text-base sm:text-xl transition-all duration-300 shadow-2xl hover:shadow-yellow-400/50 hover:scale-105 overflow-hidden"
                         style={{ textShadow: '0 2px 4px rgba(0,0,0,0.3)' }}
                       >
                         <span className="relative z-10 flex items-center gap-3">
