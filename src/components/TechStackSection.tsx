@@ -40,25 +40,46 @@ export default function TechStackSection() {
         </div>
       </div>
       
-      <div className="absolute -inset-4 bg-[radial-gradient(circle_at_50%_0%,rgba(250,204,21,0.08),transparent_70%)] rounded-3xl blur-3xl"></div>
+      <div className="absolute -inset-20 bg-[radial-gradient(circle_at_50%_0%,rgba(250,204,21,0.12),transparent_70%)] rounded-3xl blur-[120px] pointer-events-none"></div>
       
       <div className="relative">
-        <h3 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-white via-stone-200 to-white bg-clip-text text-transparent mb-12 text-center tracking-tight">
-          Tools & <span className="text-yellow-400">Software</span>
-        </h3>
+        <div className="text-center mb-8 sm:mb-12">
+          <div className="inline-block px-4 py-1.5 bg-yellow-400/10 rounded-full border border-yellow-400/20 mb-4">
+            <span className="text-yellow-400 font-bold text-xs tracking-[0.2em] uppercase">Industry Standard</span>
+          </div>
+          <h3 className="text-3xl sm:text-5xl font-bold bg-gradient-to-r from-white via-stone-300 to-white bg-clip-text text-transparent">
+            Tools & <span className="text-yellow-400">Software</span>
+          </h3>
+        </div>
         
-        <div className="flex flex-wrap justify-center items-center gap-6 sm:gap-10 max-w-5xl mx-auto px-4">
-          {staticTechStack.map((tech) => (
-            <div key={tech.id} className="group/tech relative">
-              <div className="relative bg-white/90 rounded-2xl p-4 sm:p-6 border-2 border-white/60 hover:border-yellow-400/60 transition-all duration-500 hover:scale-110 hover:-rotate-1 shadow-xl hover:shadow-yellow-400/20 overflow-hidden group/card">
-                <img
-                  src={tech.logo_url}
-                  alt={tech.name}
-                  className="h-12 sm:h-16 w-auto object-contain transition-all duration-500"
-                />
-              </div>
+        <div className="w-full relative py-8">
+          <div className="relative w-full overflow-hidden tech-track-mask">
+            <div className="animate-marquee hover:pause flex items-center gap-8 sm:gap-12 px-4">
+              {/* Triple the array for extremely smooth infinite scroll */}
+              {[...staticTechStack, ...staticTechStack, ...staticTechStack].map((tech, index) => (
+                <div key={`${tech.id}-${index}`} className="group/tech relative flex-shrink-0 py-4">
+                  <div className="absolute -inset-2 bg-gradient-to-br from-yellow-400/20 to-orange-500/20 rounded-2xl blur-xl opacity-0 group-hover/tech:opacity-100 transition-all duration-700 scale-75 group-hover/tech:scale-100"></div>
+                  
+                  <div className="relative flex flex-col items-center gap-3">
+                    <div className="relative bg-white rounded-2xl p-6 sm:p-8 border border-white hover:border-yellow-400/50 transition-all duration-500 group-hover/tech:scale-110 group-hover/tech:-translate-y-2 shadow-2xl group-hover/tech:shadow-yellow-400/10 overflow-hidden w-[120px] sm:w-[160px] aspect-video flex justify-center items-center">
+                      <div className="absolute inset-0 bg-gradient-to-br from-stone-100 to-transparent opacity-0 group-hover/tech:opacity-100 transition-opacity"></div>
+                      <img
+                        src={tech.logo_url}
+                        alt={tech.name}
+                        className="relative h-10 sm:h-14 w-auto max-w-full object-contain transition-all duration-700 grayscale group-hover/tech:grayscale-0 group-hover/tech:scale-105"
+                      />
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
+        </div>
+        
+        <div className="mt-12 flex justify-center gap-8 text-stone-500 font-bold text-[10px] tracking-[0.3em] uppercase">
+          <span className="flex items-center gap-2"><div className="w-1 h-1 bg-yellow-400 rounded-full"></div> Operational</span>
+          <span className="flex items-center gap-2"><div className="w-1 h-1 bg-yellow-400 rounded-full"></div> Creative</span>
+          <span className="flex items-center gap-2"><div className="w-1 h-1 bg-yellow-400 rounded-full"></div> Marketing</span>
         </div>
       </div>
     </div>

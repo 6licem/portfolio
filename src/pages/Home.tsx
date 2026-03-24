@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Briefcase, GraduationCap, Award, Star, MessageSquare, ClipboardList, Settings, Bot, Wrench, FileText, ChevronLeft, ChevronRight, Linkedin } from 'lucide-react';
+import { Briefcase, GraduationCap, Award, Star, MessageSquare, ClipboardList, Settings, Bot, Wrench, FileText, ChevronLeft, ChevronRight, Linkedin, Clock, TrendingUp, Users } from 'lucide-react';
 import Footer from '../components/Footer';
 import ResumeModal from '../components/ResumeModal';
 import CalendarModal from '../components/CalendarModal';
@@ -39,6 +39,7 @@ const Home = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [currentJsmImageIndex, setCurrentJsmImageIndex] = useState(0);
   const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
+  const [statsReady, setStatsReady] = useState(false);
 
   const carouselImages = [
     carousel1,
@@ -114,6 +115,15 @@ const Home = () => {
     return () => clearInterval(interval);
   }, [testimonials.length]);
 
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      document.documentElement.style.setProperty('--mouse-x', `${e.clientX}px`);
+      document.documentElement.style.setProperty('--mouse-y', `${e.clientY}px`);
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
   const nextImage = () => {
     setCurrentImageIndex((prev) => (prev + 1) % carouselImages.length);
   };
@@ -142,6 +152,12 @@ const Home = () => {
   const video = useScrollAnimation();
   const statsGrid = useScrollAnimation();
   const aboutMe = useScrollAnimation();
+
+  // Stats are above the fold — trigger count-up after a short delay rather than waiting for scroll
+  useEffect(() => {
+    const t = setTimeout(() => setStatsReady(true), 400);
+    return () => clearTimeout(t);
+  }, []);
   const skills = useScrollAnimation();
   const disc = useScrollAnimation();
   const results = useScrollAnimation();
@@ -149,10 +165,15 @@ const Home = () => {
   const gallery = useScrollAnimation();
   const results2 = useScrollAnimation();
 
-  const hoursSaved = useCountUp({ end: 1800, duration: 2500, isVisible: statsGrid.isVisible });
-  const revenueImpact = useCountUp({ end: 1, duration: 2500, isVisible: statsGrid.isVisible, prefix: '$', suffix: 'M+' });
-  const efficiencyBoost = useCountUp({ end: 80, duration: 2500, isVisible: statsGrid.isVisible, suffix: '%' });
-  const yearsExperience = useCountUp({ end: 4, duration: 2500, isVisible: statsGrid.isVisible, suffix: '+' });
+  const hoursSaved = useCountUp({ end: 1800, duration: 2500, isVisible: statsReady });
+  const revenueImpact = useCountUp({ end: 1, duration: 2500, isVisible: statsReady, prefix: '$', suffix: 'M+' });
+  const efficiencyBoost = useCountUp({ end: 80, duration: 2500, isVisible: statsReady, suffix: '%' });
+
+  // Specific count-ups for the first results card (Creative Vision)
+  const hoursSavedCV = useCountUp({ end: 1800, duration: 2500, isVisible: resultsCard1.isVisible });
+  const efficiencyBoostCV = useCountUp({ end: 80, duration: 2500, isVisible: resultsCard1.isVisible, suffix: '%' });
+
+  const yearsExperience = useCountUp({ end: 4, duration: 2500, isVisible: statsReady, suffix: '+' });
 
   const dominance = useCountUp({ end: 47, duration: 2000, isVisible: disc.isVisible, suffix: '%' });
   const influence = useCountUp({ end: 17, duration: 2000, isVisible: disc.isVisible, suffix: '%' });
@@ -168,14 +189,10 @@ const Home = () => {
   };
 
   return (
-    <div className="min-h-screen bg-stone-950">
-      <section className="relative overflow-hidden pt-16 sm:pt-20 pb-8">
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-gradient-to-r from-yellow-400/15 via-orange-500/15 to-yellow-400/15 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute top-1/3 left-0 w-[600px] h-[600px] bg-gradient-to-br from-orange-500/10 to-yellow-400/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
-          <div className="absolute top-1/3 right-0 w-[600px] h-[600px] bg-gradient-to-bl from-yellow-400/10 to-orange-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(250,204,21,0.05),transparent_50%)]"></div>
-        </div>
+    <div className="min-h-screen bg-[#050505] relative">
+      <div className="pointer-events-none fixed inset-0 z-0 transition-opacity duration-300" style={{ background: 'radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(250,204,21,0.05), transparent 40%)' }}></div>
+      <section className="relative overflow-hidden pt-24 sm:pt-32 pb-8">
+        {/* Spotlight elements moved directly onto the text container for maximum guaranteed visibility */}
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-20">
           <div ref={hero.ref} className={`text-center mb-8 sm:mb-12 fade-up ${hero.isVisible ? 'visible' : ''}`}>
@@ -184,11 +201,14 @@ const Home = () => {
               <span className="text-yellow-400 text-sm font-medium tracking-wide">Available for New Projects</span>
             </div>
 
-            <h1 className="text-3xl sm:text-6xl lg:text-7xl font-bold text-white mb-4 sm:mb-6 leading-tight px-2">
-              <span className="block mb-1 sm:mb-2 text-2xl sm:text-6xl lg:text-7xl">I'm Rance, Your</span>
+            <h1 className="text-3xl sm:text-6xl lg:text-7xl font-bold text-white mb-4 sm:mb-6 leading-tight px-2 relative z-20">
+              {/* Massive native CSS blur nodes rendering directly behind the text */}
+              <div className="absolute top-[80%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200vw] sm:w-[1400px] h-[600px] sm:h-[800px] bg-yellow-500/20 blur-[100px] sm:blur-[180px] rounded-[100%] pointer-events-none -z-10"></div>
+              <div className="absolute top-[80%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150vw] sm:w-[1000px] h-[400px] sm:h-[600px] bg-orange-500/20 blur-[80px] sm:blur-[120px] rounded-[100%] pointer-events-none -z-10 animate-pulse" style={{ animationDuration: '4s' }}></div>
+
+              <span className="block mb-1 sm:mb-2 text-2xl sm:text-6xl lg:text-7xl drop-shadow-lg relative z-10">I'm Rance, Your</span>
               <span className="block relative">
                 <span className="relative inline-block">
-                  <span className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-orange-500 blur-2xl opacity-30"></span>
                   <span className="relative bg-gradient-to-r from-yellow-300 via-yellow-400 to-orange-500 bg-clip-text text-transparent text-3xl sm:text-7xl lg:text-8xl font-extrabold">
                     Project Management Specialist
                   </span>
@@ -245,34 +265,34 @@ const Home = () => {
             </div>
           </div>
 
-          <div ref={statsGrid.ref} className={`grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 max-w-5xl mx-auto mb-12 sm:mb-16 px-4 fade-up fade-up-delay-200 ${statsGrid.isVisible ? 'visible' : ''}`}>
-            <div className="group relative bg-gradient-to-br from-stone-800/60 to-stone-900/60 backdrop-blur-xl rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-yellow-400/20 hover:border-yellow-400/40 transition-all duration-300 text-center hover:scale-105">
-              <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/5 to-orange-500/5 rounded-xl sm:rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              <div className="relative">
-                <div className="text-2xl sm:text-4xl font-bold text-yellow-400 mb-1 sm:mb-2">{hoursSaved}+</div>
-                <div className="text-stone-400 text-xs sm:text-sm font-medium">Hours Saved</div>
-              </div>
+          <div ref={statsGrid.ref} className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 max-w-5xl mx-auto mb-12 sm:mb-16 px-4" style={{ animation: 'statsFadeUp 0.7s ease both 0.2s' }}>
+            {/* Hours Saved */}
+            <div className="group relative overflow-hidden bg-stone-900/60 backdrop-blur-xl rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-stone-700/40 hover:border-yellow-400/40 transition-all duration-500 text-center hover:-translate-y-1 hover:shadow-2xl hover:shadow-yellow-400/10">
+              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-yellow-400/40 to-transparent"></div>
+              <div className="absolute -right-6 -top-6 w-16 h-16 bg-yellow-400/5 rounded-full blur-2xl group-hover:bg-yellow-400/10 transition-all duration-500"></div>
+              <div className="text-3xl sm:text-5xl font-black text-yellow-400 mb-1 sm:mb-2 tabular-nums" style={{ textShadow: '0 0 20px rgba(251,191,36,0.4)' }}>{hoursSaved}+</div>
+              <div className="text-stone-400 text-xs sm:text-sm font-medium">Hours Saved</div>
             </div>
-            <div className="group relative bg-gradient-to-br from-stone-800/60 to-stone-900/60 backdrop-blur-xl rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-yellow-400/20 hover:border-yellow-400/40 transition-all duration-300 text-center hover:scale-105">
-              <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/5 to-orange-500/5 rounded-xl sm:rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              <div className="relative">
-                <div className="text-2xl sm:text-4xl font-bold text-yellow-400 mb-1 sm:mb-2">{revenueImpact}</div>
-                <div className="text-stone-400 text-xs sm:text-sm font-medium">Revenue Impact</div>
-              </div>
+            {/* Revenue Impact */}
+            <div className="group relative overflow-hidden bg-stone-900/60 backdrop-blur-xl rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-stone-700/40 hover:border-yellow-400/40 transition-all duration-500 text-center hover:-translate-y-1 hover:shadow-2xl hover:shadow-yellow-400/10">
+              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-yellow-400/40 to-transparent"></div>
+              <div className="absolute -right-6 -top-6 w-16 h-16 bg-yellow-400/5 rounded-full blur-2xl group-hover:bg-yellow-400/10 transition-all duration-500"></div>
+              <div className="text-3xl sm:text-5xl font-black text-yellow-400 mb-1 sm:mb-2 tabular-nums" style={{ textShadow: '0 0 20px rgba(251,191,36,0.4)' }}>{revenueImpact}</div>
+              <div className="text-stone-400 text-xs sm:text-sm font-medium">Revenue Impact</div>
             </div>
-            <div className="group relative bg-gradient-to-br from-stone-800/60 to-stone-900/60 backdrop-blur-xl rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-yellow-400/20 hover:border-yellow-400/40 transition-all duration-300 text-center hover:scale-105">
-              <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/5 to-orange-500/5 rounded-xl sm:rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              <div className="relative">
-                <div className="text-2xl sm:text-4xl font-bold text-yellow-400 mb-1 sm:mb-2">{efficiencyBoost}</div>
-                <div className="text-stone-400 text-xs sm:text-sm font-medium">Efficiency Boost</div>
-              </div>
+            {/* Efficiency Boost */}
+            <div className="group relative overflow-hidden bg-stone-900/60 backdrop-blur-xl rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-stone-700/40 hover:border-yellow-400/40 transition-all duration-500 text-center hover:-translate-y-1 hover:shadow-2xl hover:shadow-yellow-400/10">
+              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-yellow-400/40 to-transparent"></div>
+              <div className="absolute -right-6 -top-6 w-16 h-16 bg-yellow-400/5 rounded-full blur-2xl group-hover:bg-yellow-400/10 transition-all duration-500"></div>
+              <div className="text-3xl sm:text-5xl font-black text-yellow-400 mb-1 sm:mb-2 tabular-nums" style={{ textShadow: '0 0 20px rgba(251,191,36,0.4)' }}>{efficiencyBoost}</div>
+              <div className="text-stone-400 text-xs sm:text-sm font-medium">Efficiency Boost</div>
             </div>
-            <div className="group relative bg-gradient-to-br from-stone-800/60 to-stone-900/60 backdrop-blur-xl rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-yellow-400/20 hover:border-yellow-400/40 transition-all duration-300 text-center hover:scale-105">
-              <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/5 to-orange-500/5 rounded-xl sm:rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              <div className="relative">
-                <div className="text-2xl sm:text-4xl font-bold text-yellow-400 mb-1 sm:mb-2">{yearsExperience}</div>
-                <div className="text-stone-400 text-xs sm:text-sm font-medium">Years Experience</div>
-              </div>
+            {/* Years Experience */}
+            <div className="group relative overflow-hidden bg-stone-900/60 backdrop-blur-xl rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-stone-700/40 hover:border-yellow-400/40 transition-all duration-500 text-center hover:-translate-y-1 hover:shadow-2xl hover:shadow-yellow-400/10">
+              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-yellow-400/40 to-transparent"></div>
+              <div className="absolute -right-6 -top-6 w-16 h-16 bg-yellow-400/5 rounded-full blur-2xl group-hover:bg-yellow-400/10 transition-all duration-500"></div>
+              <div className="text-3xl sm:text-5xl font-black text-yellow-400 mb-1 sm:mb-2 tabular-nums" style={{ textShadow: '0 0 20px rgba(251,191,36,0.4)' }}>{yearsExperience}</div>
+              <div className="text-stone-400 text-xs sm:text-sm font-medium">Years Experience</div>
             </div>
           </div>
 
@@ -288,7 +308,7 @@ const Home = () => {
                 <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
                   Meet Your <span className="bg-gradient-to-r from-yellow-300 via-yellow-400 to-orange-500 bg-clip-text text-transparent">Project Management Specialist</span>
                 </h2>
-                <div className="w-32 h-1.5 bg-gradient-to-r from-yellow-400 to-orange-500 mx-auto rounded-full shadow-lg shadow-yellow-400/50 mb-10"></div>
+                <div className="flare-divider w-1/2 max-w-sm mx-auto mb-10"></div>
 
                 <div className="flex justify-center mb-10">
                   <div className="relative group/photo">
@@ -370,8 +390,8 @@ const Home = () => {
                         <div className="flex-1 flex items-center relative">
                           <div className="w-full">
                             <div className="text-yellow-400/20 text-5xl sm:text-6xl font-serif mb-4">"</div>
-                            <div className="max-h-[300px] overflow-y-auto pr-2 custom-scrollbar">
-                              <p className="text-stone-200 text-base sm:text-lg leading-relaxed mb-6 sm:mb-8 transition-all duration-500">
+                            <div className="flex-1 flex items-center pr-2">
+                              <p className="text-stone-200 text-base sm:text-lg leading-relaxed mb-6 sm:mb-8 transition-all duration-500 line-clamp-6 sm:line-clamp-5">
                                 {testimonials[currentTestimonialIndex].content}
                               </p>
                             </div>
@@ -510,7 +530,7 @@ const Home = () => {
             </div>
           </div>
 
-          <div ref={skills.ref} className={`mt-16 sm:mt-24 fade-up ${skills.isVisible ? 'visible' : ''}`}>
+          <div ref={skills.ref} className={`mt-20 sm:mt-28 fade-up ${skills.isVisible ? 'visible' : ''}`}>
             <div className="relative group/main">
               <div className="absolute -inset-4 bg-gradient-to-r from-yellow-400/30 via-orange-500/30 to-yellow-400/30 rounded-[2.5rem] blur-3xl opacity-50 group-hover/main:opacity-75 transition-opacity duration-700 animate-pulse"></div>
               <div className="absolute -inset-1 bg-gradient-to-r from-yellow-400/40 via-orange-500/40 to-yellow-400/40 rounded-[2rem] blur-2xl opacity-30 group-hover/main:opacity-50 transition-opacity duration-500"></div>
@@ -527,7 +547,7 @@ const Home = () => {
                   <h2 className="text-3xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
                     Skills & <span className="bg-gradient-to-r from-yellow-300 via-yellow-400 to-orange-500 bg-clip-text text-transparent drop-shadow-lg">Tech Stack</span>
                   </h2>
-                  <div className="w-40 h-2 bg-gradient-to-r from-yellow-400 to-orange-500 mx-auto rounded-full shadow-xl shadow-yellow-400/60"></div>
+                  <div className="flare-divider w-1/2 max-w-lg mx-auto"></div>
                   <p className="text-stone-200 mt-6 sm:mt-8 text-base sm:text-xl max-w-3xl mx-auto px-4 leading-relaxed">Core competencies and cutting-edge tools I leverage to deliver exceptional results</p>
                 </div>
 
@@ -593,7 +613,7 @@ const Home = () => {
             </div>
           </div>
 
-          <div ref={disc.ref} className={`mt-16 sm:mt-24 fade-up ${disc.isVisible ? 'visible' : ''}`} id="disc">
+          <div ref={disc.ref} className={`mt-20 sm:mt-28 fade-up ${disc.isVisible ? 'visible' : ''}`} id="disc">
             <div className="relative group">
               <div className="absolute -inset-2 bg-gradient-to-r from-yellow-400/20 via-orange-500/20 to-yellow-400/20 rounded-3xl blur-3xl opacity-40 group-hover:opacity-60 transition-opacity duration-500"></div>
               <div className="relative bg-gradient-to-br from-stone-800/90 via-stone-800/70 to-stone-900/90 backdrop-blur-2xl rounded-2xl sm:rounded-3xl p-6 sm:p-12 border-2 border-yellow-400/20 shadow-2xl mx-4">
@@ -606,161 +626,209 @@ const Home = () => {
                   <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
                     My <span className="bg-gradient-to-r from-yellow-300 via-yellow-400 to-orange-500 bg-clip-text text-transparent">DISC Profile</span>
                   </h2>
-                  <div className="w-32 h-1.5 bg-gradient-to-r from-yellow-400 to-orange-500 mx-auto rounded-full shadow-lg shadow-yellow-400/50"></div>
+                  <div className="flare-divider w-1/2 max-w-sm mx-auto"></div>
                   <p className="text-stone-300 mt-4 sm:mt-6 text-sm sm:text-lg max-w-2xl mx-auto px-4">Understanding how I work and collaborate to deliver exceptional results</p>
                 </div>
 
-                <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
+                <div className="grid lg:grid-cols-2 gap-8 sm:gap-16 items-center">
+                  {/* Premium Donut Chart */}
                   <div className="flex justify-center">
                     <div className="relative w-64 h-64 sm:w-80 sm:h-80">
-                      <svg viewBox="0 0 100 100" className="transform -rotate-90 w-full h-full">
-                        <circle cx="50" cy="50" r="40" fill="none" stroke="#1C1917" strokeWidth="20" />
-                        <circle cx="50" cy="50" r="40" fill="none" stroke="#DC2626" strokeWidth="20" strokeDasharray="117.81 251.33" strokeDashoffset="0" className="transition-all duration-1000" />
-                        <circle cx="50" cy="50" r="40" fill="none" stroke="#FBBF24" strokeWidth="20" strokeDasharray="42.67 251.33" strokeDashoffset="-117.81" className="transition-all duration-1000" />
-                        <circle cx="50" cy="50" r="40" fill="none" stroke="#10B981" strokeWidth="20" strokeDasharray="65.19 251.33" strokeDashoffset="-160.48" className="transition-all duration-1000" />
-                        <circle cx="50" cy="50" r="40" fill="none" stroke="#3B82F6" strokeWidth="20" strokeDasharray="25.13 251.33" strokeDashoffset="-225.67" className="transition-all duration-1000" />
+                      {/* Ambient glows per quadrant */}
+                      <div className="absolute inset-0 bg-red-600/10 rounded-full blur-3xl scale-75 translate-x-[-20%] translate-y-[-20%]"></div>
+                      <div className="absolute inset-0 bg-yellow-500/10 rounded-full blur-3xl scale-75 translate-x-[20%] translate-y-[-20%]"></div>
+                      <div className="absolute inset-0 bg-green-500/10 rounded-full blur-3xl scale-75 translate-x-[-20%] translate-y-[20%]"></div>
+                      <div className="absolute inset-0 bg-blue-500/10 rounded-full blur-3xl scale-75 translate-x-[20%] translate-y-[20%]"></div>
+                      <svg viewBox="0 0 200 200" className="w-full h-full drop-shadow-2xl transform -rotate-90">
+                        {/* Track */}
+                        <circle cx="100" cy="100" r="75" fill="none" stroke="#1C1917" strokeWidth="26" />
+                        {/* D — Dominance 47% red */}
+                        <circle cx="100" cy="100" r="75" fill="none" stroke="#DC2626" strokeWidth="24"
+                          strokeDasharray="221 471" strokeDashoffset="0" opacity="0.95"
+                          style={{ filter: 'drop-shadow(0 0 8px rgba(220,38,38,0.7))' }} />
+                        {/* I — Influence 17% yellow */}
+                        <circle cx="100" cy="100" r="75" fill="none" stroke="#EAB308" strokeWidth="24"
+                          strokeDasharray="80 471" strokeDashoffset="-224" opacity="0.95"
+                          style={{ filter: 'drop-shadow(0 0 8px rgba(234,179,8,0.7))' }} />
+                        {/* S — Steadiness 26% green */}
+                        <circle cx="100" cy="100" r="75" fill="none" stroke="#10B981" strokeWidth="24"
+                          strokeDasharray="122 471" strokeDashoffset="-307" opacity="0.95"
+                          style={{ filter: 'drop-shadow(0 0 8px rgba(16,185,129,0.7))' }} />
+                        {/* C — Compliance 10% blue */}
+                        <circle cx="100" cy="100" r="75" fill="none" stroke="#3B82F6" strokeWidth="24"
+                          strokeDasharray="47 471" strokeDashoffset="-432" opacity="0.95"
+                          style={{ filter: 'drop-shadow(0 0 8px rgba(59,130,246,0.7))' }} />
+                        {/* Gaps */}
+                        <circle cx="100" cy="100" r="75" fill="none" stroke="#0C0A09" strokeWidth="28" strokeDasharray="3 468" strokeDashoffset="0" />
+                        <circle cx="100" cy="100" r="75" fill="none" stroke="#0C0A09" strokeWidth="28" strokeDasharray="3 468" strokeDashoffset="-224" />
+                        <circle cx="100" cy="100" r="75" fill="none" stroke="#0C0A09" strokeWidth="28" strokeDasharray="3 468" strokeDashoffset="-307" />
+                        <circle cx="100" cy="100" r="75" fill="none" stroke="#0C0A09" strokeWidth="28" strokeDasharray="3 468" strokeDashoffset="-432" />
                       </svg>
+                      {/* Center label (outside svg, cancels rotate-90) */}
                       <div className="absolute inset-0 flex items-center justify-center">
                         <div className="text-center">
-                          <div className="text-white font-bold text-lg sm:text-xl">DISC</div>
-                          <div className="text-stone-400 text-xs sm:text-sm">Assessment</div>
+                          <div className="text-white font-black text-2xl sm:text-3xl tracking-widest">DISC</div>
+                          <div className="text-stone-500 text-xs sm:text-sm font-medium tracking-wider">Assessment</div>
                         </div>
+                      </div>
+                      {/* Legend */}
+                      <div className="absolute -bottom-10 left-0 right-0 flex justify-center gap-4 text-xs font-bold">
+                        <span className="flex items-center gap-1.5 text-red-400"><span className="w-2.5 h-2.5 rounded-full bg-red-500 shadow-sm shadow-red-500/80 inline-block"></span>D 47%</span>
+                        <span className="flex items-center gap-1.5 text-yellow-400"><span className="w-2.5 h-2.5 rounded-full bg-yellow-500 shadow-sm shadow-yellow-500/80 inline-block"></span>I 17%</span>
+                        <span className="flex items-center gap-1.5 text-green-400"><span className="w-2.5 h-2.5 rounded-full bg-green-500 shadow-sm shadow-green-500/80 inline-block"></span>S 26%</span>
+                        <span className="flex items-center gap-1.5 text-blue-400"><span className="w-2.5 h-2.5 rounded-full bg-blue-500 shadow-sm shadow-blue-500/80 inline-block"></span>C 10%</span>
                       </div>
                     </div>
                   </div>
 
-                  <div className="space-y-4 sm:space-y-5">
+                  {/* DISC Cards */}
+                  <div className="space-y-4 sm:space-y-5 mt-6 lg:mt-0">
+                    {/* Dominance */}
                     <div className="group/disc relative">
-                      <div className="absolute -inset-1 bg-gradient-to-r from-red-500/20 to-red-600/20 rounded-xl sm:rounded-2xl blur opacity-0 group-hover/disc:opacity-100 transition-opacity duration-300"></div>
-                      <div className="relative bg-gradient-to-br from-red-500/15 to-red-600/10 rounded-xl sm:rounded-2xl p-4 sm:p-6 border-2 border-red-500/30 hover:border-red-500/50 transition-all duration-300">
-                        <div className="flex items-center justify-between mb-3 sm:mb-4">
-                          <div className="flex items-center gap-2 sm:gap-3">
-                            <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-red-600 shadow-lg shadow-red-600/50"></div>
-                            <h3 className="text-white font-bold text-lg sm:text-xl">Dominance</h3>
+                      <div className="absolute -inset-1 bg-gradient-to-r from-red-500/30 to-red-600/10 rounded-2xl blur-md opacity-0 group-hover/disc:opacity-100 transition-opacity duration-500"></div>
+                      <div className="relative bg-gradient-to-br from-stone-900/80 to-stone-900/40 backdrop-blur-xl rounded-2xl p-5 sm:p-6 border border-red-500/30 hover:border-red-500/60 transition-all duration-500 group-hover/disc:-translate-y-1 overflow-hidden">
+                        <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-red-500 to-transparent"></div>
+                        <div className="absolute -right-8 -top-8 w-24 h-24 bg-red-600/10 rounded-full blur-2xl group-hover/disc:bg-red-600/20 transition-all duration-500"></div>
+                        <div className="flex items-center justify-between mb-3">
+                          <div className="flex items-center gap-3">
+                            <div className="w-8 h-8 rounded-xl bg-red-600/20 border border-red-500/40 flex items-center justify-center">
+                              <div className="w-3 h-3 rounded-sm bg-red-500 shadow-sm shadow-red-500/80"></div>
+                            </div>
+                            <div>
+                              <h3 className="text-white font-bold text-base sm:text-lg leading-none">Dominance</h3>
+                              <p className="text-red-400/70 text-xs mt-0.5">Results-Driven</p>
+                            </div>
                           </div>
-                          <span className="text-red-400 font-bold text-2xl sm:text-3xl">{dominance}</span>
+                          <span className="text-red-400 font-black text-3xl sm:text-4xl tabular-nums" style={{ textShadow: '0 0 20px rgba(220,38,38,0.6)' }}>{dominance}</span>
                         </div>
-                        <p className="text-stone-200 text-sm sm:text-base leading-relaxed">Results-oriented, decisive, and direct. I focus on achieving goals and overcoming challenges efficiently.</p>
+                        <div className="relative w-full h-2 bg-stone-800/80 rounded-full overflow-hidden mb-3">
+                          <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-red-600 to-red-400 rounded-full shadow-lg shadow-red-500/40 transition-all duration-1000" style={{ width: '47%' }}></div>
+                          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent rounded-full"></div>
+                        </div>
+                        <p className="text-stone-400 text-xs sm:text-sm leading-relaxed">Results-oriented, decisive, and direct. I focus on achieving goals and overcoming challenges efficiently.</p>
                       </div>
                     </div>
 
+                    {/* Influence */}
                     <div className="group/disc relative">
-                      <div className="absolute -inset-1 bg-gradient-to-r from-yellow-500/20 to-yellow-600/20 rounded-xl sm:rounded-2xl blur opacity-0 group-hover/disc:opacity-100 transition-opacity duration-300"></div>
-                      <div className="relative bg-gradient-to-br from-yellow-500/15 to-yellow-600/10 rounded-xl sm:rounded-2xl p-4 sm:p-6 border-2 border-yellow-500/30 hover:border-yellow-500/50 transition-all duration-300">
-                        <div className="flex items-center justify-between mb-3 sm:mb-4">
-                          <div className="flex items-center gap-2 sm:gap-3">
-                            <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-yellow-500 shadow-lg shadow-yellow-500/50"></div>
-                            <h3 className="text-white font-bold text-lg sm:text-xl">Influence</h3>
+                      <div className="absolute -inset-1 bg-gradient-to-r from-yellow-500/30 to-yellow-600/10 rounded-2xl blur-md opacity-0 group-hover/disc:opacity-100 transition-opacity duration-500"></div>
+                      <div className="relative bg-gradient-to-br from-stone-900/80 to-stone-900/40 backdrop-blur-xl rounded-2xl p-5 sm:p-6 border border-yellow-500/30 hover:border-yellow-500/60 transition-all duration-500 group-hover/disc:-translate-y-1 overflow-hidden">
+                        <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-yellow-500 to-transparent"></div>
+                        <div className="absolute -right-8 -top-8 w-24 h-24 bg-yellow-600/10 rounded-full blur-2xl group-hover/disc:bg-yellow-600/20 transition-all duration-500"></div>
+                        <div className="flex items-center justify-between mb-3">
+                          <div className="flex items-center gap-3">
+                            <div className="w-8 h-8 rounded-xl bg-yellow-600/20 border border-yellow-500/40 flex items-center justify-center">
+                              <div className="w-3 h-3 rounded-sm bg-yellow-500 shadow-sm shadow-yellow-500/80"></div>
+                            </div>
+                            <div>
+                              <h3 className="text-white font-bold text-base sm:text-lg leading-none">Influence</h3>
+                              <p className="text-yellow-400/70 text-xs mt-0.5">Communicative</p>
+                            </div>
                           </div>
-                          <span className="text-yellow-400 font-bold text-2xl sm:text-3xl">{influence}</span>
+                          <span className="text-yellow-400 font-black text-3xl sm:text-4xl tabular-nums" style={{ textShadow: '0 0 20px rgba(234,179,8,0.6)' }}>{influence}</span>
                         </div>
-                        <p className="text-stone-200 text-sm sm:text-base leading-relaxed">Collaborative and communicative when needed, but prefer to let results speak for themselves.</p>
+                        <div className="relative w-full h-2 bg-stone-800/80 rounded-full overflow-hidden mb-3">
+                          <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-yellow-600 to-yellow-400 rounded-full shadow-lg shadow-yellow-500/40 transition-all duration-1000" style={{ width: '17%' }}></div>
+                          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent rounded-full"></div>
+                        </div>
+                        <p className="text-stone-400 text-xs sm:text-sm leading-relaxed">Collaborative and communicative when needed, but prefer to let results speak for themselves.</p>
                       </div>
                     </div>
 
+                    {/* Steadiness */}
                     <div className="group/disc relative">
-                      <div className="absolute -inset-1 bg-gradient-to-r from-green-500/20 to-green-600/20 rounded-xl sm:rounded-2xl blur opacity-0 group-hover/disc:opacity-100 transition-opacity duration-300"></div>
-                      <div className="relative bg-gradient-to-br from-green-500/15 to-green-600/10 rounded-xl sm:rounded-2xl p-4 sm:p-6 border-2 border-green-500/30 hover:border-green-500/50 transition-all duration-300">
-                        <div className="flex items-center justify-between mb-3 sm:mb-4">
-                          <div className="flex items-center gap-2 sm:gap-3">
-                            <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-green-500 shadow-lg shadow-green-500/50"></div>
-                            <h3 className="text-white font-bold text-lg sm:text-xl">Steadiness</h3>
+                      <div className="absolute -inset-1 bg-gradient-to-r from-green-500/30 to-green-600/10 rounded-2xl blur-md opacity-0 group-hover/disc:opacity-100 transition-opacity duration-500"></div>
+                      <div className="relative bg-gradient-to-br from-stone-900/80 to-stone-900/40 backdrop-blur-xl rounded-2xl p-5 sm:p-6 border border-green-500/30 hover:border-green-500/60 transition-all duration-500 group-hover/disc:-translate-y-1 overflow-hidden">
+                        <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-green-500 to-transparent"></div>
+                        <div className="absolute -right-8 -top-8 w-24 h-24 bg-green-600/10 rounded-full blur-2xl group-hover/disc:bg-green-600/20 transition-all duration-500"></div>
+                        <div className="flex items-center justify-between mb-3">
+                          <div className="flex items-center gap-3">
+                            <div className="w-8 h-8 rounded-xl bg-green-600/20 border border-green-500/40 flex items-center justify-center">
+                              <div className="w-3 h-3 rounded-sm bg-green-500 shadow-sm shadow-green-500/80"></div>
+                            </div>
+                            <div>
+                              <h3 className="text-white font-bold text-base sm:text-lg leading-none">Steadiness</h3>
+                              <p className="text-green-400/70 text-xs mt-0.5">Reliable & Consistent</p>
+                            </div>
                           </div>
-                          <span className="text-green-400 font-bold text-2xl sm:text-3xl">{steadiness}</span>
+                          <span className="text-green-400 font-black text-3xl sm:text-4xl tabular-nums" style={{ textShadow: '0 0 20px rgba(16,185,129,0.6)' }}>{steadiness}</span>
                         </div>
-                        <p className="text-stone-200 text-sm sm:text-base leading-relaxed">Reliable and consistent in delivering quality work, creating stable systems that teams can depend on.</p>
+                        <div className="relative w-full h-2 bg-stone-800/80 rounded-full overflow-hidden mb-3">
+                          <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-green-600 to-green-400 rounded-full shadow-lg shadow-green-500/40 transition-all duration-1000" style={{ width: '26%' }}></div>
+                          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent rounded-full"></div>
+                        </div>
+                        <p className="text-stone-400 text-xs sm:text-sm leading-relaxed">Reliable and consistent in delivering quality work, creating stable systems that teams can depend on.</p>
                       </div>
                     </div>
 
+                    {/* Compliance */}
                     <div className="group/disc relative">
-                      <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/20 to-blue-600/20 rounded-xl sm:rounded-2xl blur opacity-0 group-hover/disc:opacity-100 transition-opacity duration-300"></div>
-                      <div className="relative bg-gradient-to-br from-blue-500/15 to-blue-600/10 rounded-xl sm:rounded-2xl p-4 sm:p-6 border-2 border-blue-500/30 hover:border-blue-500/50 transition-all duration-300">
-                        <div className="flex items-center justify-between mb-3 sm:mb-4">
-                          <div className="flex items-center gap-2 sm:gap-3">
-                            <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-blue-500 shadow-lg shadow-blue-500/50"></div>
-                            <h3 className="text-white font-bold text-lg sm:text-xl">Compliance</h3>
+                      <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/30 to-blue-600/10 rounded-2xl blur-md opacity-0 group-hover/disc:opacity-100 transition-opacity duration-500"></div>
+                      <div className="relative bg-gradient-to-br from-stone-900/80 to-stone-900/40 backdrop-blur-xl rounded-2xl p-5 sm:p-6 border border-blue-500/30 hover:border-blue-500/60 transition-all duration-500 group-hover/disc:-translate-y-1 overflow-hidden">
+                        <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-blue-500 to-transparent"></div>
+                        <div className="absolute -right-8 -top-8 w-24 h-24 bg-blue-600/10 rounded-full blur-2xl group-hover/disc:bg-blue-600/20 transition-all duration-500"></div>
+                        <div className="flex items-center justify-between mb-3">
+                          <div className="flex items-center gap-3">
+                            <div className="w-8 h-8 rounded-xl bg-blue-600/20 border border-blue-500/40 flex items-center justify-center">
+                              <div className="w-3 h-3 rounded-sm bg-blue-500 shadow-sm shadow-blue-500/80"></div>
+                            </div>
+                            <div>
+                              <h3 className="text-white font-bold text-base sm:text-lg leading-none">Compliance</h3>
+                              <p className="text-blue-400/70 text-xs mt-0.5">Action-Focused</p>
+                            </div>
                           </div>
-                          <span className="text-blue-400 font-bold text-2xl sm:text-3xl">{compliance}</span>
+                          <span className="text-blue-400 font-black text-3xl sm:text-4xl tabular-nums" style={{ textShadow: '0 0 20px rgba(59,130,246,0.6)' }}>{compliance}</span>
                         </div>
-                        <p className="text-stone-200 text-sm sm:text-base leading-relaxed">Action-focused over perfectionism, prioritizing practical solutions that drive real business outcomes.</p>
+                        <div className="relative w-full h-2 bg-stone-800/80 rounded-full overflow-hidden mb-3">
+                          <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-blue-600 to-blue-400 rounded-full shadow-lg shadow-blue-500/40 transition-all duration-1000" style={{ width: '10%' }}></div>
+                          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent rounded-full"></div>
+                        </div>
+                        <p className="text-stone-400 text-xs sm:text-sm leading-relaxed">Action-focused over perfectionism, prioritizing practical solutions that drive real business outcomes.</p>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                <div className="mt-12 sm:mt-16 pt-12 border-t-2 border-stone-600/40">
-                  <div className="text-center mb-8">
-                    <div className="inline-block px-6 py-3 bg-gradient-to-r from-yellow-400/20 to-orange-500/20 rounded-2xl border-2 border-yellow-400/40 mb-4">
-                      <span className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-yellow-300 via-yellow-400 to-orange-500 bg-clip-text text-transparent">ENFJ-A</span>
+                {/* ENFJ-A Section */}
+                <div className="mt-16 pt-10 border-t border-stone-700/40">
+                  <div className="text-center mb-10">
+                    <p className="text-stone-500 text-xs tracking-[0.2em] uppercase font-bold mb-4">Myers-Briggs Type Indicator</p>
+                    <div className="inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-10 py-4 sm:py-5 bg-gradient-to-r from-yellow-400/10 via-orange-500/10 to-yellow-400/10 rounded-2xl border border-yellow-400/30 shadow-2xl shadow-yellow-400/10 mb-4">
+                      {(['E','N','F','J'] as const).map((char, i) => (
+                        <span key={i} className="font-black text-3xl sm:text-5xl bg-gradient-to-b from-yellow-300 via-yellow-400 to-orange-500 bg-clip-text text-transparent" style={{ filter: 'drop-shadow(0 0 10px rgba(251,191,36,0.5))' }}>{char}</span>
+                      ))}
+                      <span className="text-stone-600 font-black text-2xl sm:text-3xl mx-1">-</span>
+                      <span className="font-black text-3xl sm:text-5xl bg-gradient-to-b from-yellow-300 via-yellow-400 to-orange-500 bg-clip-text text-transparent" style={{ filter: 'drop-shadow(0 0 10px rgba(251,191,36,0.5))' }}>A</span>
                     </div>
-                    <p className="text-yellow-400 text-lg sm:text-xl font-semibold">The Protagonist</p>
+                    <p className="text-yellow-400 text-base sm:text-xl font-semibold">The Protagonist</p>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-6">
-                    <div className="group/trait relative">
-                      <div className="absolute -inset-1 bg-gradient-to-r from-yellow-400/20 to-orange-500/20 rounded-xl blur opacity-0 group-hover/trait:opacity-100 transition-opacity duration-300"></div>
-                      <div className="relative bg-gradient-to-br from-stone-800/60 to-stone-900/60 backdrop-blur-xl rounded-xl p-5 border-2 border-stone-600/30 hover:border-yellow-400/50 transition-all duration-300">
-                        <div className="text-center">
-                          <div className="text-yellow-400 font-bold text-lg mb-2">Extraverted</div>
-                          <div className="relative w-full h-3 bg-stone-700/50 rounded-full overflow-hidden mb-2">
-                            <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full shadow-lg shadow-yellow-400/50 transition-all duration-1000" style={{ width: '57%' }}></div>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+                    {[
+                      { label: 'Extraverted', pct: 57, abbr: 'E' },
+                      { label: 'Intuitive', pct: 89, abbr: 'N' },
+                      { label: 'Feeling', pct: 53, abbr: 'F' },
+                      { label: 'Judging', pct: 60, abbr: 'J' },
+                      { label: 'Assertive', pct: 57, abbr: 'A' },
+                    ].map(({ label, pct, abbr }) => (
+                      <div key={label} className="group/trait relative">
+                        <div className="absolute -inset-1 bg-gradient-to-r from-yellow-400/15 to-orange-500/15 rounded-2xl blur opacity-0 group-hover/trait:opacity-100 transition-opacity duration-300"></div>
+                        <div className="relative bg-stone-900/60 backdrop-blur-xl rounded-2xl p-5 border border-stone-700/40 hover:border-yellow-400/40 transition-all duration-300 overflow-hidden group-hover/trait:-translate-y-1">
+                          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-yellow-400/40 to-transparent"></div>
+                          <div className="text-center">
+                            <div className="w-10 h-10 mx-auto mb-3 rounded-xl bg-gradient-to-br from-yellow-400/20 to-orange-500/10 border border-yellow-400/20 flex items-center justify-center">
+                              <span className="text-yellow-400 font-black text-lg">{abbr}</span>
+                            </div>
+                            <div className="text-stone-300 font-bold text-sm mb-3">{label}</div>
+                            <div className="relative w-full h-2.5 bg-stone-800/80 rounded-full overflow-hidden mb-2">
+                              <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-yellow-500 to-orange-400 rounded-full shadow-md shadow-yellow-400/30" style={{ width: `${pct}%` }}></div>
+                              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent rounded-full"></div>
+                            </div>
+                            <div className="text-white font-black text-2xl">{pct}%</div>
                           </div>
-                          <div className="text-white font-bold text-2xl">57%</div>
                         </div>
                       </div>
-                    </div>
-
-                    <div className="group/trait relative">
-                      <div className="absolute -inset-1 bg-gradient-to-r from-yellow-400/20 to-orange-500/20 rounded-xl blur opacity-0 group-hover/trait:opacity-100 transition-opacity duration-300"></div>
-                      <div className="relative bg-gradient-to-br from-stone-800/60 to-stone-900/60 backdrop-blur-xl rounded-xl p-5 border-2 border-stone-600/30 hover:border-yellow-400/50 transition-all duration-300">
-                        <div className="text-center">
-                          <div className="text-yellow-400 font-bold text-lg mb-2">Intuitive</div>
-                          <div className="relative w-full h-3 bg-stone-700/50 rounded-full overflow-hidden mb-2">
-                            <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full shadow-lg shadow-yellow-400/50 transition-all duration-1000" style={{ width: '89%' }}></div>
-                          </div>
-                          <div className="text-white font-bold text-2xl">89%</div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="group/trait relative">
-                      <div className="absolute -inset-1 bg-gradient-to-r from-yellow-400/20 to-orange-500/20 rounded-xl blur opacity-0 group-hover/trait:opacity-100 transition-opacity duration-300"></div>
-                      <div className="relative bg-gradient-to-br from-stone-800/60 to-stone-900/60 backdrop-blur-xl rounded-xl p-5 border-2 border-stone-600/30 hover:border-yellow-400/50 transition-all duration-300">
-                        <div className="text-center">
-                          <div className="text-yellow-400 font-bold text-lg mb-2">Feeling</div>
-                          <div className="relative w-full h-3 bg-stone-700/50 rounded-full overflow-hidden mb-2">
-                            <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full shadow-lg shadow-yellow-400/50 transition-all duration-1000" style={{ width: '53%' }}></div>
-                          </div>
-                          <div className="text-white font-bold text-2xl">53%</div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="group/trait relative">
-                      <div className="absolute -inset-1 bg-gradient-to-r from-yellow-400/20 to-orange-500/20 rounded-xl blur opacity-0 group-hover/trait:opacity-100 transition-opacity duration-300"></div>
-                      <div className="relative bg-gradient-to-br from-stone-800/60 to-stone-900/60 backdrop-blur-xl rounded-xl p-5 border-2 border-stone-600/30 hover:border-yellow-400/50 transition-all duration-300">
-                        <div className="text-center">
-                          <div className="text-yellow-400 font-bold text-lg mb-2">Judging</div>
-                          <div className="relative w-full h-3 bg-stone-700/50 rounded-full overflow-hidden mb-2">
-                            <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full shadow-lg shadow-yellow-400/50 transition-all duration-1000" style={{ width: '60%' }}></div>
-                          </div>
-                          <div className="text-white font-bold text-2xl">60%</div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="group/trait relative">
-                      <div className="absolute -inset-1 bg-gradient-to-r from-yellow-400/20 to-orange-500/20 rounded-xl blur opacity-0 group-hover/trait:opacity-100 transition-opacity duration-300"></div>
-                      <div className="relative bg-gradient-to-br from-stone-800/60 to-stone-900/60 backdrop-blur-xl rounded-xl p-5 border-2 border-stone-600/30 hover:border-yellow-400/50 transition-all duration-300">
-                        <div className="text-center">
-                          <div className="text-yellow-400 font-bold text-lg mb-2">Assertive</div>
-                          <div className="relative w-full h-3 bg-stone-700/50 rounded-full overflow-hidden mb-2">
-                            <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full shadow-lg shadow-yellow-400/50 transition-all duration-1000" style={{ width: '57%' }}></div>
-                          </div>
-                          <div className="text-white font-bold text-2xl">57%</div>
-                        </div>
-                      </div>
-                    </div>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -778,7 +846,7 @@ const Home = () => {
             <h2 className="text-3xl sm:text-5xl lg:text-6xl font-bold text-white mb-4 px-4">
               Results? <span className="bg-gradient-to-r from-yellow-300 via-yellow-400 to-orange-500 bg-clip-text text-transparent">I Got You Covered</span>
             </h2>
-            <div className="w-32 h-1.5 bg-gradient-to-r from-yellow-400 to-orange-500 mx-auto rounded-full shadow-lg shadow-yellow-400/50"></div>
+            <div className="flare-divider w-1/2 max-w-sm mx-auto mb-6"></div>
             <p className="text-stone-300 mt-6 text-lg max-w-2xl mx-auto">
               Real transformations from real companies.<br />
               See how I've helped businesses scale their operations.
@@ -892,23 +960,37 @@ const Home = () => {
                         <div className="w-1 h-6 bg-gradient-to-b from-yellow-400 to-orange-500 rounded-full"></div>
                         Impact Metrics
                       </h4>
-                      <div className="space-y-5">
-                        <div className="group/metric hover:scale-105 transition-transform duration-300">
-                          <div className="flex justify-between items-center p-4 bg-gradient-to-r from-stone-800/60 to-stone-900/60 rounded-xl border border-yellow-400/20">
-                            <span className="text-stone-300 font-medium">Hours Saved</span>
-                            <span className="text-yellow-400 font-bold text-2xl tracking-tight">{hoursSaved}+</span>
+                      <div className="space-y-4">
+                        <div className="group/metric hover:scale-105 transition-transform duration-300 relative">
+                          <div className="absolute inset-0 bg-yellow-400/5 rounded-xl blur opacity-0 group-hover/metric:opacity-100 transition-opacity"></div>
+                          <div className="flex flex-col sm:flex-row sm:justify-between items-start sm:items-center p-5 bg-gradient-to-r from-stone-800/80 to-stone-900/80 rounded-xl border border-yellow-400/30 shadow-lg relative glass-rim">
+                            <div className="flex items-center gap-3 mb-2 sm:mb-0">
+                               <Clock className="w-5 h-5 text-yellow-400" />
+                               <span className="text-stone-300 font-semibold tracking-wide uppercase text-sm">Hours Saved</span>
+                            </div>
+                            <span className="text-yellow-400 font-black text-3xl tracking-tight drop-shadow-md">{hoursSavedCV}+</span>
                           </div>
                         </div>
-                        <div className="group/metric hover:scale-105 transition-transform duration-300">
-                          <div className="flex justify-between items-center p-4 bg-gradient-to-r from-stone-800/60 to-stone-900/60 rounded-xl border border-yellow-400/20">
-                            <span className="text-stone-300 font-medium">Productivity Boost</span>
-                            <span className="text-yellow-400 font-bold text-2xl tracking-tight">{efficiencyBoost}</span>
+                        
+                        <div className="group/metric hover:scale-105 transition-transform duration-300 relative">
+                          <div className="absolute inset-0 bg-yellow-400/5 rounded-xl blur opacity-0 group-hover/metric:opacity-100 transition-opacity"></div>
+                          <div className="flex flex-col sm:flex-row sm:justify-between items-start sm:items-center p-5 bg-gradient-to-r from-stone-800/80 to-stone-900/80 rounded-xl border border-yellow-400/30 shadow-lg relative glass-rim">
+                            <div className="flex items-center gap-3 mb-2 sm:mb-0">
+                               <TrendingUp className="w-5 h-5 text-yellow-400" />
+                               <span className="text-stone-300 font-semibold tracking-wide uppercase text-sm">Productivity Boost</span>
+                            </div>
+                            <span className="text-yellow-400 font-black text-3xl tracking-tight drop-shadow-md">{efficiencyBoostCV}</span>
                           </div>
                         </div>
-                        <div className="group/metric hover:scale-105 transition-transform duration-300">
-                          <div className="flex justify-between items-center p-4 bg-gradient-to-r from-stone-800/60 to-stone-900/60 rounded-xl border border-yellow-400/20">
-                            <span className="text-stone-300 font-medium">Team Growth</span>
-                            <span className="text-yellow-400 font-bold text-2xl tracking-tight">Strategic</span>
+
+                        <div className="group/metric hover:scale-105 transition-transform duration-300 relative">
+                          <div className="absolute inset-0 bg-yellow-400/5 rounded-xl blur opacity-0 group-hover/metric:opacity-100 transition-opacity"></div>
+                          <div className="flex flex-col sm:flex-row sm:justify-between items-start sm:items-center p-5 bg-gradient-to-r from-stone-800/80 to-stone-900/80 rounded-xl border border-yellow-400/30 shadow-lg relative glass-rim">
+                            <div className="flex items-center gap-3 mb-2 sm:mb-0">
+                               <Users className="w-5 h-5 text-yellow-400" />
+                               <span className="text-stone-300 font-semibold tracking-wide uppercase text-sm">Team Growth</span>
+                            </div>
+                            <span className="text-yellow-400 font-black text-3xl tracking-tight drop-shadow-md">Strategic</span>
                           </div>
                         </div>
                       </div>
@@ -919,22 +1001,24 @@ const Home = () => {
                     <p className="text-stone-300 font-medium text-lg">Verify this transformation with the team</p>
                   </div>
 
-                  <a
-                    href="https://www.instagram.com/kairuu_u/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group/btn relative bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-300 hover:to-orange-400 text-white px-10 py-4 rounded-xl font-bold text-lg transition-all duration-300 shadow-2xl hover:shadow-yellow-400/40 hover:scale-105 w-full block text-center overflow-hidden"
-                    style={{ textShadow: '0 2px 4px rgba(0,0,0,0.3)' }}
-                  >
-                    <span className="relative z-10">CONTACT THEM</span>
-                    <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-200%] group-hover/btn:translate-x-[200%] transition-transform duration-1000"></div>
-                  </a>
+                  <div className="flex justify-center">
+                    <a
+                      href="https://www.instagram.com/kairuu_u/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group/btn relative bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-300 hover:to-orange-400 text-white px-6 py-3 rounded-xl font-bold text-sm transition-all duration-300 shadow-2xl hover:shadow-yellow-400/40 hover:scale-105 inline-flex items-center gap-2 overflow-hidden"
+                      style={{ textShadow: '0 2px 4px rgba(0,0,0,0.3)' }}
+                    >
+                      <span className="relative z-10">CONTACT THEM</span>
+                      <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-200%] group-hover/btn:translate-x-[200%] transition-transform duration-1000"></div>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <div ref={gallery.ref} className={`mt-16 fade-up ${gallery.isVisible ? 'visible' : ''}`}>
-              <div className="relative overflow-hidden">
+            <div ref={gallery.ref} className={`mt-20 fade-up ${gallery.isVisible ? 'visible' : ''}`}>
+              <div className="relative overflow-hidden" style={{ maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)', WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)' }}>
                 <style dangerouslySetInnerHTML={{
                   __html: `
                   @keyframes scrollGallery {
@@ -976,7 +1060,7 @@ const Home = () => {
               </div>
             </div>
 
-            <div ref={results2.ref} className={`relative group mt-16 fade-up fade-up-delay-100 ${results2.isVisible ? 'visible' : ''}`}>
+            <div ref={results2.ref} className={`relative group mt-20 fade-up fade-up-delay-100 ${results2.isVisible ? 'visible' : ''}`}>
               <div className="absolute -inset-1 bg-gradient-to-r from-yellow-400/30 via-orange-500/30 to-yellow-400/30 rounded-3xl blur-2xl opacity-50 group-hover:opacity-75 transition-opacity duration-500"></div>
               <div className="relative bg-gradient-to-br from-stone-800/90 via-stone-800/70 to-stone-900/90 backdrop-blur-2xl rounded-3xl overflow-hidden border-2 border-yellow-400/30 shadow-2xl">
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-yellow-400 to-transparent"></div>
@@ -1109,16 +1193,18 @@ const Home = () => {
                     <p className="text-stone-300 font-medium text-lg">Verify this transformation with the team</p>
                   </div>
 
-                  <a
-                    href="https://www.instagram.com/aubtin.g/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group/btn relative bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-300 hover:to-orange-400 text-white px-10 py-4 rounded-xl font-bold text-lg transition-all duration-300 shadow-2xl hover:shadow-yellow-400/40 hover:scale-105 w-full block text-center overflow-hidden"
-                    style={{ textShadow: '0 2px 4px rgba(0,0,0,0.3)' }}
-                  >
-                    <span className="relative z-10">CONTACT THEM</span>
-                    <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-200%] group-hover/btn:translate-x-[200%] transition-transform duration-1000"></div>
-                  </a>
+                  <div className="flex justify-center">
+                    <a
+                      href="https://www.instagram.com/aubtin.g/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group/btn relative bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-300 hover:to-orange-400 text-white px-6 py-3 rounded-xl font-bold text-sm transition-all duration-300 shadow-2xl hover:shadow-yellow-400/40 hover:scale-105 inline-flex items-center gap-2 overflow-hidden"
+                      style={{ textShadow: '0 2px 4px rgba(0,0,0,0.3)' }}
+                    >
+                      <span className="relative z-10">CONTACT THEM</span>
+                      <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-200%] group-hover/btn:translate-x-[200%] transition-transform duration-1000"></div>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -1183,20 +1269,20 @@ const Home = () => {
                       </p>
                     </div>
 
-                    <div className="flex flex-wrap justify-center gap-8 sm:gap-12 text-center">
-                      <div>
-                        <div className="text-yellow-400 font-bold text-3xl sm:text-4xl mb-2">1,800+</div>
-                        <div className="text-stone-400 text-sm">Hours Saved</div>
+                    <div ref={statsGrid.ref} className="flex flex-wrap justify-center gap-8 sm:gap-12 text-center">
+                      <div className="group/stat">
+                        <div className="text-yellow-400 font-bold text-3xl sm:text-4xl mb-2 drop-shadow-[0_0_10px_rgba(250,204,21,0.5)]">{hoursSaved}+</div>
+                        <div className="text-stone-400 text-sm uppercase tracking-widest font-semibold group-hover:text-stone-300 transition-colors">Hours Saved</div>
                       </div>
-                      <div className="hidden sm:block w-px h-16 bg-stone-600"></div>
-                      <div>
-                        <div className="text-yellow-400 font-bold text-3xl sm:text-4xl mb-2">80%</div>
-                        <div className="text-stone-400 text-sm">Productivity Boost</div>
+                      <div className="hidden sm:block w-px h-16 bg-stone-700/50"></div>
+                      <div className="group/stat">
+                        <div className="text-yellow-400 font-bold text-3xl sm:text-4xl mb-2 drop-shadow-[0_0_10px_rgba(250,204,21,0.5)]">{efficiencyBoost}</div>
+                        <div className="text-stone-400 text-sm uppercase tracking-widest font-semibold group-hover:text-stone-300 transition-colors">Efficiency</div>
                       </div>
-                      <div className="hidden sm:block w-px h-16 bg-stone-600"></div>
-                      <div>
-                        <div className="text-yellow-400 font-bold text-3xl sm:text-4xl mb-2">$1M+</div>
-                        <div className="text-stone-400 text-sm">Client Revenue</div>
+                      <div className="hidden sm:block w-px h-16 bg-stone-700/50"></div>
+                      <div className="group/stat">
+                        <div className="text-yellow-400 font-bold text-3xl sm:text-4xl mb-2 drop-shadow-[0_0_10px_rgba(250,204,21,0.5)]">{revenueImpact}</div>
+                        <div className="text-stone-400 text-sm uppercase tracking-widest font-semibold group-hover:text-stone-300 transition-colors">Revenue</div>
                       </div>
                     </div>
                   </div>
@@ -1207,7 +1293,7 @@ const Home = () => {
         </div>
       </section>
 
-      <section id="process" className="py-16 sm:py-24 px-4 sm:px-6 bg-gradient-to-b from-stone-950 via-stone-900 to-stone-950 relative overflow-hidden">
+      <section id="process" className="py-24 sm:py-32 px-4 sm:px-6 bg-gradient-to-b from-stone-950 via-stone-900 to-stone-950 relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-gradient-to-r from-yellow-400/5 to-orange-500/5 rounded-full blur-3xl"></div>
           <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-gradient-to-r from-orange-500/5 to-yellow-400/5 rounded-full blur-3xl"></div>
@@ -1221,7 +1307,7 @@ const Home = () => {
             <h2 className="text-3xl sm:text-5xl lg:text-6xl font-bold text-white mb-4 px-4">
               Our <span className="bg-gradient-to-r from-yellow-300 via-yellow-400 to-orange-500 bg-clip-text text-transparent">Process</span>
             </h2>
-            <div className="w-32 h-1.5 bg-gradient-to-r from-yellow-400 to-orange-500 mx-auto rounded-full shadow-lg shadow-yellow-400/50"></div>
+            <div className="flare-divider w-1/2 max-w-sm mx-auto mb-6"></div>
             <p className="text-stone-300 mt-6 text-lg max-w-3xl mx-auto leading-relaxed">
               Our onboarding is designed to get you live quickly, reduce friction for your team, and ensure your system actually gets used—not just set up.
             </p>
@@ -1249,39 +1335,65 @@ const Home = () => {
                   </div>
                 </div>
 
-                <div className="bg-gradient-to-br from-stone-800/50 to-stone-900/50 rounded-2xl overflow-hidden border border-stone-600/30 shadow-inner">
-                  <div className="overflow-x-auto">
-                    <table className="w-full text-left text-sm whitespace-nowrap sm:whitespace-normal">
-                      <thead className="text-white font-bold bg-stone-800/80 border-b border-stone-600/30">
-                        <tr>
-                          <th className="px-6 py-4 w-16 text-yellow-400">Step</th>
-                          <th className="px-6 py-4 min-w-[200px]">Phase</th>
-                          <th className="px-6 py-4">Details</th>
-                        </tr>
-                      </thead>
-                      <tbody className="divide-y divide-stone-600/20">
-                        <tr className="hover:bg-stone-800/40 transition-colors">
-                          <td className="px-6 py-4 font-bold text-stone-400">01</td>
-                          <td className="px-6 py-4 text-stone-300 font-semibold">The First Call (Investigation)</td>
-                          <td className="px-6 py-4 text-yellow-400/90 font-medium whitespace-normal">We hop on a call to look at how you handle your work right now. I'll ask questions to find the specific spots where you're losing time or where things are falling through the cracks.</td>
-                        </tr>
-                        <tr className="hover:bg-stone-800/40 transition-colors bg-stone-800/20">
-                          <td className="px-6 py-4 font-bold text-stone-400">02</td>
-                          <td className="px-6 py-4 text-stone-300 font-semibold">The Custom Plan</td>
-                          <td className="px-6 py-4 text-yellow-400/90 font-medium whitespace-normal">After our call, I'll send you a simple document. It will show you exactly what I plan to automate and how it's going to make your day-to-day easier.</td>
-                        </tr>
-                        <tr className="hover:bg-stone-800/40 transition-colors">
-                          <td className="px-6 py-4 font-bold text-stone-400">03</td>
-                          <td className="px-6 py-4 text-stone-300 font-semibold">The Second Call (Review &amp; Scope)</td>
-                          <td className="px-6 py-4 text-yellow-400/90 font-medium whitespace-normal">We meet again to go over the plan. This is where you tell me if I missed anything or if you want to add a specific feature. We'll look at your actual data and files so I know exactly what I'm working with.</td>
-                        </tr>
-                        <tr className="hover:bg-stone-800/40 transition-colors bg-stone-800/20">
-                          <td className="px-6 py-4 font-bold text-stone-400">04</td>
-                          <td className="px-6 py-4 text-stone-300 font-semibold">The Kick-off Call</td>
-                          <td className="px-6 py-4 text-yellow-400/90 font-medium whitespace-normal">Once we both agree on the plan, we finalize the price. We'll handle the paperwork and the first payment on this call so I can get to work on your systems immediately.</td>
-                        </tr>
-                      </tbody>
-                    </table>
+                <div className="space-y-4 relative z-10">
+                  <div className="group/step relative bg-gradient-to-br from-stone-800/50 to-stone-900/50 rounded-2xl p-6 border border-stone-600/30 hover:border-yellow-400/40 transition-all duration-300 shadow-lg">
+                    <div className="absolute inset-0 bg-stone-800/0 group-hover/step:bg-stone-800/20 transition-colors duration-300 rounded-2xl"></div>
+                    <div className="absolute top-0 left-6 w-8 h-1 bg-gradient-to-r from-yellow-400 to-orange-500 -mt-px opacity-0 group-hover/step:opacity-100 transition-opacity"></div>
+                    <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-start relative z-10">
+                      <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-stone-950 border-2 border-stone-700/50 flex items-center justify-center text-stone-400 font-bold group-hover/step:text-yellow-400 transition-colors group-hover/step:border-yellow-400/50 shadow-inner overflow-hidden relative">
+                         <div className="absolute inset-0 bg-yellow-400/5 opacity-0 group-hover/step:opacity-100 transition-opacity"></div>
+                         01
+                      </div>
+                      <div>
+                        <h4 className="text-white font-bold text-lg sm:text-xl mb-2">The First Call (Investigation)</h4>
+                        <p className="text-stone-300 text-sm sm:text-base leading-relaxed">We hop on a call to look at how you handle your work right now. I'll ask questions to find the specific spots where you're losing time or where things are falling through the cracks.</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="group/step relative bg-gradient-to-br from-stone-800/50 to-stone-900/50 rounded-2xl p-6 border border-stone-600/30 hover:border-yellow-400/40 transition-all duration-300 shadow-lg">
+                    <div className="absolute inset-0 bg-stone-800/0 group-hover/step:bg-stone-800/20 transition-colors duration-300 rounded-2xl"></div>
+                    <div className="absolute top-0 left-6 w-8 h-1 bg-gradient-to-r from-yellow-400 to-orange-500 -mt-px opacity-0 group-hover/step:opacity-100 transition-opacity"></div>
+                    <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-start relative z-10">
+                      <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-stone-950 border-2 border-stone-700/50 flex items-center justify-center text-stone-400 font-bold group-hover/step:text-yellow-400 transition-colors group-hover/step:border-yellow-400/50 shadow-inner overflow-hidden relative">
+                         <div className="absolute inset-0 bg-yellow-400/5 opacity-0 group-hover/step:opacity-100 transition-opacity"></div>
+                         02
+                      </div>
+                      <div>
+                        <h4 className="text-white font-bold text-lg sm:text-xl mb-2">The Custom Plan</h4>
+                        <p className="text-stone-300 text-sm sm:text-base leading-relaxed">After our call, I'll send you a simple document. It will show you exactly what I plan to automate and how it's going to make your day-to-day easier.</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="group/step relative bg-gradient-to-br from-stone-800/50 to-stone-900/50 rounded-2xl p-6 border border-stone-600/30 hover:border-yellow-400/40 transition-all duration-300 shadow-lg">
+                    <div className="absolute inset-0 bg-stone-800/0 group-hover/step:bg-stone-800/20 transition-colors duration-300 rounded-2xl"></div>
+                    <div className="absolute top-0 left-6 w-8 h-1 bg-gradient-to-r from-yellow-400 to-orange-500 -mt-px opacity-0 group-hover/step:opacity-100 transition-opacity"></div>
+                    <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-start relative z-10">
+                      <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-stone-950 border-2 border-stone-700/50 flex items-center justify-center text-stone-400 font-bold group-hover/step:text-yellow-400 transition-colors group-hover/step:border-yellow-400/50 shadow-inner overflow-hidden relative">
+                         <div className="absolute inset-0 bg-yellow-400/5 opacity-0 group-hover/step:opacity-100 transition-opacity"></div>
+                         03
+                      </div>
+                      <div>
+                        <h4 className="text-white font-bold text-lg sm:text-xl mb-2">The Second Call (Review &amp; Scope)</h4>
+                        <p className="text-stone-300 text-sm sm:text-base leading-relaxed">We meet again to go over the plan. This is where you tell me if I missed anything or if you want to add a specific feature. We'll look at your actual data and files so I know exactly what I'm working with.</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="group/step relative bg-gradient-to-br from-stone-800/50 to-stone-900/50 rounded-2xl p-6 border border-stone-600/30 hover:border-yellow-400/40 transition-all duration-300 shadow-lg">
+                    <div className="absolute inset-0 bg-stone-800/0 group-hover/step:bg-stone-800/20 transition-colors duration-300 rounded-2xl"></div>
+                    <div className="absolute top-0 left-6 w-8 h-1 bg-gradient-to-r from-yellow-400 to-orange-500 -mt-px opacity-0 group-hover/step:opacity-100 transition-opacity"></div>
+                    <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-start relative z-10">
+                      <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-stone-950 border-2 border-stone-700/50 flex items-center justify-center text-stone-400 font-bold group-hover/step:text-yellow-400 transition-colors group-hover/step:border-yellow-400/50 shadow-inner overflow-hidden relative">
+                         <div className="absolute inset-0 bg-yellow-400/5 opacity-0 group-hover/step:opacity-100 transition-opacity"></div>
+                         04
+                      </div>
+                      <div>
+                        <h4 className="text-white font-bold text-lg sm:text-xl mb-2">The Kick-off Call</h4>
+                        <p className="text-stone-300 text-sm sm:text-base leading-relaxed">Once we both agree on the plan, we finalize the price. We'll handle the paperwork and the first payment on this call so I can get to work on your systems immediately.</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -1308,34 +1420,50 @@ const Home = () => {
                   </div>
                 </div>
 
-                <div className="bg-gradient-to-br from-stone-800/50 to-stone-900/50 rounded-2xl overflow-hidden border border-stone-600/30 shadow-inner">
-                  <div className="overflow-x-auto">
-                    <table className="w-full text-left text-sm whitespace-nowrap sm:whitespace-normal">
-                      <thead className="text-white font-bold bg-stone-800/80 border-b border-stone-600/30">
-                        <tr>
-                          <th className="px-6 py-4 w-16 text-yellow-400">Step</th>
-                          <th className="px-6 py-4">What I'm Doing</th>
-                          <th className="px-6 py-4">What You Get</th>
-                        </tr>
-                      </thead>
-                      <tbody className="divide-y divide-stone-600/20">
-                        <tr className="hover:bg-stone-800/40 transition-colors">
-                          <td className="px-6 py-4 font-bold text-stone-400">01</td>
-                          <td className="px-6 py-4 text-stone-300">Build &amp; Automate</td>
-                          <td className="px-6 py-4 text-yellow-400/90 font-medium">I set up your accounts, build your workflows, and connect your tools so they talk to each other.</td>
-                        </tr>
-                        <tr className="hover:bg-stone-800/40 transition-colors bg-stone-800/20">
-                          <td className="px-6 py-4 font-bold text-stone-400">02</td>
-                          <td className="px-6 py-4 text-stone-300">Team Onboarding</td>
-                          <td className="px-6 py-4 text-yellow-400/90 font-medium">I invite your team into the system and we run live tests together to make sure everything works correctly.</td>
-                        </tr>
-                        <tr className="hover:bg-stone-800/40 transition-colors">
-                          <td className="px-6 py-4 font-bold text-stone-400">03</td>
-                          <td className="px-6 py-4 text-stone-300">SOP Creation</td>
-                          <td className="px-6 py-4 text-yellow-400/90 font-medium">I create clear, step-by-step instructions so your team knows exactly how to use the new system every day.</td>
-                        </tr>
-                      </tbody>
-                    </table>
+                <div className="space-y-4 relative z-10">
+                  <div className="group/step relative bg-gradient-to-br from-stone-800/50 to-stone-900/50 rounded-2xl p-6 border border-stone-600/30 hover:border-yellow-400/40 transition-all duration-300 shadow-lg">
+                    <div className="absolute inset-0 bg-stone-800/0 group-hover/step:bg-stone-800/20 transition-colors duration-300 rounded-2xl"></div>
+                    <div className="absolute top-0 left-6 w-8 h-1 bg-gradient-to-r from-yellow-400 to-orange-500 -mt-px opacity-0 group-hover/step:opacity-100 transition-opacity"></div>
+                    <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-start relative z-10">
+                      <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-stone-950 border-2 border-stone-700/50 flex items-center justify-center text-stone-400 font-bold group-hover/step:text-yellow-400 transition-colors group-hover/step:border-yellow-400/50 shadow-inner overflow-hidden relative">
+                         <div className="absolute inset-0 bg-yellow-400/5 opacity-0 group-hover/step:opacity-100 transition-opacity"></div>
+                         01
+                      </div>
+                      <div>
+                        <h4 className="text-white font-bold text-lg sm:text-xl mb-2">Build &amp; Automate</h4>
+                        <p className="text-stone-300 text-sm sm:text-base leading-relaxed">I set up your accounts, build your workflows, and connect your tools so they talk to each other.</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="group/step relative bg-gradient-to-br from-stone-800/50 to-stone-900/50 rounded-2xl p-6 border border-stone-600/30 hover:border-yellow-400/40 transition-all duration-300 shadow-lg">
+                    <div className="absolute inset-0 bg-stone-800/0 group-hover/step:bg-stone-800/20 transition-colors duration-300 rounded-2xl"></div>
+                    <div className="absolute top-0 left-6 w-8 h-1 bg-gradient-to-r from-yellow-400 to-orange-500 -mt-px opacity-0 group-hover/step:opacity-100 transition-opacity"></div>
+                    <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-start relative z-10">
+                      <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-stone-950 border-2 border-stone-700/50 flex items-center justify-center text-stone-400 font-bold group-hover/step:text-yellow-400 transition-colors group-hover/step:border-yellow-400/50 shadow-inner overflow-hidden relative">
+                         <div className="absolute inset-0 bg-yellow-400/5 opacity-0 group-hover/step:opacity-100 transition-opacity"></div>
+                         02
+                      </div>
+                      <div>
+                        <h4 className="text-white font-bold text-lg sm:text-xl mb-2">Team Onboarding</h4>
+                        <p className="text-stone-300 text-sm sm:text-base leading-relaxed">I invite your team into the system and we run live tests together to make sure everything works correctly.</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="group/step relative bg-gradient-to-br from-stone-800/50 to-stone-900/50 rounded-2xl p-6 border border-stone-600/30 hover:border-yellow-400/40 transition-all duration-300 shadow-lg">
+                    <div className="absolute inset-0 bg-stone-800/0 group-hover/step:bg-stone-800/20 transition-colors duration-300 rounded-2xl"></div>
+                    <div className="absolute top-0 left-6 w-8 h-1 bg-gradient-to-r from-yellow-400 to-orange-500 -mt-px opacity-0 group-hover/step:opacity-100 transition-opacity"></div>
+                    <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-start relative z-10">
+                      <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-stone-950 border-2 border-stone-700/50 flex items-center justify-center text-stone-400 font-bold group-hover/step:text-yellow-400 transition-colors group-hover/step:border-yellow-400/50 shadow-inner overflow-hidden relative">
+                         <div className="absolute inset-0 bg-yellow-400/5 opacity-0 group-hover/step:opacity-100 transition-opacity"></div>
+                         03
+                      </div>
+                      <div>
+                        <h4 className="text-white font-bold text-lg sm:text-xl mb-2">SOP Creation</h4>
+                        <p className="text-stone-300 text-sm sm:text-base leading-relaxed">I create clear, step-by-step instructions so your team knows exactly how to use the new system every day.</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -1362,39 +1490,65 @@ const Home = () => {
                   </div>
                 </div>
 
-                <div className="bg-gradient-to-br from-stone-800/50 to-stone-900/50 rounded-2xl overflow-hidden border border-stone-600/30 shadow-inner">
-                  <div className="overflow-x-auto">
-                    <table className="w-full text-left text-sm whitespace-nowrap sm:whitespace-normal">
-                      <thead className="text-white font-bold bg-stone-800/80 border-b border-stone-600/30">
-                        <tr>
-                          <th className="px-6 py-4 w-16 text-yellow-400">Step</th>
-                          <th className="px-6 py-4 min-w-[200px]">Phase</th>
-                          <th className="px-6 py-4">Details</th>
-                        </tr>
-                      </thead>
-                      <tbody className="divide-y divide-stone-600/20">
-                        <tr className="hover:bg-stone-800/40 transition-colors">
-                          <td className="px-6 py-4 font-bold text-stone-400">01</td>
-                          <td className="px-6 py-4 text-stone-300 font-semibold">Team Training</td>
-                          <td className="px-6 py-4 text-yellow-400/90 font-medium whitespace-normal">I'll sit down with your staff to show them how to use the new setup so they don't go back to their old ways of doing things.</td>
-                        </tr>
-                        <tr className="hover:bg-stone-800/40 transition-colors bg-stone-800/20">
-                          <td className="px-6 py-4 font-bold text-stone-400">02</td>
-                          <td className="px-6 py-4 text-stone-300 font-semibold">Early Support</td>
-                          <td className="px-6 py-4 text-yellow-400/90 font-medium whitespace-normal">For the first week, I'll keep a close eye on everything to answer questions and fix any small "bugs" right away.</td>
-                        </tr>
-                        <tr className="hover:bg-stone-800/40 transition-colors">
-                          <td className="px-6 py-4 font-bold text-stone-400">03</td>
-                          <td className="px-6 py-4 text-stone-300 font-semibold">Bi-Weekly Check-ins</td>
-                          <td className="px-6 py-4 text-yellow-400/90 font-medium whitespace-normal">We'll have a quick chat twice a month to make sure the system is still keeping up as you get busier.</td>
-                        </tr>
-                        <tr className="hover:bg-stone-800/40 transition-colors bg-stone-800/20">
-                          <td className="px-6 py-4 font-bold text-stone-400">04</td>
-                          <td className="px-6 py-4 text-stone-300 font-semibold">Ongoing Updates</td>
-                          <td className="px-6 py-4 text-yellow-400/90 font-medium whitespace-normal">As your business grows or the software changes, I'll update your automations to keep them fast.</td>
-                        </tr>
-                      </tbody>
-                    </table>
+                <div className="space-y-4 relative z-10">
+                  <div className="group/step relative bg-gradient-to-br from-stone-800/50 to-stone-900/50 rounded-2xl p-6 border border-stone-600/30 hover:border-yellow-400/40 transition-all duration-300 shadow-lg">
+                    <div className="absolute inset-0 bg-stone-800/0 group-hover/step:bg-stone-800/20 transition-colors duration-300 rounded-2xl"></div>
+                    <div className="absolute top-0 left-6 w-8 h-1 bg-gradient-to-r from-yellow-400 to-orange-500 -mt-px opacity-0 group-hover/step:opacity-100 transition-opacity"></div>
+                    <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-start relative z-10">
+                      <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-stone-950 border-2 border-stone-700/50 flex items-center justify-center text-stone-400 font-bold group-hover/step:text-yellow-400 transition-colors group-hover/step:border-yellow-400/50 shadow-inner overflow-hidden relative">
+                         <div className="absolute inset-0 bg-yellow-400/5 opacity-0 group-hover/step:opacity-100 transition-opacity"></div>
+                         01
+                      </div>
+                      <div>
+                        <h4 className="text-white font-bold text-lg sm:text-xl mb-2">Team Training</h4>
+                        <p className="text-stone-300 text-sm sm:text-base leading-relaxed">I'll sit down with your staff to show them how to use the new setup so they don't go back to their old ways of doing things.</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="group/step relative bg-gradient-to-br from-stone-800/50 to-stone-900/50 rounded-2xl p-6 border border-stone-600/30 hover:border-yellow-400/40 transition-all duration-300 shadow-lg">
+                    <div className="absolute inset-0 bg-stone-800/0 group-hover/step:bg-stone-800/20 transition-colors duration-300 rounded-2xl"></div>
+                    <div className="absolute top-0 left-6 w-8 h-1 bg-gradient-to-r from-yellow-400 to-orange-500 -mt-px opacity-0 group-hover/step:opacity-100 transition-opacity"></div>
+                    <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-start relative z-10">
+                      <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-stone-950 border-2 border-stone-700/50 flex items-center justify-center text-stone-400 font-bold group-hover/step:text-yellow-400 transition-colors group-hover/step:border-yellow-400/50 shadow-inner overflow-hidden relative">
+                         <div className="absolute inset-0 bg-yellow-400/5 opacity-0 group-hover/step:opacity-100 transition-opacity"></div>
+                         02
+                      </div>
+                      <div>
+                        <h4 className="text-white font-bold text-lg sm:text-xl mb-2">Early Support</h4>
+                        <p className="text-stone-300 text-sm sm:text-base leading-relaxed">For the first week, I'll keep a close eye on everything to answer questions and fix any small "bugs" right away.</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="group/step relative bg-gradient-to-br from-stone-800/50 to-stone-900/50 rounded-2xl p-6 border border-stone-600/30 hover:border-yellow-400/40 transition-all duration-300 shadow-lg">
+                    <div className="absolute inset-0 bg-stone-800/0 group-hover/step:bg-stone-800/20 transition-colors duration-300 rounded-2xl"></div>
+                    <div className="absolute top-0 left-6 w-8 h-1 bg-gradient-to-r from-yellow-400 to-orange-500 -mt-px opacity-0 group-hover/step:opacity-100 transition-opacity"></div>
+                    <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-start relative z-10">
+                      <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-stone-950 border-2 border-stone-700/50 flex items-center justify-center text-stone-400 font-bold group-hover/step:text-yellow-400 transition-colors group-hover/step:border-yellow-400/50 shadow-inner overflow-hidden relative">
+                         <div className="absolute inset-0 bg-yellow-400/5 opacity-0 group-hover/step:opacity-100 transition-opacity"></div>
+                         03
+                      </div>
+                      <div>
+                        <h4 className="text-white font-bold text-lg sm:text-xl mb-2">Bi-Weekly Check-ins</h4>
+                        <p className="text-stone-300 text-sm sm:text-base leading-relaxed">We'll have a quick chat twice a month to make sure the system is still keeping up as you get busier.</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="group/step relative bg-gradient-to-br from-stone-800/50 to-stone-900/50 rounded-2xl p-6 border border-stone-600/30 hover:border-yellow-400/40 transition-all duration-300 shadow-lg">
+                    <div className="absolute inset-0 bg-stone-800/0 group-hover/step:bg-stone-800/20 transition-colors duration-300 rounded-2xl"></div>
+                    <div className="absolute top-0 left-6 w-8 h-1 bg-gradient-to-r from-yellow-400 to-orange-500 -mt-px opacity-0 group-hover/step:opacity-100 transition-opacity"></div>
+                    <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-start relative z-10">
+                      <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-stone-950 border-2 border-stone-700/50 flex items-center justify-center text-stone-400 font-bold group-hover/step:text-yellow-400 transition-colors group-hover/step:border-yellow-400/50 shadow-inner overflow-hidden relative">
+                         <div className="absolute inset-0 bg-yellow-400/5 opacity-0 group-hover/step:opacity-100 transition-opacity"></div>
+                         04
+                      </div>
+                      <div>
+                        <h4 className="text-white font-bold text-lg sm:text-xl mb-2">Ongoing Updates</h4>
+                        <p className="text-stone-300 text-sm sm:text-base leading-relaxed">As your business grows or the software changes, I'll update your automations to keep them fast.</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

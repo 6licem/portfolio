@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import Logo from '../assets/Logo.png';
-import { Menu, X, Sparkles } from 'lucide-react';
+import { Menu, X, ArrowRight, Sparkles } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import CalendarModal from './CalendarModal';
 
@@ -154,7 +154,7 @@ const Navigation = () => {
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 bg-gradient-to-r from-yellow-400/20 to-orange-500/20 blur-xl transition-opacity duration-700"></div>
               <span className="relative z-10 flex items-center gap-2">
                 Book a Call
-                <Sparkles className="w-4 h-4 group-hover:rotate-180 transition-transform duration-700" />
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-500" />
               </span>
             </button>
           </div>
@@ -228,7 +228,7 @@ const Navigation = () => {
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 bg-gradient-to-r from-yellow-400/20 to-orange-500/20 blur-xl transition-opacity duration-700"></div>
                   <span className="relative z-10 flex items-center justify-center gap-2">
                     Book a Call
-                    <Sparkles className="w-4 h-4 group-hover:rotate-180 transition-transform duration-700" />
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-500" />
                   </span>
                 </button>
               </div>

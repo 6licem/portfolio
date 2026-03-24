@@ -35,7 +35,7 @@ const useScrollAnimation = () => {
   return visibleSections;
 };
 
-const AnimatedCounter = ({ end, duration = 5000 }: { end: string; duration?: number }) => {
+const AnimatedCounter = ({ end, duration = 5000, id }: { end: string; duration?: number; id: string }) => {
   const [count, setCount] = useState(0);
   const [hasAnimated, setHasAnimated] = useState(false);
 
@@ -48,7 +48,7 @@ const AnimatedCounter = ({ end, duration = 5000 }: { end: string; duration?: num
           setHasAnimated(true);
           const startTime = Date.now();
           const startValue = 0;
-          const endValue = parseInt(end.replace(/[^0-9]/g, ''));
+          const endValue = parseInt(end.replace(/[^0-9]/g, '')) || 0;
 
           const updateCount = () => {
             const now = Date.now();
@@ -70,16 +70,16 @@ const AnimatedCounter = ({ end, duration = 5000 }: { end: string; duration?: num
       { threshold: 0.5 }
     );
 
-    const element = document.getElementById(`counter-${end}`);
+    const element = document.getElementById(id);
     if (element) {
       observer.observe(element);
     }
 
     return () => observer.disconnect();
-  }, [end, duration, hasAnimated]);
+  }, [end, duration, hasAnimated, id]);
 
   return (
-    <span id={`counter-${end}`}>
+    <span id={id}>
       {end.includes('%') ? `${Math.floor(count)}%` : end.includes('M') ? `$${Math.floor(count).toLocaleString()}+` : `${Math.floor(count).toLocaleString()}+`}
     </span>
   );
@@ -392,7 +392,7 @@ const Portfolio = () => {
                                 style={key === 'Hours Saved' || key === 'Productivity Boost' || key === 'Productivity Increase' ? {textShadow: '0 0 10px rgba(255, 239, 58, 0.8), 0 0 20px rgba(255, 145, 0, 0.6), 0 0 30px rgba(255, 239, 58, 0.4)'} : {}}
                                 dangerouslySetInnerHTML={key === 'Media Feature' ? { __html: value } : undefined}
                               >
-                                {key === 'Media Feature' ? null : (key === 'Hours Saved' || key === 'Productivity Boost' || key === 'Productivity Increase' ? <AnimatedCounter end={value} /> : value)}
+                                {key === 'Media Feature' ? null : (key === 'Hours Saved' || key === 'Productivity Boost' || key === 'Productivity Increase' ? <AnimatedCounter end={value} id={`counter-${specialist.name}-${index}-${key}`} /> : value)}
                               </span>
                             </div>
                           ))}
@@ -408,7 +408,7 @@ const Portfolio = () => {
                       href={index === 0 ? "https://www.instagram.com/kairuu_u/" : "https://www.instagram.com/lucas_cello/"}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="bg-gradient-to-r from-[#FDEF3A] to-[#FF9100] hover:from-[#FFD520] hover:to-[#FFA632] text-white px-6 sm:px-8 py-2 sm:py-3 rounded-xl font-semibold transition-all duration-300 shadow-xl hover:shadow-[#FF9100]/50 hover:scale-105 w-full block text-center text-sm sm:text-base"
+                      className="bg-gradient-to-r from-[#FDEF3A] to-[#FF9100] hover:from-[#FFD520] hover:to-[#FFA632] text-white px-6 py-2.5 rounded-xl font-semibold transition-all duration-300 shadow-xl hover:shadow-[#FF9100]/50 hover:scale-105 inline-flex items-center gap-2 text-sm"
                       style={{textShadow: '0 1px 3px rgba(0,0,0,0.3)'}}
                     >
                       <span>CONTACT THEM</span>
