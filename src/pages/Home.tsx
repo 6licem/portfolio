@@ -32,6 +32,8 @@ import port5 from '../assets/portfolioCarousel/Screenshot 2025-11-26 090338.png'
 
 // Certification Images
 import mondayCert1 from '../assets/certificationImages/monday cert 1.jpg';
+import n8nBadge1 from '../assets/certificationImages/n8n badge 1.png';
+import n8nBadge2 from '../assets/certificationImages/n8n badge 2.png';
 
 const Home = () => {
   const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
@@ -39,6 +41,7 @@ const Home = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [currentJsmImageIndex, setCurrentJsmImageIndex] = useState(0);
   const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
+  const [currentCertIndex, setCurrentCertIndex] = useState(0);
   const [statsReady, setStatsReady] = useState(false);
 
   const carouselImages = [
@@ -94,6 +97,24 @@ const Home = () => {
     }
   ];
 
+  const certifications = [
+    {
+      image: mondayCert1,
+      title: "Monday.com Core Certification",
+      subtitle: "Workflow & Automation Specialist"
+    },
+    {
+      image: n8nBadge1,
+      title: "n8n Automation Certification",
+      subtitle: "Certified Specialist"
+    },
+    {
+      image: n8nBadge2,
+      title: "n8n Professional Certification",
+      subtitle: "Certified Professional"
+    }
+  ];
+
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prev) => (prev + 1) % carouselImages.length);
@@ -114,6 +135,13 @@ const Home = () => {
     }, 6000);
     return () => clearInterval(interval);
   }, [testimonials.length]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentCertIndex((prev) => (prev + 1) % certifications.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [certifications.length]);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -146,6 +174,14 @@ const Home = () => {
 
   const prevTestimonial = () => {
     setCurrentTestimonialIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  };
+
+  const nextCert = () => {
+    setCurrentCertIndex((prev) => (prev + 1) % certifications.length);
+  };
+
+  const prevCert = () => {
+    setCurrentCertIndex((prev) => (prev - 1 + certifications.length) % certifications.length);
   };
 
   const hero = useScrollAnimation();
@@ -407,7 +443,7 @@ const Home = () => {
                     </a>
                   </div>
 
-                  <div className="mt-12 sm:mt-16 lg:mt-20">
+                  <div className="mt-12 sm:mt-16 lg:mt-auto flex-1 flex flex-col">
                     <div className="flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8">
                       <div className="w-1 h-6 sm:h-8 bg-gradient-to-b from-yellow-400 to-orange-500 rounded-full"></div>
                       <h3 className="text-xl sm:text-2xl font-bold text-white flex items-center gap-2 sm:gap-3">
@@ -416,11 +452,11 @@ const Home = () => {
                       </h3>
                     </div>
 
-                    <div className="relative">
+                    <div className="relative flex-1">
                       <div className="absolute -inset-1 bg-gradient-to-r from-yellow-400/20 via-orange-500/20 to-yellow-400/20 rounded-3xl blur-xl"></div>
-                      <div className="relative bg-gradient-to-br from-stone-800/60 to-stone-900/60 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-5 sm:p-8 border border-yellow-400/20 min-h-[400px] sm:min-h-[440px] lg:min-h-[420px] flex-1 flex flex-col justify-between">
+                      <div className="relative bg-gradient-to-br from-stone-800/60 to-stone-900/60 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-5 sm:p-8 border border-yellow-400/20 flex flex-col justify-between h-[480px] sm:h-[520px] lg:h-[550px]">
                         <div className="flex-1 flex items-center relative">
-                          <div className="w-full">
+                          <div key={currentTestimonialIndex} className="w-full animate-slide-left">
                             <div className="text-yellow-400/20 text-5xl sm:text-6xl font-serif mb-4">"</div>
                             <div className="flex-1 flex items-center pr-2">
                               <p className="text-stone-200 text-base sm:text-lg leading-relaxed mb-6 sm:mb-8 transition-all duration-500 line-clamp-6 sm:line-clamp-5">
@@ -533,25 +569,64 @@ const Home = () => {
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8 pt-8">
-                    <div className="w-1 h-6 sm:h-8 bg-gradient-to-b from-yellow-400 to-orange-500 rounded-full"></div>
-                    <h3 className="text-xl sm:text-2xl font-bold text-white flex items-center gap-2 sm:gap-3">
-                      <Award className="text-yellow-400" size={22} />
-                      Certifications
-                    </h3>
-                  </div>
+                  <div className="pt-11 mt-auto flex-1 flex flex-col">
+                    <div className="flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8">
+                      <div className="w-1 h-6 sm:h-8 bg-gradient-to-b from-yellow-400 to-orange-500 rounded-full"></div>
+                      <h3 className="text-xl sm:text-2xl font-bold text-white flex items-center gap-2 sm:gap-3">
+                        <Award className="text-yellow-400" size={22} />
+                        Certifications
+                      </h3>
+                    </div>
 
-                  <div className="space-y-4 flex-1 flex flex-col justify-end">
-                    <div className="relative group/cert overflow-hidden rounded-2xl border-2 border-yellow-400/20 hover:border-yellow-400/50 transition-all duration-500 bg-stone-900/50">
-                      <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/5 to-orange-500/5 opacity-0 group-hover/cert:opacity-100 transition-opacity"></div>
-                      <img
-                        src={mondayCert1}
-                        alt="Monday.com Certification"
-                        className="w-full h-auto object-contain hover:scale-105 transition-transform duration-700"
-                      />
-                      <div className="p-4 bg-stone-800/90 border-t border-yellow-400/20">
-                        <h4 className="text-white font-bold text-sm sm:text-base">Monday.com Core Certification</h4>
-                        <p className="text-yellow-400 text-xs font-semibold">Workflow & Automation Specialist</p>
+                    <div className="relative flex-1">
+                      <div className="absolute -inset-1 bg-gradient-to-r from-yellow-400/20 via-orange-500/20 to-yellow-400/20 rounded-3xl blur-xl"></div>
+                      <div className="relative bg-gradient-to-br from-stone-800/60 to-stone-900/60 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-5 sm:p-8 border border-yellow-400/20 flex flex-col justify-between overflow-hidden h-[480px] sm:h-[520px] lg:h-[550px]">
+
+                        <div className="relative flex-1 flex items-center justify-center mb-6 transition-all duration-500 transform overflow-hidden rounded-xl bg-stone-900/40">
+                          <img
+                            key={currentCertIndex}
+                            src={certifications[currentCertIndex].image}
+                            alt={certifications[currentCertIndex].title}
+                            className="w-full h-full object-contain animate-slide-left hover:scale-105 transition-transform duration-700"
+                          />
+                        </div>
+
+                        <div className="text-center sm:text-left mb-6">
+                          <h4 className="text-white font-bold text-sm sm:text-lg mb-1">{certifications[currentCertIndex].title}</h4>
+                          <p className="text-yellow-400 text-xs sm:text-sm font-semibold">{certifications[currentCertIndex].subtitle}</p>
+                        </div>
+
+                        <div className="flex items-center justify-between mt-auto">
+                          <button
+                            onClick={prevCert}
+                            className="group/arrow bg-gradient-to-r from-yellow-400/10 to-orange-500/10 hover:from-yellow-400/20 hover:to-orange-500/20 p-2.5 rounded-full border border-yellow-400/30 hover:border-yellow-400/60 transition-all duration-300 hover:scale-110"
+                            aria-label="Previous certification"
+                          >
+                            <ChevronLeft className="text-yellow-400 group-hover/arrow:text-yellow-300" size={20} />
+                          </button>
+
+                          <div className="flex gap-2">
+                            {certifications.map((_, index) => (
+                              <button
+                                key={index}
+                                onClick={() => setCurrentCertIndex(index)}
+                                className={`transition-all duration-300 rounded-full ${index === currentCertIndex
+                                  ? 'w-8 h-2 bg-gradient-to-r from-yellow-400 to-orange-500'
+                                  : 'w-2 h-2 bg-stone-600 hover:bg-yellow-400/50'
+                                  }`}
+                                aria-label={`Go to certification ${index + 1}`}
+                              />
+                            ))}
+                          </div>
+
+                          <button
+                            onClick={nextCert}
+                            className="group/arrow bg-gradient-to-r from-yellow-400/10 to-orange-500/10 hover:from-yellow-400/20 hover:to-orange-500/20 p-2.5 rounded-full border border-yellow-400/30 hover:border-yellow-400/60 transition-all duration-300 hover:scale-110"
+                            aria-label="Next certification"
+                          >
+                            <ChevronRight className="text-yellow-400 group-hover/arrow:text-yellow-300" size={20} />
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>
