@@ -45,7 +45,7 @@ const Navigation = () => {
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ease-out ${
       isScrolled
-        ? 'bg-stone-950/98 backdrop-blur-3xl border-b border-stone-700/40 shadow-2xl shadow-black/60'
+        ? 'bg-stone-950/98 backdrop-blur-[40px] rim-light border-b border-stone-700/40 shadow-2xl shadow-black/60'
         : 'bg-gradient-to-b from-stone-950/40 to-transparent backdrop-blur-sm'
     }`}>
       <div className={`absolute inset-x-0 bottom-0 h-[2px] bg-gradient-to-r from-transparent via-yellow-400/60 to-transparent transition-all duration-700 ${
@@ -89,12 +89,12 @@ const Navigation = () => {
                 </div>
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className="text-xl lg:text-2xl font-black bg-gradient-to-r from-white via-yellow-100 to-white bg-clip-text text-transparent group-hover:from-yellow-200 group-hover:via-white group-hover:to-yellow-200 transition-all duration-500" style={{letterSpacing: '-0.02em'}}>
+                    <span className="text-xl lg:text-2xl font-black text-gradient-gold group-hover:from-yellow-200 group-hover:via-white group-hover:to-yellow-200 transition-all duration-500 tracking-tighter">
                       Rance Coon
                     </span>
                     <Sparkles className="w-4 h-4 text-yellow-400 opacity-0 group-hover:opacity-100 transition-all duration-500 group-hover:rotate-12" />
                   </div>
-                  <div className="text-xs text-stone-400 font-semibold tracking-widest uppercase mt-0.5 group-hover:text-yellow-400/80 transition-colors duration-500">
+                  <div className="text-xs text-stone-400 font-black tracking-widest uppercase mt-0.5 group-hover:text-yellow-400/80 transition-colors duration-500">
                     Creative Operations Consultant
                   </div>
                 </div>
@@ -108,7 +108,7 @@ const Navigation = () => {
                   className="w-full h-full object-cover"
                 />
               </div>
-              <span className="text-lg font-black bg-gradient-to-r from-white to-yellow-100 bg-clip-text text-transparent">
+              <span className="text-lg font-black text-gradient-gold tracking-tighter">
                 Rance Coon
               </span>
             </div>
@@ -184,7 +184,7 @@ const Navigation = () => {
         <div className={`md:hidden overflow-hidden transition-all duration-700 ease-out ${
           isMobileMenuOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
         }`}>
-          <div className="relative bg-gradient-to-br from-stone-900/98 via-stone-800/98 to-stone-900/98 backdrop-blur-3xl border-t border-stone-700/40 shadow-2xl">
+          <div className="relative bg-gradient-to-br from-stone-900/98 via-stone-800/98 to-stone-900/98 backdrop-blur-[40px] rim-light border-t border-stone-700/40 shadow-2xl">
             <div className="absolute inset-0 bg-gradient-to-b from-yellow-400/8 via-orange-400/5 to-transparent"></div>
 
             <div className="absolute top-0 left-1/4 w-48 h-48 bg-yellow-400/5 rounded-full blur-2xl"></div>

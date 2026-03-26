@@ -238,14 +238,14 @@ const Portfolio = () => {
               />
             </div>
 
-            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
-              {specialist.name} | <span className="bg-gradient-to-r from-yellow-300 to-orange-400 bg-clip-text text-transparent">{specialist.title}</span>
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-black text-white mb-4 tracking-tighter">
+              {specialist.name} | <span className="text-gradient-gold">{specialist.title}</span>
             </h1>
             <p className="text-lg sm:text-xl text-stone-400 mb-6">({specialist.company})</p>
 
             <div className="max-w-3xl mx-auto space-y-4 text-base sm:text-lg text-stone-300 leading-relaxed px-2">
               <p>{specialist.bio}</p>
-              {specialist.approach && <p className="text-white font-medium">{specialist.approach}</p>}
+              {specialist.approach && <p className="text-white font-black tracking-tighter">{specialist.approach}</p>}
             </div>
           </div>
         </div>
@@ -270,8 +270,8 @@ const Portfolio = () => {
                 : 'opacity-0 translate-y-8'
             }`}
           >
-            <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-white mb-6 sm:mb-8 tracking-tight">
-              Results? I Got You Covered
+            <h2 className="text-3xl sm:text-5xl md:text-6xl font-black text-white mb-6 sm:mb-8 tracking-tighter">
+              Results? <span className="text-gradient-gold">I Got You Covered</span>
             </h2>
           </div>
 
@@ -288,9 +288,9 @@ const Portfolio = () => {
                 }`}
                 style={{ transitionDelay: `${400 + index * 200}ms` }}
               >
-                <div className="bg-gradient-to-br from-stone-800/60 via-stone-800/30 to-stone-900/60 backdrop-blur-xl rounded-2xl sm:rounded-3xl overflow-hidden border border-stone-600/20 shadow-2xl">
+                <div className="bg-gradient-to-br from-stone-800/60 via-stone-800/30 to-stone-900/60 backdrop-blur-[40px] rim-light rounded-2xl sm:rounded-3xl overflow-hidden border border-stone-600/20 shadow-2xl">
                   <div className="px-6 sm:px-8 pt-6 sm:pt-8 pb-4">
-                    <h2 className="text-xl sm:text-2xl font-bold text-white text-center">
+                    <h2 className="text-xl sm:text-2xl font-black text-white text-center tracking-tighter">
                       {exp.period}{exp.role && ` | ${exp.role}`}
                     </h2>
                   </div>
@@ -363,14 +363,14 @@ const Portfolio = () => {
                   </div>
 
                   <div className="px-6 sm:px-8 pb-6 sm:pb-8">
-                    {exp.company && <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">{exp.company}</h3>}
+                    {exp.company && <h3 className="text-xl sm:text-2xl font-black tracking-tighter text-white mb-2 uppercase">{exp.company}</h3>}
                     <p className="text-stone-300 text-base sm:text-lg leading-relaxed mb-4 sm:mb-6">
                       {exp.description}
                     </p>
 
                     <div className="grid md:grid-cols-2 gap-4 sm:gap-6 mb-6 sm:mb-8">
                       <div>
-                        <h4 className="text-white font-semibold mb-3 sm:mb-4 text-sm sm:text-base">Experience Details:</h4>
+                        <h4 className="text-white font-black tracking-widest uppercase mb-3 sm:mb-4 text-sm sm:text-base">Experience Details:</h4>
                         <ul className="space-y-2">
                           {exp.achievements.map((achievement, i) => (
                             <li key={i} className="text-stone-300 flex items-start gap-2 text-sm sm:text-base">
@@ -382,14 +382,16 @@ const Portfolio = () => {
                       </div>
 
                       <div>
-                        <h4 className="text-white font-semibold mb-3 sm:mb-4 text-sm sm:text-base">Impact Metrics:</h4>
+                        <h4 className="text-white font-black tracking-widest uppercase mb-3 sm:mb-4 text-sm sm:text-base">Impact Metrics:</h4>
                         <div className="space-y-3">
                           {Object.entries(exp.metrics).map(([key, value], i) => (
                             <div key={i} className="flex justify-between items-center text-sm sm:text-base">
-                              <span className="text-stone-400 capitalize text-xs sm:text-sm">{key.replace(/([A-Z])/g, ' $1')}</span>
+                              <span className="text-stone-400 capitalize text-xs sm:text-sm font-black tracking-widest uppercase">
+                                {key.replace(/([A-Z])/g, ' $1')}
+                              </span>
                               <span
-                                className={`font-bold ${key === 'Hours Saved' || key === 'Productivity Boost' || key === 'Productivity Increase' ? 'text-yellow-400 animate-pulse' : 'text-yellow-400'}`}
-                                style={key === 'Hours Saved' || key === 'Productivity Boost' || key === 'Productivity Increase' ? {textShadow: '0 0 10px rgba(255, 239, 58, 0.8), 0 0 20px rgba(255, 145, 0, 0.6), 0 0 30px rgba(255, 239, 58, 0.4)'} : {}}
+                                className={`font-black tracking-tighter text-xl sm:text-2xl ${key === 'Hours Saved' || key === 'Productivity Boost' || key === 'Productivity Increase' ? 'text-gradient-gold animate-pulse' : 'text-gradient-gold'}`}
+                                style={key === 'Hours Saved' || key === 'Productivity Boost' || key === 'Productivity Increase' ? {textShadow: '0 0 10px rgba(255, 239, 58, 0.4), 0 0 20px rgba(255, 145, 0, 0.2)'} : {}}
                                 dangerouslySetInnerHTML={key === 'Media Feature' ? { __html: value } : undefined}
                               >
                                 {key === 'Media Feature' ? null : (key === 'Hours Saved' || key === 'Productivity Boost' || key === 'Productivity Increase' ? <AnimatedCounter end={value} id={`counter-${specialist.name}-${index}-${key}`} /> : value)}
@@ -401,14 +403,14 @@ const Portfolio = () => {
                     </div>
 
                     <div className="text-center mb-3 sm:mb-4">
-                      <p className="text-stone-300 font-medium text-sm sm:text-base">Don't believe me? Contact Them Below</p>
+                      <p className="text-stone-300 font-black tracking-tighter text-sm sm:text-base">Don't believe me? Contact Them Below</p>
                     </div>
 
                     <a
                       href={index === 0 ? "https://www.instagram.com/kairuu_u/" : "https://www.instagram.com/lucas_cello/"}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="bg-gradient-to-r from-[#FDEF3A] to-[#FF9100] hover:from-[#FFD520] hover:to-[#FFA632] text-white px-6 py-2.5 rounded-xl font-semibold transition-all duration-300 shadow-xl hover:shadow-[#FF9100]/50 hover:scale-105 inline-flex items-center gap-2 text-sm"
+                      className="bg-gradient-to-r from-[#FDEF3A] to-[#FF9100] hover:from-[#FFD520] hover:to-[#FFA632] text-white px-6 py-2.5 rounded-xl font-black tracking-tighter transition-all duration-300 shadow-xl hover:shadow-[#FF9100]/50 hover:scale-105 inline-flex items-center gap-2 text-sm"
                       style={{textShadow: '0 1px 3px rgba(0,0,0,0.3)'}}
                     >
                       <span>CONTACT THEM</span>
@@ -428,7 +430,7 @@ const Portfolio = () => {
                 : 'opacity-0 translate-y-8'
             }`}
           >
-            <h2 className="text-2xl sm:text-3xl font-bold text-white text-center mb-8 sm:mb-12">Core Expertise</h2>
+            <h2 className="text-2xl sm:text-3xl font-black text-gradient-gold text-center mb-8 sm:mb-12 tracking-tighter">Core Expertise</h2>
             <div className="relative">
               <div
                 className="overflow-x-scroll overflow-y-hidden pb-4 -mx-4 px-4 sm:-mx-6 sm:px-6"
@@ -441,13 +443,13 @@ const Portfolio = () => {
                   {specialist.skills.map((skill, index) => (
                     <div
                       key={index}
-                      className="bg-gradient-to-br from-stone-800/40 to-stone-900/40 backdrop-blur-xl rounded-xl p-4 sm:p-6 border border-stone-600/20 text-center hover:border-yellow-400/30 transition-all duration-300 group flex-shrink-0 w-[160px] sm:w-[200px]"
+                      className="bg-gradient-to-br from-stone-800/40 to-stone-900/40 backdrop-blur-[40px] rim-light rounded-xl p-4 sm:p-6 border border-stone-600/20 text-center hover:border-yellow-400/30 transition-all duration-300 group flex-shrink-0 w-[160px] sm:w-[200px]"
                     >
                       <div className="flex flex-col items-center gap-3">
                         <div className="bg-gradient-to-br from-yellow-400 to-orange-500 rounded-lg p-3 group-hover:scale-110 transition-transform duration-300" style={{boxShadow: '0 0 20px rgba(255, 239, 58, 0.4), 0 0 40px rgba(255, 145, 0, 0.2), 0 0 60px rgba(255, 239, 58, 0.1)'}}>
                           <skill.icon size={20} className="text-white drop-shadow-lg animate-pulse sm:w-6 sm:h-6" style={{filter: 'drop-shadow(0 0 8px rgba(255, 239, 58, 0.6))'}} />
                         </div>
-                        <span className="text-stone-300 font-medium text-sm sm:text-base">{skill.name}</span>
+                        <span className="text-stone-300 font-black tracking-tighter text-sm sm:text-base">{skill.name}</span>
                       </div>
                     </div>
                   ))}
@@ -467,7 +469,7 @@ const Portfolio = () => {
                 : 'opacity-0 translate-y-8'
             }`}
           >
-            <h2 className="text-2xl sm:text-3xl font-bold text-white text-center mb-8 sm:mb-12">Project Gallery</h2>
+            <h2 className="text-2xl sm:text-3xl font-black text-gradient-gold text-center mb-8 sm:mb-12 tracking-tighter">Project Gallery</h2>
             <div className="relative">
               <div
                 className="overflow-x-scroll overflow-y-hidden scrollbar-hide pb-4 -mx-4 px-4 sm:-mx-6 sm:px-6"
@@ -495,7 +497,7 @@ const Portfolio = () => {
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-stone-900/80 via-stone-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         <div className="absolute bottom-4 left-4 right-4">
-                          <p className="text-white font-semibold text-lg">Project {index + 1}</p>
+                          <p className="text-white font-black tracking-tighter text-lg">Project {index + 1}</p>
                           <p className="text-stone-300 text-sm">View Details</p>
                         </div>
                       </div>
@@ -517,7 +519,7 @@ const Portfolio = () => {
                 : 'opacity-0 translate-y-8'
             }`}
           >
-            <h2 className="text-2xl sm:text-3xl font-bold text-white text-center mb-8 sm:mb-12">What Clients Say</h2>
+            <h2 className="text-2xl sm:text-3xl font-black text-gradient-gold text-center mb-8 sm:mb-12 tracking-tighter">What Clients Say</h2>
 
             <div className="relative">
               <div className="overflow-hidden">
@@ -527,13 +529,13 @@ const Portfolio = () => {
                 >
                   {specialist.testimonials.map((testimonial, index) => (
                     <div key={index} className="w-full flex-shrink-0 px-2 sm:px-4">
-                      <div className="bg-gradient-to-br from-stone-800/60 via-stone-800/30 to-stone-900/60 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-stone-600/20 shadow-2xl text-center max-w-4xl mx-auto">
+                      <div className="bg-gradient-to-br from-stone-800/60 via-stone-800/30 to-stone-900/60 backdrop-blur-[40px] rim-light rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-stone-600/20 shadow-2xl text-center max-w-4xl mx-auto">
                         <p className="text-base sm:text-xl text-stone-300 leading-relaxed mb-4 sm:mb-6 italic">
                           "{testimonial.text}"
                         </p>
                         <div className="flex items-center justify-center gap-4">
                           <div>
-                            <p className="text-white font-semibold text-sm sm:text-base">{testimonial.author}</p>
+                            <p className="text-white font-black tracking-tighter text-sm sm:text-base">{testimonial.author}</p>
                             <p className="text-stone-400 text-xs sm:text-sm">{testimonial.role}</p>
                           </div>
                         </div>
@@ -581,7 +583,7 @@ const Portfolio = () => {
                 : 'opacity-0 translate-y-8'
             }`}
           >
-            <div className="bg-gradient-to-br from-stone-800/60 via-stone-800/30 to-stone-900/60 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-8 sm:p-12 border border-stone-600/20 shadow-2xl">
+            <div className="bg-gradient-to-br from-stone-800/60 via-stone-800/30 to-stone-900/60 backdrop-blur-[40px] rim-light rounded-2xl sm:rounded-3xl p-8 sm:p-12 border border-stone-600/20 shadow-2xl">
               <div className="flex justify-center mb-8">
                 <img
                   src={specialist.image}
@@ -590,15 +592,15 @@ const Portfolio = () => {
                   style={{ transform: 'scale(1.2)' }}
                 />
               </div>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 sm:mb-6">
-                Ready to Work with {specialist.name}?
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-white mb-4 sm:mb-6 tracking-tighter">
+                Ready to Work with <span className="text-gradient-gold">{specialist.name}?</span>
               </h2>
               <p className="text-lg sm:text-xl text-stone-300 mb-6 sm:mb-8 font-light px-2">
                 Let's discuss how {specialist.name} can help streamline your operations and scale your business.
               </p>
               <button
                 onClick={() => setIsCalendarModalOpen(true)}
-                className="inline-block bg-gradient-to-r from-[#FDEF3A] to-[#FF9100] hover:from-[#FFD520] hover:to-[#FFA632] text-white px-8 sm:px-10 py-3 sm:py-4 rounded-xl font-semibold text-base sm:text-lg transition-all duration-300 shadow-2xl hover:shadow-[#FF9100]/50 hover:scale-105"
+                className="inline-block bg-gradient-to-r from-[#FDEF3A] to-[#FF9100] hover:from-[#FFD520] hover:to-[#FFA632] text-white px-8 sm:px-10 py-3 sm:py-4 rounded-xl font-black tracking-tighter text-base sm:text-lg transition-all duration-300 shadow-2xl hover:shadow-[#FF9100]/50 hover:scale-105"
                 style={{textShadow: '0 1px 3px rgba(0,0,0,0.3)'}}
               >
                 Book a Call Now

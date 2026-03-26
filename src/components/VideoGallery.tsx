@@ -99,13 +99,13 @@ export default function VideoGallery({ refreshTrigger }: VideoGalleryProps) {
           >
             Your browser does not support the video tag.
           </video>
-          <div className="bg-white p-4">
-            <h3 className="text-xl font-bold text-gray-900">{selectedVideo.title}</h3>
+          <div className="bg-stone-900/90 backdrop-blur-xl p-6 border-b border-stone-700/40">
+            <h3 className="text-xl sm:text-2xl font-black text-white tracking-tighter">{selectedVideo.title}</h3>
             {selectedVideo.description && (
-              <p className="text-gray-600 mt-2">{selectedVideo.description}</p>
+              <p className="text-stone-300 mt-2 text-sm sm:text-base leading-relaxed">{selectedVideo.description}</p>
             )}
-            <p className="text-sm text-gray-400 mt-2">
-              Uploaded {new Date(selectedVideo.created_at).toLocaleDateString()}
+            <p className="text-xs text-stone-500 mt-4 uppercase tracking-widest font-semibold">
+              Published {new Date(selectedVideo.created_at).toLocaleDateString()}
             </p>
           </div>
         </div>
@@ -115,7 +115,7 @@ export default function VideoGallery({ refreshTrigger }: VideoGalleryProps) {
         {videos.map((video) => (
           <div
             key={video.id}
-            className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
+            className="bg-stone-900/60 backdrop-blur-md rounded-2xl border border-stone-800/60 overflow-hidden hover:border-yellow-400/30 transition-all duration-500 group/card shadow-2xl"
           >
             <div
               className="relative aspect-video bg-gray-900 cursor-pointer group"
@@ -130,21 +130,21 @@ export default function VideoGallery({ refreshTrigger }: VideoGalleryProps) {
                 <Play className="w-16 h-16 text-white" />
               </div>
             </div>
-            <div className="p-4">
-              <h3 className="font-bold text-gray-900 truncate">{video.title}</h3>
+            <div className="p-4 sm:p-5">
+              <h3 className="font-black text-white truncate text-base sm:text-lg tracking-tighter group-hover/card:text-yellow-200 transition-colors">{video.title}</h3>
               {video.description && (
-                <p className="text-sm text-gray-600 mt-1 line-clamp-2">
+                <p className="text-xs sm:text-sm text-stone-400 mt-2 line-clamp-2 leading-relaxed">
                   {video.description}
                 </p>
               )}
-              <div className="flex items-center justify-between mt-3">
-                <p className="text-xs text-gray-400">
+              <div className="flex items-center justify-between mt-4">
+                <p className="text-[10px] sm:text-xs text-stone-500 uppercase tracking-widest font-bold">
                   {new Date(video.created_at).toLocaleDateString()}
                 </p>
                 <button
                   onClick={() => handleDelete(video)}
                   disabled={deleting === video.id}
-                  className="p-2 text-red-500 hover:bg-red-50 rounded-lg transition-colors disabled:opacity-50"
+                  className="p-2 text-stone-500 hover:text-red-400 hover:bg-red-400/10 rounded-xl transition-all duration-300 disabled:opacity-30"
                 >
                   {deleting === video.id ? (
                     <Loader2 className="w-4 h-4 animate-spin" />

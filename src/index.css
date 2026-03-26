@@ -33,7 +33,8 @@
     pointer-events: none;
     z-index: 50;
     opacity: 0.035;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2.5' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
   }
 
   .flare-divider {
@@ -106,4 +107,91 @@
   .animate-slide-left {
     animation: slideInLeft 0.5s ease-out forwards;
   }
+
+  /* --- Cinematic Overhaul Utilities --- */
+
+  .font-display {
+    font-family: 'Inter', sans-serif;
+    letter-spacing: -0.03em;
+    font-weight: 900;
+  }
+
+  .font-sans {
+    font-family: 'Inter', sans-serif;
+    letter-spacing: -0.01em;
+  }
+
+  .font-mono {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  }
+
+  .rim-light::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    z-index: 10;
+  }
+
+  @keyframes glint {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+
+  .text-glint {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+  }
+  .text-glint::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0.5) 40%, transparent 80%);
+    animation: glint 3s infinite linear;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+    z-index: 20;
+  }
+}
+
+/* Global Typography Default */
+*, button, input, textarea, select {
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Inter', sans-serif;
+  letter-spacing: -0.05em;
+  font-weight: 900;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+}
+
+.text-gradient-gold {
+  background: linear-gradient(to right, #ffffff, #fef9c3, #ffffff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Chromatic Aberration on Scroll */
+img {
+  transition: filter 0.3s ease-out;
+}
+body.is-fast-scroll img:not(.tech-logo) {
+  filter: drop-shadow(2px 0 0 rgba(249, 212, 35, 0.8)) drop-shadow(-2px 0 0 rgba(255, 78, 80, 0.8));
+  transition: filter 0.1s linear;
 }

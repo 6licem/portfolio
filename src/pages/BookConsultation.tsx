@@ -12,8 +12,8 @@ const BookConsultation = () => {
         </Link>
 
         <div className="text-center mb-8 sm:mb-12 px-4">
-          <h1 className="text-3xl sm:text-5xl font-bold text-white mb-3 sm:mb-4">
-            Book Your <span className="bg-gradient-to-r from-yellow-300 to-orange-400 bg-clip-text text-transparent">Free Call</span>
+          <h1 className="text-3xl sm:text-5xl font-black text-white mb-3 sm:mb-4 tracking-tighter">
+            Book Your <span className="text-gradient-gold">Free Call</span>
           </h1>
           <p className="text-lg sm:text-xl text-stone-300">Let's discuss how we can optimize your operations</p>
         </div>
@@ -21,7 +21,7 @@ const BookConsultation = () => {
         <div className="bg-gradient-to-br from-stone-800/60 via-stone-800/30 to-stone-900/60 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-6 sm:p-12 border border-stone-600/20 shadow-2xl mx-4">
           <div className="grid md:grid-cols-2 gap-6 sm:gap-8 mb-6 sm:mb-8">
             <div className="space-y-5 sm:space-y-6">
-              <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6">What to Expect</h3>
+              <h3 className="text-xl sm:text-2xl font-black text-white mb-4 sm:mb-6 tracking-tighter">What to Expect</h3>
 
               <div className="flex items-start gap-3 sm:gap-4">
                 <div className="bg-gradient-to-br from-yellow-400 to-orange-500 rounded-lg p-2 sm:p-3 flex-shrink-0">
@@ -55,7 +55,7 @@ const BookConsultation = () => {
             </div>
 
             <div className="bg-stone-900/50 rounded-xl sm:rounded-2xl p-5 sm:p-6 border border-stone-700/30">
-              <h3 className="text-lg sm:text-xl font-bold text-white mb-5 sm:mb-6">Schedule Your Call</h3>
+              <h3 className="text-lg sm:text-xl font-black text-white mb-5 sm:mb-6 tracking-tighter">Schedule Your Call</h3>
 
               <form className="space-y-3 sm:space-y-4">
                 <div>

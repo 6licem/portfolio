@@ -1,6 +1,7 @@
-import { X, ZoomIn, ZoomOut, Maximize2 } from 'lucide-react';
+import { X, ZoomIn, ZoomOut, Maximize2, Download } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
 import resumeImg from '../assets/Ray Francis Coon - Resume copy.png.png';
+import resumePdf from '../assets/Ray Francis Coon - Resume-2.pdf';
 
 interface ResumeModalProps {
   isOpen: boolean;
@@ -145,9 +146,20 @@ const ResumeModal = ({ isOpen, onClose }: ResumeModalProps) => {
             handleReset();
           }}
           className="p-2 hover:bg-white/10 rounded-full transition-colors"
+          title="Reset Zoom"
         >
           <Maximize2 size={20} className="text-white" />
         </button>
+        <div className="w-px h-6 bg-white/20 mx-2"></div>
+        <a
+          href={resumePdf}
+          download="Ray Francis Coon - Resume.pdf"
+          onClick={(e) => e.stopPropagation()}
+          className="p-2 hover:bg-white/10 rounded-full transition-colors flex items-center justify-center"
+          title="Download PDF"
+        >
+          <Download size={20} className="text-white" />
+        </a>
       </div>
 
       <div

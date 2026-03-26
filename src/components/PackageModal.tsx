@@ -40,7 +40,7 @@ const PackageModal = ({ isOpen, onClose, package: pkg, allPackages }: PackageMod
 
         <div className="p-8 sm:p-12">
           <div className="text-center mb-8">
-            <h3 className="text-3xl sm:text-5xl font-bold text-white mb-6">
+            <h3 className="text-3xl sm:text-5xl font-black text-gradient-gold mb-6 tracking-tighter">
               {pkg.name}
             </h3>
             <div className="inline-block px-6 py-3 bg-gradient-to-r from-yellow-400/20 to-orange-500/20 rounded-full border border-yellow-400/30">
@@ -78,7 +78,7 @@ const PackageModal = ({ isOpen, onClose, package: pkg, allPackages }: PackageMod
           )}
 
           <div className="bg-gradient-to-br from-stone-800/50 to-stone-900/50 rounded-2xl p-6 border border-stone-600/30 mb-8">
-            <h4 className="text-white font-bold text-xl mb-4 flex items-center gap-3">
+            <h4 className="text-white font-black text-xl mb-4 flex items-center gap-3 tracking-tighter">
               <div className="w-1 h-6 bg-gradient-to-b from-yellow-400 to-orange-500 rounded-full"></div>
               Admin Seats
             </h4>
@@ -86,7 +86,7 @@ const PackageModal = ({ isOpen, onClose, package: pkg, allPackages }: PackageMod
           </div>
 
           <div className="bg-gradient-to-br from-stone-800/50 to-stone-900/50 rounded-2xl p-6 border border-stone-600/30 mb-8">
-            <h4 className="text-white font-bold text-xl mb-4 flex items-center gap-3">
+            <h4 className="text-white font-black text-xl mb-4 flex items-center gap-3 tracking-tighter">
               <div className="w-1 h-6 bg-gradient-to-b from-yellow-400 to-orange-500 rounded-full"></div>
               All Features
             </h4>

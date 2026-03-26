@@ -1,4 +1,4 @@
-import React from 'react';
+
 
 // Import all tech stack images
 import tech1 from '../assets/techStackImages/1.png';
@@ -47,8 +47,8 @@ export default function TechStackSection() {
           <div className="inline-block px-4 py-1.5 bg-yellow-400/10 rounded-full border border-yellow-400/20 mb-4">
             <span className="text-yellow-400 font-bold text-xs tracking-[0.2em] uppercase">Industry Standard</span>
           </div>
-          <h3 className="text-3xl sm:text-5xl font-bold bg-gradient-to-r from-white via-stone-300 to-white bg-clip-text text-transparent">
-            Tools & <span className="text-yellow-400">Software</span>
+          <h3 className="text-3xl sm:text-5xl font-black bg-gradient-to-b from-yellow-300 via-yellow-400 to-orange-500 bg-clip-text text-transparent tracking-tighter" style={{ filter: 'drop-shadow(0 0 15px rgba(251,191,36,0.5))' }}>
+            Tools & Software
           </h3>
         </div>
         
@@ -66,7 +66,7 @@ export default function TechStackSection() {
                       <img
                         src={tech.logo_url}
                         alt={tech.name}
-                        className="relative h-10 sm:h-14 w-auto max-w-full object-contain transition-all duration-700 grayscale group-hover/tech:grayscale-0 group-hover/tech:scale-105"
+                        className="tech-logo relative h-10 sm:h-14 w-auto max-w-full object-contain transition-all duration-700 grayscale group-hover/tech:grayscale-0 group-hover/tech:scale-105"
                       />
                     </div>
                   </div>
