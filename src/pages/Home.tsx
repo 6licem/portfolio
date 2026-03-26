@@ -171,7 +171,9 @@ const Home = () => {
     <div className="min-h-screen bg-black relative">
       <div className="pointer-events-none fixed inset-0 z-0 transition-opacity duration-300" style={{ background: 'radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(250,204,21,0.05), transparent 40%)' }}></div>
       <section className="relative overflow-hidden pt-16 sm:pt-20 pb-8">
-        {/* Spotlight elements moved directly onto the text container for maximum guaranteed visibility */}
+        {/* Massive native CSS blur nodes moved from h1 to section level to fix background "clipping" glitch on iPad Safari */}
+        <div className="absolute top-[20%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120vw] max-w-[1600px] h-[400px] sm:h-[600px] bg-yellow-500/15 blur-[80px] sm:blur-[140px] rounded-[100%] pointer-events-none z-0"></div>
+        <div className="absolute top-[22%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100vw] max-w-[1200px] h-[300px] sm:h-[500px] bg-orange-500/10 blur-[60px] sm:blur-[100px] rounded-[100%] pointer-events-none z-0 animate-pulse" style={{ animationDuration: '4s' }}></div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
           <div ref={hero.ref} className={`text-center mb-8 sm:mb-12 fade-up ${hero.isVisible ? 'visible' : ''}`}>
@@ -181,10 +183,6 @@ const Home = () => {
             </div>
 
             <h1 className="text-3xl sm:text-6xl lg:text-7xl font-black text-white mb-4 sm:mb-6 leading-tight px-2 relative z-20 animate-focus-pull">
-              {/* Massive native CSS blur nodes rendering directly behind the text */}
-              <div className="absolute top-[80%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90vw] lg:w-[1400px] h-[300px] lg:h-[800px] bg-yellow-500/20 blur-[60px] lg:blur-[180px] rounded-[100%] pointer-events-none -z-10"></div>
-              <div className="absolute top-[80%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70vw] lg:w-[1000px] h-[200px] lg:h-[600px] bg-orange-500/20 blur-[40px] lg:blur-[120px] rounded-[100%] pointer-events-none -z-10 animate-pulse" style={{ animationDuration: '4s' }}></div>
-
               <span className="block mb-1 sm:mb-2 text-2xl sm:text-6xl lg:text-7xl drop-shadow-lg relative z-10 font-black tracking-tighter text-gradient-gold">I'm Rance! Your Certified</span>
               <span className="block relative">
                 <span className="relative inline-block">
@@ -1194,11 +1192,7 @@ const Home = () => {
                   </div>
                 </div>
 
-                <div className="mb-6">
-                  <div className="inline-block px-4 py-2 bg-gradient-to-r from-yellow-400/20 to-orange-500/20 rounded-full border border-yellow-400/30 mb-4">
-                    <span className="text-yellow-400 font-black text-sm tracking-widest uppercase">Goal: Figure out exactly what needs fixing and what it will cost.</span>
-                  </div>
-                </div>
+
 
                 <div className="space-y-4 relative z-10">
                   <div className="group/step relative bg-gradient-to-br from-stone-800/50 to-stone-900/50 rounded-2xl p-6 border border-stone-600/30 hover:border-yellow-400/40 transition-all duration-300 shadow-lg">
@@ -1279,11 +1273,7 @@ const Home = () => {
                   </div>
                 </div>
 
-                <div className="mb-6">
-                  <div className="inline-block px-4 py-2 bg-gradient-to-r from-yellow-400/20 to-orange-500/20 rounded-full border border-yellow-400/30 mb-4">
-                    <span className="text-yellow-400 font-black text-sm tracking-widest uppercase">Goal: Build the tools and get your team using them.</span>
-                  </div>
-                </div>
+
 
                 <div className="space-y-4 relative z-10">
                   <div className="group/step relative bg-gradient-to-br from-stone-800/50 to-stone-900/50 rounded-2xl p-6 border border-stone-600/30 hover:border-yellow-400/40 transition-all duration-300 shadow-lg">
@@ -1349,11 +1339,7 @@ const Home = () => {
                   </div>
                 </div>
 
-                <div className="mb-6">
-                  <div className="inline-block px-4 py-2 bg-gradient-to-r from-yellow-400/20 to-orange-500/20 rounded-full border border-yellow-400/30 mb-4">
-                    <span className="text-yellow-400 font-black text-sm tracking-widest uppercase">Goal: Make sure everyone uses the system so it stays organized.</span>
-                  </div>
-                </div>
+
 
                 <div className="space-y-4 relative z-10">
                   <div className="group/step relative bg-gradient-to-br from-stone-800/50 to-stone-900/50 rounded-2xl p-6 border border-stone-600/30 hover:border-yellow-400/40 transition-all duration-300 shadow-lg">
