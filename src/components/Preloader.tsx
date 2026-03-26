@@ -34,8 +34,8 @@ const Preloader = () => {
     >
       <div className="relative flex flex-col items-center justify-center">
         {/* Massive native CSS blur nodes rendering directly behind the logo (Matched from Hero) */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90vw] sm:w-[1400px] h-[300px] sm:h-[800px] bg-yellow-500/20 blur-[60px] sm:blur-[180px] rounded-[100%] pointer-events-none -z-10"></div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70vw] sm:w-[1000px] h-[200px] sm:h-[600px] bg-orange-500/20 blur-[40px] sm:blur-[120px] rounded-[100%] pointer-events-none -z-10 animate-pulse" style={{ animationDuration: '4s' }}></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90vw] lg:w-[1400px] h-[300px] lg:h-[800px] bg-yellow-500/20 blur-[60px] lg:blur-[180px] rounded-[100%] pointer-events-none -z-10"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70vw] lg:w-[1000px] h-[200px] lg:h-[600px] bg-orange-500/20 blur-[40px] lg:blur-[120px] rounded-[100%] pointer-events-none -z-10 animate-pulse" style={{ animationDuration: '4s' }}></div>
         
         {/* The image itself */}
         <div className="relative w-40 h-40 sm:w-56 sm:h-56 rounded-full overflow-hidden border-4 border-yellow-400/40 shadow-2xl" style={{ boxShadow: '0 0 50px rgba(251,191,36,0.3)' }}>
