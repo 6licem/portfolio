@@ -833,7 +833,7 @@ const Home = () => {
 
                   <div className="grid lg:grid-cols-2 gap-8 mb-10">
                     <div className="bg-gradient-to-br from-stone-800/50 to-stone-900/50 rounded-2xl p-6 border border-stone-600/30">
-                      <h4 className="text-white font-black tracking-tighter uppercase">
+                      <h4 className="text-white font-black tracking-tighter uppercase flex items-center gap-3 mb-6">
                         <div className="w-1 h-6 bg-gradient-to-b from-yellow-400 to-orange-500 rounded-full"></div>
                         Experience Details
                       </h4>
@@ -858,7 +858,7 @@ const Home = () => {
                     </div>
 
                     <div className="bg-gradient-to-br from-yellow-400/10 via-orange-500/5 to-stone-900/50 rounded-2xl p-6 border border-yellow-400/30">
-                      <h4 className="text-white font-black tracking-tighter uppercase">
+                      <h4 className="text-white font-black tracking-tighter uppercase flex items-center gap-3 mb-6">
                         <div className="w-1 h-6 bg-gradient-to-b from-yellow-400 to-orange-500 rounded-full"></div>
                         Impact Metrics
                       </h4>
@@ -999,7 +999,7 @@ const Home = () => {
 
                   <div className="grid lg:grid-cols-2 gap-8 mb-10">
                     <div className="bg-gradient-to-br from-stone-800/50 to-stone-900/50 rounded-2xl p-6 border border-stone-600/30">
-                      <h4 className="text-white font-black tracking-tighter uppercase">
+                      <h4 className="text-white font-black tracking-tighter uppercase flex items-center gap-3 mb-6">
                         <div className="w-1 h-6 bg-gradient-to-b from-yellow-400 to-orange-500 rounded-full"></div>
                         Experience Details
                       </h4>
@@ -1024,7 +1024,7 @@ const Home = () => {
                     </div>
 
                     <div className="bg-gradient-to-br from-yellow-400/10 via-orange-500/5 to-stone-900/50 rounded-2xl p-6 border border-yellow-400/30">
-                      <h4 className="text-white font-black tracking-tighter uppercase">
+                      <h4 className="text-white font-black tracking-tighter uppercase flex items-center gap-3 mb-6">
                         <div className="w-1 h-6 bg-gradient-to-b from-yellow-400 to-orange-500 rounded-full"></div>
                         Impact Metrics
                       </h4>
