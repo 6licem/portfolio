@@ -132,8 +132,40 @@
     left: 0;
     right: 0;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    background: linear-gradient(90deg, transparent, rgba(250, 204, 21, 0.5), transparent);
     z-index: 10;
+  }
+
+  @keyframes focusPull {
+    0% {
+      opacity: 0;
+      transform: scale(1.03) translateY(10px);
+      filter: blur(8px);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+      filter: blur(0px);
+    }
+  }
+
+  .animate-focus-pull {
+    opacity: 0;
+    animation: focusPull 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .card-spotlight::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(250, 204, 21, 0.12), transparent 40%) fixed;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  .card-spotlight:hover::before {
+    opacity: 1;
   }
 
   @keyframes glint {
@@ -194,4 +226,32 @@ img {
 body.is-fast-scroll img:not(.tech-logo) {
   filter: drop-shadow(2px 0 0 rgba(249, 212, 35, 0.8)) drop-shadow(-2px 0 0 rgba(255, 78, 80, 0.8));
   transition: filter 0.1s linear;
+}
+
+/* --- Mobile Performance Optimizations --- */
+@media (max-width: 767px) {
+  /* Disable only the purely scroll-triggered entry animations */
+  .animate-focus-pull,
+  .animate-fade-in,
+  .fade-up {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+  
+  /* Reset fade-up initial state since we disabled the animation/transition that brings it to visible */
+  .fade-up {
+    transform: translateY(0) !important;
+    visibility: visible !important;
+  }
+
+  /* Disable performance-heavy ambient/hover effects */
+  .text-glint::before,
+  .card-spotlight::before {
+    display: none !important;
+  }
+
+  /* Disable chromatic aberration logic on mobile */
+  body.is-fast-scroll img:not(.tech-logo) {
+    filter: none !important;
+  }
 }

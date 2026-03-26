@@ -4,6 +4,9 @@ import Footer from '../components/Footer';
 import ResumeModal from '../components/ResumeModal';
 import CalendarModal from '../components/CalendarModal';
 import TechStackSection from '../components/TechStackSection';
+import ImageCarousel from '../components/ImageCarousel';
+import TestimonialsCarousel from '../components/TestimonialsCarousel';
+import CertificationsCarousel from '../components/CertificationsCarousel';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import { useCountUp } from '../hooks/useCountUp';
 
@@ -38,10 +41,6 @@ import n8nBadge2 from '../assets/certificationImages/n8n badge 2.png';
 const Home = () => {
   const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
   const [isCalendarModalOpen, setIsCalendarModalOpen] = useState(false);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [currentJsmImageIndex, setCurrentJsmImageIndex] = useState(0);
-  const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
-  const [currentCertIndex, setCurrentCertIndex] = useState(0);
   const [statsReady, setStatsReady] = useState(false);
 
   const carouselImages = [
@@ -115,33 +114,7 @@ const Home = () => {
     }
   ];
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prev) => (prev + 1) % carouselImages.length);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, [carouselImages.length]);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentJsmImageIndex((prev) => (prev + 1) % jsmCarouselImages.length);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, [jsmCarouselImages.length]);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentTestimonialIndex((prev) => (prev + 1) % testimonials.length);
-    }, 6000);
-    return () => clearInterval(interval);
-  }, [testimonials.length]);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentCertIndex((prev) => (prev + 1) % certifications.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [certifications.length]);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -152,37 +125,7 @@ const Home = () => {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
-  const nextImage = () => {
-    setCurrentImageIndex((prev) => (prev + 1) % carouselImages.length);
-  };
 
-  const prevImage = () => {
-    setCurrentImageIndex((prev) => (prev - 1 + carouselImages.length) % carouselImages.length);
-  };
-
-  const nextJsmImage = () => {
-    setCurrentJsmImageIndex((prev) => (prev + 1) % jsmCarouselImages.length);
-  };
-
-  const prevJsmImage = () => {
-    setCurrentJsmImageIndex((prev) => (prev - 1 + jsmCarouselImages.length) % jsmCarouselImages.length);
-  };
-
-  const nextTestimonial = () => {
-    setCurrentTestimonialIndex((prev) => (prev + 1) % testimonials.length);
-  };
-
-  const prevTestimonial = () => {
-    setCurrentTestimonialIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
-  };
-
-  const nextCert = () => {
-    setCurrentCertIndex((prev) => (prev + 1) % certifications.length);
-  };
-
-  const prevCert = () => {
-    setCurrentCertIndex((prev) => (prev - 1 + certifications.length) % certifications.length);
-  };
 
   const hero = useScrollAnimation();
   const video = useScrollAnimation();
@@ -225,19 +168,19 @@ const Home = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#050505] relative">
+    <div className="min-h-screen bg-black relative">
       <div className="pointer-events-none fixed inset-0 z-0 transition-opacity duration-300" style={{ background: 'radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(250,204,21,0.05), transparent 40%)' }}></div>
-      <section className="relative overflow-hidden pt-24 sm:pt-32 pb-8">
+      <section className="relative overflow-hidden pt-16 sm:pt-20 pb-8">
         {/* Spotlight elements moved directly onto the text container for maximum guaranteed visibility */}
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-20">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
           <div ref={hero.ref} className={`text-center mb-8 sm:mb-12 fade-up ${hero.isVisible ? 'visible' : ''}`}>
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-yellow-400/10 to-orange-500/10 rounded-full border border-yellow-400/20 mb-6 backdrop-blur-sm">
               <div className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></div>
               <span className="text-yellow-400 text-sm font-medium tracking-wide">Available for New Projects</span>
             </div>
 
-            <h1 className="text-3xl sm:text-6xl lg:text-7xl font-black text-white mb-4 sm:mb-6 leading-tight px-2 relative z-20">
+            <h1 className="text-3xl sm:text-6xl lg:text-7xl font-black text-white mb-4 sm:mb-6 leading-tight px-2 relative z-20 animate-focus-pull">
               {/* Massive native CSS blur nodes rendering directly behind the text */}
               <div className="absolute top-[80%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200vw] sm:w-[1400px] h-[600px] sm:h-[800px] bg-yellow-500/20 blur-[100px] sm:blur-[180px] rounded-[100%] pointer-events-none -z-10"></div>
               <div className="absolute top-[80%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150vw] sm:w-[1000px] h-[400px] sm:h-[600px] bg-orange-500/20 blur-[80px] sm:blur-[120px] rounded-[100%] pointer-events-none -z-10 animate-pulse" style={{ animationDuration: '4s' }}></div>
@@ -252,11 +195,11 @@ const Home = () => {
               </span>
             </h1>
 
-            <p className="text-base sm:text-2xl text-stone-300 max-w-5xl mx-auto leading-relaxed mb-6 sm:mb-8 px-4">
+            <p className="text-base sm:text-2xl text-stone-300 max-w-5xl mx-auto leading-relaxed mb-6 sm:mb-8 px-4 animate-focus-pull" style={{ animationDelay: '0.2s' }}>
               <span className="text-gradient-gold font-black tracking-tighter">I Build the Systems That Let Your Creatives Actually Create</span>
             </p>
 
-            <div className="flex flex-wrap justify-center gap-3 sm:gap-4 mb-8 sm:mb-12 px-4">
+            <div className="flex flex-wrap justify-center gap-3 sm:gap-4 mb-8 sm:mb-12 px-4 animate-focus-pull" style={{ animationDelay: '0.4s' }}>
               <button
                 onClick={() => setIsCalendarModalOpen(true)}
                 className="group relative inline-flex items-center gap-2 sm:gap-3 bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-300 hover:to-orange-400 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-black tracking-tighter text-base sm:text-lg transition-all duration-300 shadow-2xl hover:shadow-yellow-400/50 hover:scale-105 overflow-hidden"
@@ -303,28 +246,28 @@ const Home = () => {
 
           <div ref={statsGrid.ref} className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 max-w-5xl mx-auto mb-12 sm:mb-16 px-4" style={{ animation: 'statsFadeUp 0.7s ease both 0.2s' }}>
             {/* Hours Saved */}
-            <div className="group relative overflow-hidden bg-stone-900/60 backdrop-blur-[40px] rim-light rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-stone-700/40 hover:border-yellow-400/40 transition-all duration-500 text-center hover:-translate-y-1 hover:shadow-2xl hover:shadow-yellow-400/10">
+            <div className="group relative overflow-hidden bg-stone-900/60 backdrop-blur-[40px] rim-light card-spotlight rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-stone-700/40 hover:border-yellow-400/40 transition-all duration-500 text-center hover:-translate-y-1 hover:shadow-2xl hover:shadow-yellow-400/10 hover:scale-[1.02]">
               <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-yellow-400/40 to-transparent"></div>
               <div className="absolute -right-6 -top-6 w-16 h-16 bg-yellow-400/5 rounded-full blur-2xl group-hover:bg-yellow-400/10 transition-all duration-500"></div>
               <div className="text-3xl sm:text-5xl font-black bg-gradient-to-b from-yellow-300 via-yellow-400 to-orange-500 bg-clip-text text-transparent mb-1 sm:mb-2 tabular-nums tracking-tighter" style={{ filter: 'drop-shadow(0 0 15px rgba(251,191,36,0.5))' }}>{hoursSaved}+</div>
               <div className="text-stone-400 text-xs sm:text-sm font-black uppercase tracking-widest">Hours Saved</div>
             </div>
             {/* Revenue Impact */}
-            <div className="group relative overflow-hidden bg-stone-900/60 backdrop-blur-[40px] rim-light rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-stone-700/40 hover:border-yellow-400/40 transition-all duration-500 text-center hover:-translate-y-1 hover:shadow-2xl hover:shadow-yellow-400/10">
+            <div className="group relative overflow-hidden bg-stone-900/60 backdrop-blur-[40px] rim-light card-spotlight rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-stone-700/40 hover:border-yellow-400/40 transition-all duration-500 text-center hover:-translate-y-1 hover:shadow-2xl hover:shadow-yellow-400/10 hover:scale-[1.02]">
               <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-yellow-400/40 to-transparent"></div>
               <div className="absolute -right-6 -top-6 w-16 h-16 bg-yellow-400/5 rounded-full blur-2xl group-hover:bg-yellow-400/10 transition-all duration-500"></div>
               <div className="text-3xl sm:text-5xl font-black bg-gradient-to-b from-yellow-300 via-yellow-400 to-orange-500 bg-clip-text text-transparent mb-1 sm:mb-2 tabular-nums tracking-tighter" style={{ filter: 'drop-shadow(0 0 15px rgba(251,191,36,0.5))' }}>{revenueImpact}</div>
               <div className="text-stone-400 text-xs sm:text-sm font-black uppercase tracking-widest">Revenue Impact</div>
             </div>
             {/* Efficiency Boost */}
-            <div className="group relative overflow-hidden bg-stone-900/60 backdrop-blur-[40px] rim-light rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-stone-700/40 hover:border-yellow-400/40 transition-all duration-500 text-center hover:-translate-y-1 hover:shadow-2xl hover:shadow-yellow-400/10">
+            <div className="group relative overflow-hidden bg-stone-900/60 backdrop-blur-[40px] rim-light card-spotlight rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-stone-700/40 hover:border-yellow-400/40 transition-all duration-500 text-center hover:-translate-y-1 hover:shadow-2xl hover:shadow-yellow-400/10 hover:scale-[1.02]">
               <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-yellow-400/40 to-transparent"></div>
               <div className="absolute -right-6 -top-6 w-16 h-16 bg-yellow-400/5 rounded-full blur-2xl group-hover:bg-yellow-400/10 transition-all duration-500"></div>
               <div className="text-3xl sm:text-5xl font-black bg-gradient-to-b from-yellow-300 via-yellow-400 to-orange-500 bg-clip-text text-transparent mb-1 sm:mb-2 tabular-nums tracking-tighter" style={{ filter: 'drop-shadow(0 0 15px rgba(251,191,36,0.5))' }}>{efficiencyBoost}</div>
               <div className="text-stone-400 text-xs sm:text-sm font-black uppercase tracking-widest">Efficiency Boost</div>
             </div>
             {/* Years Experience */}
-            <div className="group relative overflow-hidden bg-stone-900/60 backdrop-blur-[40px] rim-light rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-stone-700/40 hover:border-yellow-400/40 transition-all duration-500 text-center hover:-translate-y-1 hover:shadow-2xl hover:shadow-yellow-400/10">
+            <div className="group relative overflow-hidden bg-stone-900/60 backdrop-blur-[40px] rim-light card-spotlight rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-stone-700/40 hover:border-yellow-400/40 transition-all duration-500 text-center hover:-translate-y-1 hover:shadow-2xl hover:shadow-yellow-400/10 hover:scale-[1.02]">
               <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-yellow-400/40 to-transparent"></div>
               <div className="absolute -right-6 -top-6 w-16 h-16 bg-yellow-400/5 rounded-full blur-2xl group-hover:bg-yellow-400/10 transition-all duration-500"></div>
               <div className="text-3xl sm:text-5xl font-black bg-gradient-to-b from-yellow-300 via-yellow-400 to-orange-500 bg-clip-text text-transparent mb-1 sm:mb-2 tabular-nums tracking-tighter" style={{ filter: 'drop-shadow(0 0 15px rgba(251,191,36,0.5))' }}>{yearsExperience}</div>
@@ -334,7 +277,7 @@ const Home = () => {
 
           <div ref={aboutMe.ref} className={`relative group mx-4 fade-up fade-up-delay-300 ${aboutMe.isVisible ? 'visible' : ''}`}>
             <div className="absolute -inset-2 bg-gradient-to-r from-yellow-400/20 via-orange-500/20 to-yellow-400/20 rounded-3xl blur-3xl opacity-40 group-hover:opacity-60 transition-opacity duration-500"></div>
-            <div className="relative bg-gradient-to-br from-stone-800/90 via-stone-800/70 to-stone-900/90 backdrop-blur-[40px] rim-light rounded-2xl sm:rounded-3xl p-6 sm:p-12 border-2 border-yellow-400/20 shadow-2xl">
+            <div className="relative bg-gradient-to-br from-stone-800/90 via-stone-800/70 to-stone-900/90 backdrop-blur-[40px] rim-light card-spotlight rounded-2xl sm:rounded-3xl p-6 sm:p-12 border-2 border-yellow-400/20 shadow-2xl">
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-yellow-400 to-transparent"></div>
 
               <div className="text-center mb-8 sm:mb-12" id="about-me">
@@ -455,64 +398,8 @@ const Home = () => {
 
                     <div className="relative flex-1">
                       <div className="absolute -inset-1 bg-gradient-to-r from-yellow-400/20 via-orange-500/20 to-yellow-400/20 rounded-3xl blur-xl"></div>
-                      <div className="relative bg-gradient-to-br from-stone-800/60 to-stone-900/60 backdrop-blur-[40px] rim-light rounded-2xl sm:rounded-3xl p-5 sm:p-8 border border-yellow-400/20 flex flex-col justify-between h-[480px] sm:h-[520px] lg:h-[550px]">
-                        <div className="flex-1 flex items-center relative">
-                          <div key={currentTestimonialIndex} className="w-full animate-slide-left">
-                            <div className="text-yellow-400/20 text-5xl sm:text-6xl font-serif mb-4">"</div>
-                            <div className="flex-1 flex items-center pr-2">
-                              <p className="text-stone-200 text-base sm:text-lg leading-relaxed mb-6 sm:mb-8 transition-all duration-500 line-clamp-6 sm:line-clamp-5">
-                                {testimonials[currentTestimonialIndex].content}
-                              </p>
-                            </div>
-                            {testimonials[currentTestimonialIndex].author && (
-                              <div className="flex items-center justify-center sm:justify-start gap-3">
-                                <div className="w-12 h-0.5 bg-gradient-to-r from-transparent to-yellow-400/50 hidden sm:block"></div>
-                                <div>
-                                  <p className="text-white font-bold text-sm sm:text-base">
-                                    {testimonials[currentTestimonialIndex].author}
-                                  </p>
-                                  {testimonials[currentTestimonialIndex].role && (
-                                    <p className="text-yellow-400 text-xs sm:text-sm">
-                                      {testimonials[currentTestimonialIndex].role}
-                                    </p>
-                                  )}
-                                </div>
-                              </div>
-                            )}
-                          </div>
-                        </div>
-
-                        <div className="flex items-center justify-between mt-6">
-                          <button
-                            onClick={prevTestimonial}
-                            className="group/arrow bg-gradient-to-r from-yellow-400/10 to-orange-500/10 hover:from-yellow-400/20 hover:to-orange-500/20 p-3 rounded-full border border-yellow-400/30 hover:border-yellow-400/60 transition-all duration-300 hover:scale-110"
-                            aria-label="Previous testimonial"
-                          >
-                            <ChevronLeft className="text-yellow-400 group-hover/arrow:text-yellow-300" size={20} />
-                          </button>
-
-                          <div className="flex gap-2">
-                            {testimonials.map((_, index) => (
-                              <button
-                                key={index}
-                                onClick={() => setCurrentTestimonialIndex(index)}
-                                className={`transition-all duration-300 rounded-full ${index === currentTestimonialIndex
-                                  ? 'w-8 h-2 bg-gradient-to-r from-yellow-400 to-orange-500'
-                                  : 'w-2 h-2 bg-stone-600 hover:bg-yellow-400/50'
-                                  }`}
-                                aria-label={`Go to testimonial ${index + 1}`}
-                              />
-                            ))}
-                          </div>
-
-                          <button
-                            onClick={nextTestimonial}
-                            className="group/arrow bg-gradient-to-r from-yellow-400/10 to-orange-500/10 hover:from-yellow-400/20 hover:to-orange-500/20 p-3 rounded-full border border-yellow-400/30 hover:border-yellow-400/60 transition-all duration-300 hover:scale-110"
-                            aria-label="Next testimonial"
-                          >
-                            <ChevronRight className="text-yellow-400 group-hover/arrow:text-yellow-300" size={20} />
-                          </button>
-                        </div>
+                      <div className="relative bg-gradient-to-br from-stone-800/60 to-stone-900/60 backdrop-blur-[40px] rim-light card-spotlight rounded-2xl sm:rounded-3xl p-5 sm:p-8 border border-yellow-400/20 flex flex-col justify-between h-[480px] sm:h-[520px] lg:h-[550px]">
+                        <TestimonialsCarousel testimonials={testimonials} />
                       </div>
                     </div>
                   </div>
@@ -530,7 +417,7 @@ const Home = () => {
                   <div className="space-y-4">
                     <div className="relative group/card">
                       <div className="absolute -inset-1 bg-gradient-to-r from-yellow-400/30 to-orange-500/30 rounded-2xl blur opacity-0 group-hover/card:opacity-100 transition-opacity duration-300"></div>
-                      <div className="relative flex items-start gap-3 sm:gap-4 bg-gradient-to-br from-stone-800/80 to-stone-900/80 rounded-xl sm:rounded-2xl p-4 sm:p-6 border-2 border-stone-600/30 group-hover/card:border-yellow-400/50 transition-all duration-300">
+                      <div className="relative flex items-start gap-3 sm:gap-4 bg-gradient-to-br from-stone-800/80 to-stone-900/80 backdrop-blur-md card-spotlight rounded-xl sm:rounded-2xl p-4 sm:p-6 border-2 border-stone-600/30 group-hover/card:border-yellow-400/50 transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02]">
                         <div className="bg-gradient-to-br from-yellow-400 to-orange-500 rounded-lg sm:rounded-xl p-2 sm:p-3 flex-shrink-0 shadow-lg" style={{ boxShadow: '0 0 25px rgba(255, 239, 58, 0.4)' }}>
                           <Briefcase size={20} className="text-white sm:w-6 sm:h-6" />
                         </div>
@@ -544,7 +431,7 @@ const Home = () => {
 
                     <div className="relative group/card">
                       <div className="absolute -inset-1 bg-gradient-to-r from-yellow-400/30 to-orange-500/30 rounded-2xl blur opacity-0 group-hover/card:opacity-100 transition-opacity duration-300"></div>
-                      <div className="relative flex items-start gap-3 sm:gap-4 bg-gradient-to-br from-stone-800/80 to-stone-900/80 rounded-xl sm:rounded-2xl p-4 sm:p-6 border-2 border-stone-600/30 group-hover/card:border-yellow-400/50 transition-all duration-300">
+                      <div className="relative flex items-start gap-3 sm:gap-4 bg-gradient-to-br from-stone-800/80 to-stone-900/80 backdrop-blur-md card-spotlight rounded-xl sm:rounded-2xl p-4 sm:p-6 border-2 border-stone-600/30 group-hover/card:border-yellow-400/50 transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02]">
                         <div className="bg-gradient-to-br from-yellow-400 to-orange-500 rounded-lg sm:rounded-xl p-2 sm:p-3 flex-shrink-0 shadow-lg" style={{ boxShadow: '0 0 25px rgba(255, 239, 58, 0.4)' }}>
                           <Award size={20} className="text-white sm:w-6 sm:h-6" />
                         </div>
@@ -558,7 +445,7 @@ const Home = () => {
 
                     <div className="relative group/card">
                       <div className="absolute -inset-1 bg-gradient-to-r from-yellow-400/30 to-orange-500/30 rounded-2xl blur opacity-0 group-hover/card:opacity-100 transition-opacity duration-300"></div>
-                      <div className="relative flex items-start gap-3 sm:gap-4 bg-gradient-to-br from-stone-800/80 to-stone-900/80 rounded-xl sm:rounded-2xl p-4 sm:p-6 border-2 border-stone-600/30 group-hover/card:border-yellow-400/50 transition-all duration-300">
+                      <div className="relative flex items-start gap-3 sm:gap-4 bg-gradient-to-br from-stone-800/80 to-stone-900/80 backdrop-blur-md card-spotlight rounded-xl sm:rounded-2xl p-4 sm:p-6 border-2 border-stone-600/30 group-hover/card:border-yellow-400/50 transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02]">
                         <div className="bg-gradient-to-br from-yellow-400 to-orange-500 rounded-lg sm:rounded-xl p-2 sm:p-3 flex-shrink-0 shadow-lg" style={{ boxShadow: '0 0 25px rgba(255, 239, 58, 0.4)' }}>
                           <GraduationCap size={20} className="text-white sm:w-6 sm:h-6" />
                         </div>
@@ -583,51 +470,7 @@ const Home = () => {
                       <div className="absolute -inset-1 bg-gradient-to-r from-yellow-400/20 via-orange-500/20 to-yellow-400/20 rounded-3xl blur-xl"></div>
                       <div className="relative bg-gradient-to-br from-stone-800/60 to-stone-900/60 backdrop-blur-[40px] rim-light rounded-2xl sm:rounded-3xl p-5 sm:p-8 border border-yellow-400/20 flex flex-col justify-between overflow-hidden h-[480px] sm:h-[520px] lg:h-[550px]">
 
-                        <div className="relative flex-1 flex items-center justify-center mb-6 transition-all duration-500 transform overflow-hidden rounded-xl bg-stone-900/40">
-                          <img
-                            key={currentCertIndex}
-                            src={certifications[currentCertIndex].image}
-                            alt={certifications[currentCertIndex].title}
-                            className="w-full h-full object-contain animate-slide-left hover:scale-105 transition-transform duration-700"
-                          />
-                        </div>
-
-                        <div className="text-center sm:text-left mb-6">
-                          <h4 className="text-white font-bold text-sm sm:text-lg mb-1">{certifications[currentCertIndex].title}</h4>
-                          <p className="text-yellow-400 text-xs sm:text-sm font-semibold">{certifications[currentCertIndex].subtitle}</p>
-                        </div>
-
-                        <div className="flex items-center justify-between mt-auto">
-                          <button
-                            onClick={prevCert}
-                            className="group/arrow bg-gradient-to-r from-yellow-400/10 to-orange-500/10 hover:from-yellow-400/20 hover:to-orange-500/20 p-2.5 rounded-full border border-yellow-400/30 hover:border-yellow-400/60 transition-all duration-300 hover:scale-110"
-                            aria-label="Previous certification"
-                          >
-                            <ChevronLeft className="text-yellow-400 group-hover/arrow:text-yellow-300" size={20} />
-                          </button>
-
-                          <div className="flex gap-2">
-                            {certifications.map((_, index) => (
-                              <button
-                                key={index}
-                                onClick={() => setCurrentCertIndex(index)}
-                                className={`transition-all duration-300 rounded-full ${index === currentCertIndex
-                                  ? 'w-8 h-2 bg-gradient-to-r from-yellow-400 to-orange-500'
-                                  : 'w-2 h-2 bg-stone-600 hover:bg-yellow-400/50'
-                                  }`}
-                                aria-label={`Go to certification ${index + 1}`}
-                              />
-                            ))}
-                          </div>
-
-                          <button
-                            onClick={nextCert}
-                            className="group/arrow bg-gradient-to-r from-yellow-400/10 to-orange-500/10 hover:from-yellow-400/20 hover:to-orange-500/20 p-2.5 rounded-full border border-yellow-400/30 hover:border-yellow-400/60 transition-all duration-300 hover:scale-110"
-                            aria-label="Next certification"
-                          >
-                            <ChevronRight className="text-yellow-400 group-hover/arrow:text-yellow-300" size={20} />
-                          </button>
-                        </div>
+                        <CertificationsCarousel certifications={certifications} />
                       </div>
                     </div>
                   </div>
@@ -975,47 +818,7 @@ const Home = () => {
                   <div className="relative w-full max-w-3xl group/carousel">
                     <div className="absolute -inset-2 bg-gradient-to-r from-yellow-400/40 via-orange-500/40 to-yellow-400/40 rounded-3xl blur-xl opacity-50 group-hover/carousel:opacity-100 transition-opacity duration-500"></div>
                     <div className="relative rounded-2xl overflow-hidden shadow-2xl border-2 border-yellow-400/20">
-                      <div className="relative w-full aspect-video">
-                        {carouselImages.map((image, index) => (
-                          <img
-                            key={index}
-                            src={image}
-                            alt={`Creative Vision ${index + 1}`}
-                            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'
-                              }`}
-                          />
-                        ))}
-
-                        <button
-                          onClick={prevImage}
-                          className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-all duration-300 backdrop-blur-sm"
-                          aria-label="Previous image"
-                        >
-                          <ChevronLeft size={24} />
-                        </button>
-
-                        <button
-                          onClick={nextImage}
-                          className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-all duration-300 backdrop-blur-sm"
-                          aria-label="Next image"
-                        >
-                          <ChevronRight size={24} />
-                        </button>
-
-                        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
-                          {carouselImages.map((_, index) => (
-                            <button
-                              key={index}
-                              onClick={() => setCurrentImageIndex(index)}
-                              className={`w-2 h-2 rounded-full transition-all duration-300 ${index === currentImageIndex
-                                ? 'bg-yellow-400 w-8'
-                                : 'bg-white/50 hover:bg-white/80'
-                                }`}
-                              aria-label={`Go to image ${index + 1}`}
-                            />
-                          ))}
-                        </div>
-                      </div>
+                      <ImageCarousel images={carouselImages} altPrefix="Creative Vision" />
                     </div>
                   </div>
                 </div>
@@ -1181,47 +984,7 @@ const Home = () => {
                   <div className="relative w-full max-w-3xl group/jsmcarousel">
                     <div className="absolute -inset-2 bg-gradient-to-r from-yellow-400/40 via-orange-500/40 to-yellow-400/40 rounded-3xl blur-xl opacity-50 group-hover/jsmcarousel:opacity-100 transition-opacity duration-500"></div>
                     <div className="relative rounded-2xl overflow-hidden shadow-2xl border-2 border-yellow-400/20">
-                      <div className="relative w-full aspect-video">
-                        {jsmCarouselImages.map((image, index) => (
-                          <img
-                            key={index}
-                            src={image}
-                            alt={`JustSimplyMarketing ${index + 1}`}
-                            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${index === currentJsmImageIndex ? 'opacity-100' : 'opacity-0'
-                              }`}
-                          />
-                        ))}
-
-                        <button
-                          onClick={prevJsmImage}
-                          className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-all duration-300 backdrop-blur-sm"
-                          aria-label="Previous image"
-                        >
-                          <ChevronLeft size={24} />
-                        </button>
-
-                        <button
-                          onClick={nextJsmImage}
-                          className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-all duration-300 backdrop-blur-sm"
-                          aria-label="Next image"
-                        >
-                          <ChevronRight size={24} />
-                        </button>
-
-                        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
-                          {jsmCarouselImages.map((_, index) => (
-                            <button
-                              key={index}
-                              onClick={() => setCurrentJsmImageIndex(index)}
-                              className={`w-2 h-2 rounded-full transition-all duration-300 ${index === currentJsmImageIndex
-                                ? 'bg-yellow-400 w-8'
-                                : 'bg-white/50 hover:bg-white/80'
-                                }`}
-                              aria-label={`Go to image ${index + 1}`}
-                            />
-                          ))}
-                        </div>
-                      </div>
+                      <ImageCarousel images={jsmCarouselImages} altPrefix="JustSimplyMarketing" />
                     </div>
                   </div>
                 </div>
@@ -1422,7 +1185,7 @@ const Home = () => {
               <div className="relative bg-gradient-to-br from-stone-800/90 via-stone-800/70 to-stone-900/90 backdrop-blur-[40px] rim-light rounded-3xl p-8 sm:p-10 border-2 border-yellow-400/30 shadow-2xl">
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-yellow-400 to-transparent"></div>
 
-                <div className="flex items-start gap-4 mb-4">
+                <div className="flex items-center gap-4 mb-4">
                   <div className="flex-shrink-0 w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center shadow-xl shadow-yellow-400/40">
                     <span className="text-white font-black text-xl sm:text-2xl">1</span>
                   </div>
@@ -1507,7 +1270,7 @@ const Home = () => {
               <div className="relative bg-gradient-to-br from-stone-800/90 via-stone-800/70 to-stone-900/90 backdrop-blur-[40px] rim-light rounded-3xl p-8 sm:p-10 border-2 border-yellow-400/30 shadow-2xl">
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-yellow-400 to-transparent"></div>
 
-                <div className="flex items-start gap-4 mb-4">
+                <div className="flex items-center gap-4 mb-4">
                   <div className="flex-shrink-0 w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center shadow-xl shadow-yellow-400/40">
                     <span className="text-white font-black text-xl sm:text-2xl">2</span>
                   </div>
@@ -1518,7 +1281,7 @@ const Home = () => {
 
                 <div className="mb-6">
                   <div className="inline-block px-4 py-2 bg-gradient-to-r from-yellow-400/20 to-orange-500/20 rounded-full border border-yellow-400/30 mb-4">
-                    <span className="text-yellow-400 font-semibold text-sm">Goal: Build the tools and get your team using them.</span>
+                    <span className="text-yellow-400 font-black text-sm tracking-widest uppercase">Goal: Build the tools and get your team using them.</span>
                   </div>
                 </div>
 
@@ -1577,7 +1340,7 @@ const Home = () => {
               <div className="relative bg-gradient-to-br from-stone-800/90 via-stone-800/70 to-stone-900/90 backdrop-blur-[40px] rim-light rounded-3xl p-8 sm:p-10 border-2 border-yellow-400/30 shadow-2xl">
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-yellow-400 to-transparent"></div>
 
-                <div className="flex items-start gap-4 mb-4">
+                <div className="flex items-center gap-4 mb-4">
                   <div className="flex-shrink-0 w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center shadow-xl shadow-yellow-400/40">
                     <span className="text-white font-black text-xl sm:text-2xl">3</span>
                   </div>
@@ -1588,7 +1351,7 @@ const Home = () => {
 
                 <div className="mb-6">
                   <div className="inline-block px-4 py-2 bg-gradient-to-r from-yellow-400/20 to-orange-500/20 rounded-full border border-yellow-400/30 mb-4">
-                    <span className="text-yellow-400 font-semibold text-sm">Goal: Make sure everyone uses the system so it stays organized.</span>
+                    <span className="text-yellow-400 font-black text-sm tracking-widest uppercase">Goal: Make sure everyone uses the system so it stays organized.</span>
                   </div>
                 </div>
 

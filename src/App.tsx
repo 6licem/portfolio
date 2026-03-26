@@ -5,10 +5,16 @@ import Home from './pages/Home';
 import Portfolio from './pages/Portfolio';
 import BookConsultation from './pages/BookConsultation';
 import Videos from './pages/Videos';
+import Preloader from './components/Preloader';
 import Lenis from 'lenis';
 
 function App() {
   useEffect(() => {
+    // Disable Lenis on mobile (screens < 768px for performance/battery)
+    if (window.innerWidth < 768) {
+      return;
+    }
+
     const lenis = new Lenis({
       duration: 1.5,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -38,6 +44,7 @@ function App() {
 
   return (
     <Router>
+      <Preloader />
       <div className="bg-noise"></div>
       <Navigation />
       <Routes>
