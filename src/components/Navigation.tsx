@@ -114,7 +114,7 @@ const Navigation = () => {
             </div>
           </Link>
 
-          <div className="hidden md:flex items-center justify-center gap-1 lg:gap-2">
+          <div className="hidden lg:flex items-center justify-center gap-1 xl:gap-2">
             {navLinks.map((link) => {
               const isActive = link.path.startsWith('/#')
                 ? location.pathname === '/' && location.hash === `#${link.sectionId}`
@@ -124,7 +124,7 @@ const Navigation = () => {
                   key={link.path}
                   to={link.path}
                   onClick={(e) => handleNavClick(e, link.path, link.sectionId)}
-                  className={`group relative px-5 lg:px-6 py-2.5 rounded-xl font-semibold transition-all duration-500 text-sm lg:text-base ${
+                  className={`group relative px-5 xl:px-6 py-2.5 rounded-xl font-semibold transition-all duration-500 text-sm xl:text-base ${
                     isActive
                       ? 'text-white'
                       : 'text-stone-300 hover:text-white'
@@ -151,10 +151,10 @@ const Navigation = () => {
             })}
           </div>
 
-          <div className="hidden md:flex items-center gap-4">
+          <div className="hidden lg:flex items-center gap-4">
             <button
               onClick={() => setIsCalendarModalOpen(true)}
-              className="group relative bg-gradient-to-r from-[#FDEF3A] via-[#FF9100] to-[#FDEF3A] bg-size-200 bg-pos-0 hover:bg-pos-100 text-white px-6 lg:px-8 py-3 lg:py-3.5 rounded-xl font-black transition-all duration-700 shadow-xl shadow-yellow-500/30 hover:shadow-2xl hover:shadow-[#FF9100]/50 hover:scale-105 text-base lg:text-lg overflow-hidden border border-yellow-400/20"
+              className="group relative bg-gradient-to-r from-[#FDEF3A] via-[#FF9100] to-[#FDEF3A] bg-size-200 bg-pos-0 hover:bg-pos-100 text-white px-6 xl:px-8 py-3 xl:py-3.5 rounded-xl font-black transition-all duration-700 shadow-xl shadow-yellow-500/30 hover:shadow-2xl hover:shadow-[#FF9100]/50 hover:scale-105 text-base xl:text-lg overflow-hidden border border-yellow-400/20"
               style={{
                 textShadow: '0 2px 8px rgba(0,0,0,0.5), 0 1px 3px rgba(0,0,0,0.6)',
                 backgroundSize: '200% 100%'
@@ -170,7 +170,7 @@ const Navigation = () => {
           </div>
 
           <button
-            className="md:hidden relative p-3 text-white hover:text-yellow-400 transition-all duration-500 group"
+            className="lg:hidden relative p-3 text-white hover:text-yellow-400 transition-all duration-500 group"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/15 to-orange-500/15 rounded-xl scale-0 group-hover:scale-100 transition-all duration-500 border border-yellow-400/20"></div>
@@ -181,7 +181,7 @@ const Navigation = () => {
           </button>
         </div>
 
-        <div className={`md:hidden overflow-hidden transition-all duration-700 ease-out ${
+        <div className={`lg:hidden overflow-hidden transition-all duration-700 ease-out ${
           isMobileMenuOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
         }`}>
           <div className="relative bg-gradient-to-br from-stone-900/98 via-stone-800/98 to-stone-900/98 backdrop-blur-[40px] rim-light border-t border-stone-700/40 shadow-2xl">

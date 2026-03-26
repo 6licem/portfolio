@@ -182,8 +182,8 @@ const Home = () => {
 
             <h1 className="text-3xl sm:text-6xl lg:text-7xl font-black text-white mb-4 sm:mb-6 leading-tight px-2 relative z-20 animate-focus-pull">
               {/* Massive native CSS blur nodes rendering directly behind the text */}
-              <div className="absolute top-[80%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200vw] sm:w-[1400px] h-[600px] sm:h-[800px] bg-yellow-500/20 blur-[100px] sm:blur-[180px] rounded-[100%] pointer-events-none -z-10"></div>
-              <div className="absolute top-[80%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150vw] sm:w-[1000px] h-[400px] sm:h-[600px] bg-orange-500/20 blur-[80px] sm:blur-[120px] rounded-[100%] pointer-events-none -z-10 animate-pulse" style={{ animationDuration: '4s' }}></div>
+              <div className="absolute top-[80%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90vw] sm:w-[1400px] h-[300px] sm:h-[800px] bg-yellow-500/20 blur-[60px] sm:blur-[180px] rounded-[100%] pointer-events-none -z-10"></div>
+              <div className="absolute top-[80%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70vw] sm:w-[1000px] h-[200px] sm:h-[600px] bg-orange-500/20 blur-[40px] sm:blur-[120px] rounded-[100%] pointer-events-none -z-10 animate-pulse" style={{ animationDuration: '4s' }}></div>
 
               <span className="block mb-1 sm:mb-2 text-2xl sm:text-6xl lg:text-7xl drop-shadow-lg relative z-10 font-black tracking-tighter text-gradient-gold">I'm Rance! Your Certified</span>
               <span className="block relative">

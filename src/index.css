@@ -228,7 +228,7 @@ body.is-fast-scroll img:not(.tech-logo) {
   transition: filter 0.1s linear;
 }
 
-/* --- Mobile Performance Optimizations --- */
+/* --- Mobile & iPad Performance Optimizations --- */
 @media (max-width: 767px) {
   /* Disable only the purely scroll-triggered entry animations */
   .animate-focus-pull,
@@ -242,6 +242,7 @@ body.is-fast-scroll img:not(.tech-logo) {
   .fade-up {
     transform: translateY(0) !important;
     visibility: visible !important;
+    transition: none !important;
   }
 
   /* Disable performance-heavy ambient/hover effects */
@@ -253,5 +254,37 @@ body.is-fast-scroll img:not(.tech-logo) {
   /* Disable chromatic aberration logic on mobile */
   body.is-fast-scroll img:not(.tech-logo) {
     filter: none !important;
+  }
+
+  /* Fix iOS Safari backdrop-blur white-flash: force GPU layer compositing.
+     This prevents the 'white rectangle' that appears before backdrop-blur
+     elements are painted on scroll or first render. */
+  [class*="backdrop-blur"] {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    isolation: isolate;
+    /* Ensure background is never transparent white */
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+}
+
+/* iPad range: prevent glow blobs from causing compositing issues */
+@media (min-width: 768px) and (max-width: 1023px) {
+  /* Reduce blur intensity slightly on tablets to avoid edge repaints */
+  [class*="blur-3xl"] {
+    filter: blur(48px) !important;
+  }
+  [class*="blur-2xl"] {
+    filter: blur(32px) !important;
+  }
+
+  /* Force GPU paint layer for all frosted-glass cards on iPad */
+  [class*="backdrop-blur"] {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    isolation: isolate;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
   }
 }
