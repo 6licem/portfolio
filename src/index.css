@@ -228,13 +228,27 @@ body.is-fast-scroll img:not(.tech-logo) {
   transition: filter 0.1s linear;
 }
 
-/* Global fix for Safari backdrop-blur white-flash/rectangles: force GPU layer compositing. */
-[class*="backdrop-blur"] {
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
-  isolation: isolate;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
+/* Safari rendering fixes: prevent GPU memory limits (white blocks) by capping extreme blurs */
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+  /* Only apply hardware acceleration minimally to avoid texture memory exhaustion */
+  [class*="backdrop-blur"] {
+    -webkit-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+  }
+}
+
+/* Hard cap extreme blurs globally to prevent compositing crashes exactly as they happen in Safari */
+.blur-\[140px\] { filter: blur(60px) !important; }
+.blur-\[100px\] { filter: blur(50px) !important; }
+.blur-\[80px\] { filter: blur(40px) !important; }
+.blur-\[60px\] { filter: blur(30px) !important; }
+.blur-3xl { filter: blur(40px) !important; }
+.blur-2xl { filter: blur(24px) !important; }
+
+/* Scale down the massive backdrop blurs that Safari fails to render over filtered backgrounds */
+.backdrop-blur-\[40px\] { 
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important; 
 }
 
 /* --- Mobile & iPad Performance Optimizations --- */
