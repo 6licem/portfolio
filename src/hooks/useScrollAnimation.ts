@@ -1,15 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 
-export const useScrollAnimation = (threshold = 0.1) => {
+export const useScrollAnimation = (rootMargin = '0px 0px -50px 0px') => {
   const ref = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // If mobile, bypass the observer and show immediately for better performance
-    if (window.innerWidth < 768) {
-      setIsVisible(true);
-      return;
-    }
+    const currentRef = ref.current;
+    if (!currentRef) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -19,22 +16,17 @@ export const useScrollAnimation = (threshold = 0.1) => {
         }
       },
       {
-        threshold,
-        rootMargin: '0px 0px -50px 0px',
+        threshold: 0, // 0 threshold means it triggers as soon as 1 pixel enters the rootMargin
+        rootMargin,
       }
     );
 
-    const currentRef = ref.current;
-    if (currentRef) {
-      observer.observe(currentRef);
-    }
+    observer.observe(currentRef);
 
     return () => {
-      if (currentRef) {
-        observer.unobserve(currentRef);
-      }
+      observer.disconnect();
     };
-  }, [threshold]);
+  }, [rootMargin]);
 
   return { ref, isVisible };
 };

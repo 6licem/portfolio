@@ -54,7 +54,7 @@ const Preloader = () => {
               Rance Coon
             </h1>
             <p className="bg-gradient-to-r from-yellow-300 via-yellow-400 to-orange-500 bg-clip-text text-transparent text-xs sm:text-[13px] font-bold tracking-[0.15em] sm:tracking-[0.25em] uppercase mb-6" style={{ filter: 'drop-shadow(0 0 10px rgba(251,191,36,0.5))' }}>
-              Creative Operations Consultant
+              Automation Expert
             </p>
             {/* Circle Loader */}
             <div className="relative w-8 h-8 sm:w-10 sm:h-10 mt-2">

@@ -1,7 +1,7 @@
 import { X, ZoomIn, ZoomOut, Maximize2, Download } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
-import resumeImg from '../assets/Ray Francis Coon - Resume copy.png.png';
-import resumePdf from '../assets/Ray Francis Coon - Resume-2.pdf';
+import resumeImg from '../assets/Ray Francis Coon - Resume UPDATED.png';
+import resumePdf from '../assets/Ray Francis Coon - Resume pdf UPDATED.pdf';
 
 interface ResumeModalProps {
   isOpen: boolean;
@@ -178,7 +178,7 @@ const ResumeModal = ({ isOpen, onClose }: ResumeModalProps) => {
       >
         <img
           src={resumeImg}
-          alt="Rance Coon Certified Creative Operations Consultant Resume"
+          alt="Rance Coon Certified Automation Expert Resume"
           className="max-w-full max-h-full object-contain select-none"
           draggable={false}
           style={{

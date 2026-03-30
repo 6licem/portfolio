@@ -20,10 +20,11 @@ const useScrollAnimation = () => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setVisibleSections(prev => new Set([...prev, entry.target.id]));
+            observer.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.1, rootMargin: '0px 0px -100px 0px' }
+      { threshold: 0, rootMargin: '0px 0px -50px 0px' }
     );
 
     const sections = document.querySelectorAll('[data-animate]');
@@ -67,7 +68,7 @@ const AnimatedCounter = ({ end, duration = 5000, id }: { end: string; duration?:
           observer.disconnect();
         }
       },
-      { threshold: 0.5 }
+      { threshold: 0, rootMargin: '0px 0px -50px 0px' }
     );
 
     const element = document.getElementById(id);
@@ -99,10 +100,10 @@ const Portfolio = () => {
   const portfolioData = {
     'rance-coon': {
       name: 'Rance',
-      title: 'Certified Creative Operations Consultant',
-      company: 'Certified Creative Operations Consulting',
+      title: 'Certified Automation Expert',
+      company: 'Certified Automation Consulting',
       image: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop',
-      bio: 'Rance Coon is a Certified Creative Operations Consultant specializing in Monday.com architecture and n8n automation for 6 and 7-figure creative agencies. By implementing scalable operational infrastructures, Rance has demonstrated a proven track record of saving over 1,800 manual hours annually and driving an 80% efficiency boost in video production and social media workflows.',
+      bio: 'Rance Coon is a Certified Automation Expert specializing in Monday.com architecture and n8n automation for 6 and 7-figure creative agencies. By implementing scalable operational infrastructures, Rance has demonstrated a proven track record of saving over 1,800 manual hours annually and driving an 80% efficiency boost in video production and social media workflows.',
       approach: '',
       experience: [
         {
@@ -147,7 +148,7 @@ const Portfolio = () => {
         { name: 'n8n Automation', icon: Workflow },
         { name: 'Workflow Optimization', icon: FileText },
         { name: 'System Integration', icon: Zap },
-        { name: 'Creative Operations', icon: BarChart3 },
+        { name: 'Automation', icon: BarChart3 },
         { name: 'Team Coordination', icon: UserCheck },
         { name: 'Discord', icon: MessageSquare }
       ],

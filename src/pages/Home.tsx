@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Briefcase, GraduationCap, Award, Star, MessageSquare, ClipboardList, Settings, Bot, Wrench, FileText, ChevronLeft, ChevronRight, Linkedin, Clock, TrendingUp, Users, Mail } from 'lucide-react';
+import { Briefcase, GraduationCap, Award, Star, MessageSquare, ClipboardList, Settings, Bot, Wrench, FileText, Linkedin, Clock, TrendingUp, Users, Mail } from 'lucide-react';
 import Footer from '../components/Footer';
 import ResumeModal from '../components/ResumeModal';
 import CalendarModal from '../components/CalendarModal';
@@ -117,12 +117,10 @@ const Home = () => {
 
 
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      document.documentElement.style.setProperty('--mouse-x', `${e.clientX}px`);
-      document.documentElement.style.setProperty('--mouse-y', `${e.clientY}px`);
-    };
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    // Ensure the page loads at the top if there is no specific hash link
+    if (!window.location.hash) {
+      window.scrollTo(0, 0);
+    }
   }, []);
 
 
@@ -169,7 +167,6 @@ const Home = () => {
 
   return (
     <div className="min-h-screen bg-black relative">
-      <div className="pointer-events-none fixed inset-0 z-0 transition-opacity duration-300" style={{ background: 'radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(250,204,21,0.05), transparent 40%)' }}></div>
       <section className="relative overflow-hidden pt-16 sm:pt-20 pb-8">
         {/* Massive native CSS blur nodes moved from h1 to section level to fix background "clipping" glitch on iPad Safari */}
         <div className="absolute top-[20%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120vw] max-w-[1600px] h-[400px] sm:h-[600px] bg-yellow-500/15 blur-[80px] sm:blur-[140px] rounded-[100%] pointer-events-none z-0"></div>
@@ -187,7 +184,7 @@ const Home = () => {
               <span className="block relative">
                 <span className="relative inline-block">
                   <span className="relative bg-gradient-to-b from-yellow-300 via-yellow-400 to-orange-500 bg-clip-text text-transparent text-3xl sm:text-7xl lg:text-8xl font-black font-display tracking-tighter" style={{ filter: 'drop-shadow(0 0 20px rgba(251,191,36,0.5))' }}>
-                    Creative Operations Consultant
+                    Automation Expert
                   </span>
                 </span>
               </span>
@@ -234,7 +231,7 @@ const Home = () => {
                     allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
                     referrerPolicy="strict-origin-when-cross-origin"
                     style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
-                    title="Rance Coon - Certified Creative Operations Consultant"
+                    title="Rance Coon - Certified Automation Expert"
                     allowFullScreen
                   ></iframe>
                 </div>
@@ -284,7 +281,7 @@ const Home = () => {
                 </div>
                 <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white mb-4 tracking-tighter leading-tight">
                   Meet Your <br />
-                  <span className="bg-gradient-to-b from-yellow-300 via-yellow-400 to-orange-500 bg-clip-text text-transparent" style={{ filter: 'drop-shadow(0 0 15px rgba(251,191,36,0.5))' }}>Creative Operations Consultant</span>
+                  <span className="bg-gradient-to-b from-yellow-300 via-yellow-400 to-orange-500 bg-clip-text text-transparent" style={{ filter: 'drop-shadow(0 0 15px rgba(251,191,36,0.5))' }}>Automation Expert</span>
                 </h2>
                 <div className="flare-divider w-1/2 max-w-sm mx-auto mb-10"></div>
 
@@ -295,7 +292,7 @@ const Home = () => {
                     <div className="relative w-40 h-40 sm:w-48 sm:h-48 lg:w-56 lg:h-56 rounded-full overflow-hidden border-4 border-yellow-400/40 shadow-2xl group-hover/photo:border-yellow-400/60 group-hover/photo:scale-105 transition-all duration-500">
                       <img
                         src={Logo}
-                        alt="Rance - Creative Operations Consultant"
+                        alt="Rance - Automation Expert"
                         className="w-full h-full object-cover"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-stone-900/20 via-transparent to-yellow-400/5"></div>
@@ -310,14 +307,14 @@ const Home = () => {
                   <div className="relative bg-gradient-to-br from-yellow-400/5 to-orange-500/5 rounded-2xl p-4 sm:p-6 border border-yellow-400/20">
                     <div className="absolute top-0 left-4 sm:left-6 w-10 sm:w-12 h-1 bg-gradient-to-r from-yellow-400 to-orange-500 -mt-px"></div>
                     <p className="text-stone-200 text-sm sm:text-lg leading-relaxed">
-                      Most creative agencies hit a ceiling where <span className="text-gradient-gold font-black tracking-tighter">more work</span> just means <span className="text-gradient-gold font-black tracking-tighter">more mess.</span> I've spent <span className="text-gradient-gold font-black tracking-tighter">4+ years</span> inside <span className="text-gradient-gold font-black tracking-tighter">6 and 7-figure production houses</span> as a COO and Marketing Director — so I understand your world before you even explain it.
+                      I am an Automation Expert with nearly 4 years of experience scaling 6 and 7-figure agencies as a COO and Marketing Director. My journey began in the trenches of video production, where I worked 16-hour days and saw firsthand how manual "busy work" burns out talented teams. Today, I build the systems that let creatives actually create. I specialize in identifying operational bottlenecks before they break a business, moving agencies away from "money-first" cultures and toward healthy, efficient workflows.
                     </p>
                   </div>
 
                   <div className="relative pl-4 sm:pl-6">
                     <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-yellow-400 to-orange-500 rounded-full"></div>
                     <p className="text-stone-300 text-sm sm:text-lg leading-relaxed">
-                      I've been inside the operations of video production, social media, and content creation. I know where the bottlenecks are, why they happen, and exactly how to fix them. Whether it's <span className="text-gradient-gold font-black tracking-tighter">Monday.com architecture</span>, <span className="text-gradient-gold font-black tracking-tighter">workflow automation</span>, or building <span className="text-gradient-gold font-black tracking-tighter">SOPs your team will actually follow</span> — I build the infrastructure your agency needs to <span className="text-gradient-gold font-black tracking-tighter">grow without breaking.</span>
+                      My proven track record includes saving over 1,800 hours annually and driving 80% efficiency gains through custom Monday.com architecture and n8n automation. By replacing messy, manual tasks with smart systems like my 4-Board-System, I help founders and editors stay connected without the stress of constant oversight. This approach has allowed me to turn my own 16-hour workdays into just 30 minutes of management, giving me the time to build Cornerstone and provide raw, honest guidance to the next generation of leaders.
                     </p>
                   </div>
 
@@ -385,10 +382,10 @@ const Home = () => {
                     </a>
                   </div>
 
-                  <div className="mt- sm:mt-16 lg:mt-auto flex-1 flex flex-col">
+                  <div className="mt-12 lg:!mt-auto flex flex-col w-full">
                     <div className="flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8">
                       <div className="w-1 h-6 sm:h-8 bg-gradient-to-b from-yellow-400 to-orange-500 rounded-full"></div>
-                      <h3 className="text-xl sm:text-2xl font-black text-white flex items-center gap-2 sm:gap-3">
+                      <h3 className="text-xl sm:text-2xl font-black text-white flex items-center gap-2 sm:gap-3 tracking-tighter">
                         <MessageSquare className="text-yellow-400" size={22} />
                         What Clients Say
                       </h3>
@@ -453,11 +450,27 @@ const Home = () => {
                         </div>
                       </div>
                     </div>
+
+                    <div className="relative group/card">
+                      <div className="absolute -inset-1 bg-gradient-to-r from-yellow-400/30 to-orange-500/30 rounded-2xl blur opacity-0 group-hover/card:opacity-100 transition-opacity duration-300"></div>
+                      <div className="relative flex items-start gap-3 sm:gap-4 bg-gradient-to-br from-stone-800/80 to-stone-900/80 backdrop-blur-md card-spotlight rounded-xl sm:rounded-2xl p-4 sm:p-6 border-2 border-stone-600/30 group-hover/card:border-yellow-400/50 transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02]">
+                        <div className="bg-gradient-to-br from-yellow-400 to-orange-500 rounded-lg sm:rounded-xl p-2 sm:p-3 flex-shrink-0 shadow-lg" style={{ boxShadow: '0 0 25px rgba(255, 239, 58, 0.4)' }}>
+                          <FileText size={20} className="text-white sm:w-6 sm:h-6" />
+                        </div>
+                        <div className="flex-1">
+                          <h4 className="text-white font-black tracking-tighter text-base sm:text-lg mb-1 sm:mb-1.5">Certified Expert</h4>
+                          <p className="text-yellow-400 text-xs sm:text-sm font-black tracking-tighter text-gradient-gold uppercase text-[10px] sm:text-xs">Monday.com & n8n</p>
+                          <p className="text-stone-300 text-xs sm:text-sm leading-relaxed">Officially certified in advanced workflow automation and architecture</p>
+                        </div>
+                      </div>
+                    </div>
+
+ 
                   </div>
 
-                  <div className="pt-20 mt-auto flex-1 flex flex-col">
-                    <div className="flex items-center gap-3 sm:gap-3 mb-6 sm:mb-8">
-                      <div className="w-1 h-6 sm:h-9 bg-gradient-to-b from-yellow-400 to-orange-500 rounded-full"></div>
+                  <div className="mt-12 lg:!mt-auto flex flex-col w-full">
+                    <div className="flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8">
+                      <div className="w-1 h-6 sm:h-8 bg-gradient-to-b from-yellow-400 to-orange-500 rounded-full"></div>
                       <h3 className="text-xl sm:text-2xl font-black text-white flex items-center gap-2 sm:gap-3 tracking-tighter">
                         <Award className="text-yellow-400" size={22} />
                         Certifications

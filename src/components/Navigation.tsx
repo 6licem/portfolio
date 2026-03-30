@@ -95,7 +95,7 @@ const Navigation = () => {
                     <Sparkles className="w-4 h-4 text-yellow-400 opacity-0 group-hover:opacity-100 transition-all duration-500 group-hover:rotate-12" />
                   </div>
                   <div className="text-xs text-stone-400 font-black tracking-widest uppercase mt-0.5 group-hover:text-yellow-400/80 transition-colors duration-500">
-                    Creative Operations Consultant
+                    Automation Expert
                   </div>
                 </div>
               </div>
