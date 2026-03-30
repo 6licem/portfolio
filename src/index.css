@@ -228,6 +228,15 @@ body.is-fast-scroll img:not(.tech-logo) {
   transition: filter 0.1s linear;
 }
 
+/* Global fix for Safari backdrop-blur white-flash/rectangles: force GPU layer compositing. */
+[class*="backdrop-blur"] {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  isolation: isolate;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
 /* --- Mobile & iPad Performance Optimizations --- */
 @media (max-width: 767px) {
   /* Disable only the purely scroll-triggered entry animations */
@@ -256,17 +265,7 @@ body.is-fast-scroll img:not(.tech-logo) {
     filter: none !important;
   }
 
-  /* Fix iOS Safari backdrop-blur white-flash: force GPU layer compositing.
-     This prevents the 'white rectangle' that appears before backdrop-blur
-     elements are painted on scroll or first render. */
-  [class*="backdrop-blur"] {
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-    isolation: isolate;
-    /* Ensure background is never transparent white */
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-  }
+    /* Safely removed duplicate backdrop-blur rule as it's now global */
 }
 
 /* iPad range: prevent glow blobs from causing compositing issues */
@@ -279,12 +278,5 @@ body.is-fast-scroll img:not(.tech-logo) {
     filter: blur(32px) !important;
   }
 
-  /* Force GPU paint layer for all frosted-glass cards on iPad */
-  [class*="backdrop-blur"] {
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-    isolation: isolate;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-  }
+  /* Reduced blur sizes for iPad performance */
 }
